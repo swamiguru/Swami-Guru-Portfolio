@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  /* Material 3 Tonal Palette - Expressive Green/Teal */
+  --color-m3-primary: #006D3B;
+  --color-m3-on-primary: #FFFFFF;
+  --color-m3-primary-container: #95F7B2;
+  --color-m3-on-primary-container: #00210E;
+  
+  --color-m3-secondary: #4F6353;
+  --color-m3-on-secondary: #FFFFFF;
+  --color-m3-secondary-container: #D1E8D4;
+  --color-m3-on-secondary-container: #0C1F13;
+  
+  --color-m3-tertiary: #3B6470;
+  --color-m3-on-tertiary: #FFFFFF;
+  --color-m3-tertiary-container: #BFE9F7;
+  --color-m3-on-tertiary-container: #001F27;
+  
+  --color-m3-error: #BA1A1A;
+  --color-m3-on-error: #FFFFFF;
+  --color-m3-error-container: #FFDAD6;
+  --color-m3-on-error-container: #410002;
+  
+  --color-m3-surface: #FBFDF8;
+  --color-m3-on-surface: #191C19;
+  --color-m3-surface-variant: #DCE5DB;
+  --color-m3-on-surface-variant: #414941;
+  --color-m3-outline: #717971;
+  
+  --radius-m3-sm: 8px;
+  --radius-m3-md: 12px;
+  --radius-m3-lg: 16px;
+  --radius-m3-xl: 28px;
+  --radius-m3-full: 9999px;
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 109, 59, 0.2)); }
+    50% { filter: drop-shadow(0 0 20px rgba(0, 109, 59, 0.4)); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-m3-surface text-m3-on-surface antialiased;
+  }
+}
+
+@utility display { @apply font-display; }
+@utility mono { @apply font-mono; }
+
+/* M3 Elevation (Tonal) */
+@utility m3-elevation-1 {
+  background: linear-gradient(0deg, rgba(0, 109, 59, 0.05), rgba(0, 109, 59, 0.05)), var(--color-m3-surface);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+@utility m3-elevation-2 {
+  background: linear-gradient(0deg, rgba(0, 109, 59, 0.08), rgba(0, 109, 59, 0.08)), var(--color-m3-surface);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+}
+
+@utility m3-elevation-3 {
+  background: linear-gradient(0deg, rgba(0, 109, 59, 0.11), rgba(0, 109, 59, 0.11)), var(--color-m3-surface);
+  box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+@utility m3-card {
+  @apply bg-m3-surface-variant rounded-m3-xl p-6 transition-all;
+}
+
+@utility m3-button-filled {
+  @apply bg-m3-primary text-m3-on-primary font-display font-medium px-6 py-2.5 rounded-m3-full transition-all hover:m3-elevation-1 active:scale-95;
+}
+
+@utility m3-button-tonal {
+  @apply bg-m3-secondary-container text-m3-on-secondary-container font-display font-medium px-6 py-2.5 rounded-m3-full transition-all hover:m3-elevation-1 active:scale-95;
+}
+
+@utility m3-button-outlined {
+  @apply border border-m3-outline text-m3-primary font-display font-medium px-6 py-2.5 rounded-m3-full transition-all hover:bg-m3-primary/5 active:scale-95;
+}
+
+@layer utilities {
+  @media print {
+    @page { margin: 1cm; size: auto; }
+    body { background: white !important; -webkit-print-color-adjust: exact; }
+    .print-hidden, .fixed, button { display: none !important; }
+    .m3-card { border: 1px solid #ddd; border-radius: 8px; }
+  }
+}

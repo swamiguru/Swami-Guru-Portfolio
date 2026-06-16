@@ -1,6 +1,8 @@
 {
   "name": "Swami Guru | Product Builder Portfolio",
-  "description": "Portfolio of Swami Guru, a Product Leader specializing in digital strategy, growth, and AI-native solutions with 10+ years of experience at Condé Nast and Newsweek.",
+  "description": "Portfolio of Swami Guru, a Product Builder with 11+ years leading digital strategy, platform transformation, and revenue growth for world-class media brands.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

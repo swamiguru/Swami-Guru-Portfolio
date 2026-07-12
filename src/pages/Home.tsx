@@ -18,6 +18,7 @@ import {
   Clock,
 } from "lucide-react";
 import { SOCIALS } from "../data/socials";
+import Carousel from "../components/Carousel";
 
 const YOUTUBE = "https://www.youtube.com/@builtbyswami";
 
@@ -63,31 +64,53 @@ const STATS = [
   { val: "50%", label: "Faster time-to-market" },
 ];
 
-interface LatestVideo {
+interface Video {
   id: string;
   title: string;
   url: string;
   embedUrl: string;
+  thumbnail: string;
+}
+
+interface Post {
+  platform: string;
+  text: string;
+  url: string;
+  date: string;
 }
 
 export default function Home() {
   const [submitted, setSubmitted] = useState(false);
-  const [latestVideo, setLatestVideo] = useState<LatestVideo | null>(null);
+  const [videos, setVideos] = useState<Video[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     let active = true;
-    fetch("/api/latest-video")
+    fetch("/api/latest-videos")
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error("unavailable"))))
       .then((d) => {
-        if (active && d && d.id && d.embedUrl) setLatestVideo(d);
+        if (active && d && Array.isArray(d.videos)) setVideos(d.videos);
       })
       .catch(() => {
         /* fall back to the CTA card */
+      });
+    fetch("/api/latest-posts")
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error("unavailable"))))
+      .then((d) => {
+        if (active && d && Array.isArray(d.posts)) setPosts(d.posts);
+      })
+      .catch(() => {
+        /* section shows a follow-me placeholder */
       });
     return () => {
       active = false;
     };
   }, []);
+
+  const featured = videos[0] ?? null;
+  const railVideos = videos.slice(1, 6);
+  const socialPath = (name: string) =>
+    SOCIALS.find((s) => s.name.toLowerCase() === (name || "").trim().toLowerCase())?.path;
 
   useEffect(() => {
     document.title = "Swami Guru | Building products in public with AI";
@@ -267,26 +290,26 @@ export default function Home() {
               All videos <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
-          {latestVideo ? (
+          {featured ? (
             <div className="rounded-[28px] overflow-hidden border border-m3-outline/10 bg-m3-surface shadow-sm">
               <div className="aspect-video bg-black">
                 <iframe
                   className="w-full h-full"
-                  src={latestVideo.embedUrl}
-                  title={latestVideo.title}
+                  src={featured.embedUrl}
+                  title={featured.title}
                   loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 />
               </div>
               <a
-                href={latestVideo.url}
+                href={featured.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-between gap-4 p-5 md:p-6 hover:bg-m3-surface-variant/40 transition-colors group"
               >
                 <span className="font-display font-bold text-sm md:text-base text-m3-on-surface line-clamp-2">
-                  {latestVideo.title}
+                  {featured.title}
                 </span>
                 <ArrowUpRight className="w-5 h-5 text-m3-on-surface-variant/50 group-hover:text-m3-primary shrink-0 transition-colors" />
               </a>
@@ -314,42 +337,135 @@ export default function Home() {
           )}
         </section>
 
-        {/* 06 — The network (hub) */}
-        <section className="px-6 md:px-14 py-10 md:py-14 bg-m3-surface-variant border-y border-m3-outline/10">
-          <div className="flex items-center gap-3 mb-8">
-            <Sparkles className="w-5 h-5 text-m3-primary" />
-            <span className="font-display text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-m3-on-surface">
-              The network // latest signal
-            </span>
-          </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-            {SOCIALS.map((s) => (
+        {/* 06 — Latest Videos (carousel) */}
+        {railVideos.length > 0 && (
+          <section className="px-6 md:px-14 py-10 md:py-14 bg-m3-surface-variant border-y border-m3-outline/10">
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-3">
+                <Play className="w-5 h-5 text-m3-primary" />
+                <span className="font-display text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-m3-on-surface">
+                  Latest Videos
+                </span>
+              </div>
               <a
-                key={s.name}
-                href={s.url}
+                href={YOUTUBE}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group bg-m3-surface rounded-[24px] border border-m3-outline/5 p-6 flex flex-col gap-5 hover:border-m3-primary/30 hover:shadow-xl transition-all"
+                className="text-[11px] font-bold uppercase tracking-widest text-m3-on-surface-variant hover:text-m3-primary transition-colors flex items-center gap-1"
               >
-                <div className="flex items-center justify-between">
-                  <div className="w-11 h-11 rounded-[14px] bg-m3-primary-container text-m3-on-primary-container flex items-center justify-center group-hover:bg-m3-primary group-hover:text-m3-on-primary transition-colors">
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5" aria-hidden="true">
+                All videos <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+            <Carousel ariaLabel="Latest videos">
+              {railVideos.map((v) => (
+                <a
+                  key={v.id}
+                  href={v.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  role="listitem"
+                  className="group snap-start shrink-0 w-[240px] md:w-[280px] bg-m3-surface rounded-[20px] border border-m3-outline/5 overflow-hidden hover:border-m3-primary/30 hover:shadow-xl transition-all"
+                >
+                  <div className="relative aspect-video bg-black overflow-hidden">
+                    <img
+                      src={v.thumbnail}
+                      alt=""
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+                      <div className="w-12 h-12 rounded-full bg-m3-primary text-m3-on-primary flex items-center justify-center shadow-lg">
+                        <Play className="w-5 h-5 ml-0.5" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <p className="font-display font-bold text-sm text-m3-on-surface line-clamp-2 leading-snug">
+                      {v.title}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </Carousel>
+          </section>
+        )}
+
+        {/* 07 — Latest in Tech (social posts carousel) */}
+        <section className="px-6 md:px-14 py-10 md:py-14 bg-m3-surface">
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-3">
+              <Sparkles className="w-5 h-5 text-m3-primary" />
+              <span className="font-display text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-m3-on-surface">
+                Latest in Tech
+              </span>
+            </div>
+          </div>
+          {posts.length > 0 ? (
+            <Carousel ariaLabel="Latest social posts">
+              {posts.map((p, i) => {
+                const path = socialPath(p.platform);
+                return (
+                  <a
+                    key={i}
+                    href={p.url || undefined}
+                    target={p.url ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    role="listitem"
+                    className="group snap-start shrink-0 w-[280px] md:w-[340px] bg-m3-surface-variant/40 rounded-[24px] border border-m3-outline/5 p-6 flex flex-col gap-4 hover:bg-m3-surface hover:border-m3-primary/30 hover:shadow-xl transition-all"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2 text-m3-on-surface-variant/70">
+                        <div className="w-8 h-8 rounded-[10px] bg-m3-primary-container text-m3-on-primary-container flex items-center justify-center">
+                          {path ? (
+                            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
+                              <path d={path} />
+                            </svg>
+                          ) : (
+                            <Sparkles className="w-4 h-4" />
+                          )}
+                        </div>
+                        <span className="text-[11px] font-bold uppercase tracking-widest">{p.platform}</span>
+                      </div>
+                      {p.url && <ArrowUpRight className="w-4 h-4 text-m3-on-surface-variant/40 group-hover:text-m3-primary transition-colors" />}
+                    </div>
+                    <p className="text-sm leading-relaxed text-m3-on-surface font-medium line-clamp-6">
+                      {p.text}
+                    </p>
+                    {p.date && (
+                      <span className="mt-auto text-[10px] font-bold uppercase tracking-widest text-m3-on-surface-variant/50">
+                        {p.date}
+                      </span>
+                    )}
+                  </a>
+                );
+              })}
+            </Carousel>
+          ) : (
+            <div className="bg-m3-surface-variant/40 rounded-[24px] border border-m3-outline/5 p-8 flex flex-col md:flex-row md:items-center gap-5">
+              <div className="flex-1">
+                <p className="font-display font-bold text-m3-on-surface mb-1">The live feed is coming online</p>
+                <p className="text-sm text-m3-on-surface-variant font-medium">
+                  Fresh posts from across the network will appear here. In the meantime, follow along:
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                {SOCIALS.map((s) => (
+                  <a
+                    key={s.name}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`@builtbyswami on ${s.name}`}
+                    className="w-10 h-10 bg-m3-surface text-m3-on-surface-variant rounded-full flex items-center justify-center hover:bg-m3-primary hover:text-m3-on-primary transition-colors shadow-sm border border-m3-outline/10"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
                       <path d={s.path} />
                     </svg>
-                  </div>
-                  <ArrowUpRight className="w-5 h-5 text-m3-on-surface-variant/40 group-hover:text-m3-primary transition-colors" />
-                </div>
-                <div>
-                  <div className="font-display font-extrabold uppercase tracking-tight text-m3-on-surface">
-                    {s.name}
-                  </div>
-                  <div className="text-[11px] font-bold uppercase tracking-widest text-m3-on-surface-variant/60">
-                    @builtbyswami
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
         </section>
 
         {/* 07 — Start here (3 pillars) */}

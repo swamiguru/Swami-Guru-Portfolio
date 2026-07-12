@@ -1,42 +1,46 @@
 {
   "date": "2026-07-12",
-  "title": "Today in Tech — the model war, hidden iPhone tricks & a foldable reality check",
-  "intro": "Five things worth your time from July 12: two frontier models shipped the same morning, Gemini 3.5 Pro finally rolls out, iPhone features hiding in plain sight, what 'per-token' pricing really costs you, and why you don't need the new foldable.",
+  "title": "Apple sues OpenAI, Search goes AI-first, and a Chrome trick you've been ignoring",
+  "intro": "Five things worth your time from July 12: Apple takes OpenAI to court over talent and trade secrets, Google makes AI the default in Search, a hidden Chrome address-bar shortcut, a 60-second passkey win, and the foldable question before Galaxy Unpacked.",
   "posts": [
     {
       "n": 1,
       "pillar": "News & Commentary",
       "platforms": ["X", "Threads"],
-      "hook": "OpenAI and xAI shipped flagship models the same morning",
-      "body": "Two frontier models. One morning. July 9. OpenAI pushed GPT-5.6 in three sizes — Sol for the hard stuff, Terra for daily, Luna for cheap. Same day, xAI dropped Grok 4.5 at roughly a third of Opus-class pricing. The honest read: nobody \"won.\" The interesting part is that agentic + computer-use took the biggest jump while prices kept falling. Stop picking a logo, start picking the model for the job."
+      "hook": "Apple takes OpenAI to court",
+      "body": "Apple is suing OpenAI — and the subtext is louder than the lawsuit. ⚖️ The complaint, filed July 11, alleges that 400+ former Apple employees now at OpenAI amount to a coordinated raid on its on-device AI, silicon, and hardware teams — not ordinary talent movement, but trade-secret theft. Honest read: suits like this usually say more about who feels behind than who's ahead. Apple's AI reboot is late, the brain drain is real, and the courtroom is where that anxiety shows up.",
+      "image": "/social/2026-07-12/card_1.png"
     },
     {
       "n": 2,
       "pillar": "AI Update",
-      "platforms": ["X", "Threads"],
-      "hook": "Gemini 3.5 Pro is finally rolling out",
-      "body": "Gemini 3.5 Pro is shipping — better late than vaporware. After slipping past both its May and June GA targets, Google's flagship is expanding in Vertex AI preview with a gradual developer rollout. Timing's rough: it's arriving the same week GPT-5.6 and Grok 4.5 went public. Google can't afford a soft launch here."
+      "platforms": ["X", "Threads", "Instagram"],
+      "hook": "Google Search is now AI by default",
+      "body": "Google just quietly ended something you've used every day for 25 years. 🔎 'AI Mode,' powered by Gemini, is now the default in Search — 1B+ monthly users, with query volume doubling every quarter. Instead of ten blue links you get an AI-written answer with sources tucked inside, plus mini-tools built on the fly. Great for quick answers, genuinely disruptive for every creator, blog, and small site that lived on those clicks. The open web just got a middleman — and the time to adapt is now.",
+      "image": "/social/2026-07-12/card_2.png"
     },
     {
       "n": 3,
       "pillar": "Tips & Tricks",
-      "platforms": ["X", "Threads", "Instagram"],
-      "hook": "Five iPhone features hiding in plain sight",
-      "body": "Five iPhone features hiding in plain sight. Back Tap turns the Apple logo into a screenshot button. Type-to-Siri saves you from talking to your phone in public. Shake-to-undo fixes typos instantly. Spotlight quietly does math and unit conversions. And Silence Unknown Callers kills spam without an app. All built in. All free. No subscription required."
+      "platforms": ["X", "Threads"],
+      "hook": "Type @ in Chrome to search your own browser",
+      "body": "You've had this Chrome superpower the whole time and probably never used it. 💡 Type @ in the address bar and Chrome becomes a search engine for your own browser: @tabs jumps to any open tab, @history finds that article you swear you read somewhere, and @bookmarks takes you straight to a saved page. It works on Chrome 108 and up, so basically everyone already has it — no extension, no setup.",
+      "image": "/social/2026-07-12/card_3.png"
     },
     {
       "n": 4,
-      "pillar": "Explainer",
+      "pillar": "Security & Privacy",
       "platforms": ["X", "Threads"],
-      "hook": "What 'per-token' AI pricing actually means",
-      "body": "\"$5 per million input, $30 per million output.\" What does that actually mean for your bill? A token is roughly three-quarters of a word. You pay for tokens going in (your prompt) and tokens coming out (the reply) — and output almost always costs several times more than input. Practical takeaway: verbose prompts are cheap, verbose answers are not. Ask for concise output and you cut cost without cutting quality."
+      "hook": "Add a passkey to your Google account",
+      "body": "The highest-value 60 seconds you'll spend on your accounts today: add a passkey to your Google account. 🔐 A passkey swaps your password for your phone's Face ID or fingerprint — nothing to type, nothing to phish, nothing to leak in the next data breach. Even if someone has your password, they can't get in without your device. Head to your Google account, then Security, then Passkeys. It's the closest thing to un-hackable you'll get for free.",
+      "image": "/social/2026-07-12/card_4.png"
     },
     {
       "n": 5,
-      "pillar": "Hot Take",
+      "pillar": "Community / Poll",
       "platforms": ["X", "Threads"],
-      "hook": "You probably don't need the new foldable",
-      "body": "Unpopular opinion before Galaxy Unpacked (July 22): most of you don't need the new fold. Samsung's teasing a wider, squarer Z Fold 8 to front-run Apple's foldable. It'll be a genuinely good phone. It'll also do almost exactly what your current foldable already does. The upgrade cycle is a marketing calendar, not a need. Buy when yours breaks or truly can't keep up — not because a keynote told you to."
+      "hook": "Foldables: genuinely useful, or an expensive flex?",
+      "body": "Samsung's Galaxy Unpacked lands July 22 with the tagline 'a new shape unfolds' — almost certainly the Z Fold 8. 📱 Before the hype cycle spins up, the real question is whether foldables are genuinely better for how you actually use a phone, or a beautiful flex most people justify after the fact."
     }
   ]
 }

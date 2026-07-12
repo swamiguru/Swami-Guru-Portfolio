@@ -381,45 +381,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 06 — About the builder (hero, moved to bottom) */}
-        <section className="relative overflow-hidden px-6 md:px-14 pt-12 md:pt-16 pb-10 md:pb-12 bg-m3-surface">
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-m3-primary/5 rounded-full -ml-24 -mb-24 blur-3xl pointer-events-none" />
-          <div className="max-w-3xl relative z-10">
-            <div className="font-mono text-[10px] md:text-[11px] text-m3-primary/70 font-bold tracking-[0.2em] flex items-center gap-2 mb-5">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-              </span>
-              LIVE // BUILDING IN PUBLIC — 2026
-            </div>
-            <h2 className="display text-3xl md:text-6xl font-extrabold tracking-tighter uppercase leading-[0.95] text-m3-on-surface">
-              Product builder.
-              <br />
-              <span className="text-m3-primary">11 years scaling $20M media products.</span>
-            </h2>
-            <p className="mt-6 md:mt-8 text-base md:text-xl font-medium text-m3-on-surface-variant max-w-xl leading-relaxed">
-              Now I build them solo with LLMs — and show you exactly how. Operator taste × AI velocity.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <button
-                onClick={() => scrollTo("build-notes")}
-                className="m3-button-filled flex items-center gap-2 text-sm tracking-wide"
-              >
-                <Play className="w-4 h-4" /> Get Build Notes
-              </button>
-              <a
-                href={YOUTUBE}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="m3-button-outlined flex items-center gap-2 text-sm tracking-wide"
-              >
-                Watch the latest build <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* 07 — Credibility strip */}
+        {/* 06 — Credibility strip */}
         <section className="bg-m3-primary text-m3-on-primary px-6 md:px-14 py-5 md:py-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-display font-black uppercase tracking-[0.15em] text-xs md:text-sm">
             {CRED.map((c, i) => (

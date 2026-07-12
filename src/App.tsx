@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -11,6 +11,11 @@ import Notes from "./pages/Notes";
 import NotePost from "./pages/NotePost";
 import Tech from "./pages/Tech";
 import TechDigest from "./pages/TechDigest";
+
+function TechRedirect() {
+  const { date } = useParams<{ date: string }>();
+  return <Navigate to={`/tech-roundup/${date}`} replace />;
+}
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -29,8 +34,11 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/notes" element={<Notes />} />
         <Route path="/notes/:slug" element={<NotePost />} />
-        <Route path="/tech" element={<Tech />} />
-        <Route path="/tech/:date" element={<TechDigest />} />
+        <Route path="/tech-roundup" element={<Tech />} />
+        <Route path="/tech-roundup/:date" element={<TechDigest />} />
+        {/* Legacy /tech paths redirect to the new slug */}
+        <Route path="/tech" element={<Navigate to="/tech-roundup" replace />} />
+        <Route path="/tech/:date" element={<TechRedirect />} />
         {/* Requested alias — /portfolio redirects to the re-homed portfolio */}
         <Route path="/portfolio" element={<Navigate to="/about" replace />} />
         {/* Unknown routes fall back to the hub */}

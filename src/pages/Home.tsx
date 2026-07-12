@@ -225,7 +225,7 @@ export default function Home() {
         <section className="px-6 md:px-14 py-10 md:py-14 bg-m3-surface-variant border-y border-m3-outline/10">
           <div className="flex items-center justify-between mb-6">
             <span className="font-display text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-m3-primary">
-              Latest build
+              The Channel
             </span>
             <a
               href={YOUTUBE}

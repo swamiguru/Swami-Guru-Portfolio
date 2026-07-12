@@ -129,7 +129,7 @@ export default function TechDigest() {
           <Link to="/tech" className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-m3-primary">
             ← All roundups
           </Link>
-          <span className="text-[10px] font-bold uppercase opacity-30 font-display">© Swami Guru • Built with AI Context</span>
+          <span className="text-[10px] font-bold uppercase opacity-30 font-display">© builtbyswami</span>
         </footer>
       </div>
     </div>

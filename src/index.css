@@ -95,6 +95,33 @@
   @apply border border-m3-outline text-m3-primary font-display font-medium px-6 py-2.5 rounded-m3-full transition-all hover:bg-m3-primary/5 active:scale-95;
 }
 
+.prose-notes {
+  color: var(--color-m3-on-surface-variant);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.prose-notes p { margin: 0 0 1.25rem; font-weight: 450; }
+.prose-notes h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  color: var(--color-m3-on-surface);
+  margin: 2.5rem 0 1rem;
+}
+.prose-notes h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--color-m3-on-surface);
+  margin: 2rem 0 0.75rem;
+}
+.prose-notes strong { color: var(--color-m3-on-surface); font-weight: 700; }
+.prose-notes a { color: var(--color-m3-primary); text-decoration: underline; text-underline-offset: 3px; }
+.prose-notes ul { margin: 0 0 1.25rem; padding-left: 1.25rem; list-style: disc; }
+.prose-notes li { margin: 0 0 0.6rem; font-weight: 450; }
+.prose-notes li::marker { color: var(--color-m3-primary); }
+
 @layer utilities {
   @media print {
     @page { margin: 1cm; size: auto; }

@@ -63,8 +63,31 @@ const STATS = [
   { val: "50%", label: "Faster time-to-market" },
 ];
 
+interface LatestVideo {
+  id: string;
+  title: string;
+  url: string;
+  embedUrl: string;
+}
+
 export default function Home() {
   const [submitted, setSubmitted] = useState(false);
+  const [latestVideo, setLatestVideo] = useState<LatestVideo | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    fetch("/api/latest-video")
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error("unavailable"))))
+      .then((d) => {
+        if (active && d && d.id && d.embedUrl) setLatestVideo(d);
+      })
+      .catch(() => {
+        /* fall back to the CTA card */
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   useEffect(() => {
     document.title = "Swami Guru | Building products in public with AI";
@@ -244,25 +267,51 @@ export default function Home() {
               All videos <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
-          <a
-            href={YOUTUBE}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group block relative rounded-[28px] overflow-hidden border border-m3-outline/10 bg-m3-secondary-container/40 aspect-video flex items-center justify-center shadow-sm hover:shadow-xl transition-all"
-          >
-            <div className="absolute inset-0 bg-m3-primary/5 group-hover:bg-m3-primary/10 transition-colors" />
-            <div className="relative z-10 flex flex-col items-center gap-4 text-center px-6">
-              <div className="w-20 h-20 rounded-full bg-m3-primary text-m3-on-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                <Play className="w-8 h-8 ml-1" />
+          {latestVideo ? (
+            <div className="rounded-[28px] overflow-hidden border border-m3-outline/10 bg-m3-surface shadow-sm">
+              <div className="aspect-video bg-black">
+                <iframe
+                  className="w-full h-full"
+                  src={latestVideo.embedUrl}
+                  title={latestVideo.title}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
               </div>
-              <span className="font-display font-bold uppercase tracking-widest text-sm text-m3-on-surface">
-                Watch the latest drop on YouTube
-              </span>
-              <span className="text-xs font-medium text-m3-on-surface-variant/70 max-w-sm">
-                New teardown every week or two. Auto-embedding the newest video here is a fast follow.
-              </span>
+              <a
+                href={latestVideo.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between gap-4 p-5 md:p-6 hover:bg-m3-surface-variant/40 transition-colors group"
+              >
+                <span className="font-display font-bold text-sm md:text-base text-m3-on-surface line-clamp-2">
+                  {latestVideo.title}
+                </span>
+                <ArrowUpRight className="w-5 h-5 text-m3-on-surface-variant/50 group-hover:text-m3-primary shrink-0 transition-colors" />
+              </a>
             </div>
-          </a>
+          ) : (
+            <a
+              href={YOUTUBE}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block relative rounded-[28px] overflow-hidden border border-m3-outline/10 bg-m3-secondary-container/40 aspect-video flex items-center justify-center shadow-sm hover:shadow-xl transition-all"
+            >
+              <div className="absolute inset-0 bg-m3-primary/5 group-hover:bg-m3-primary/10 transition-colors" />
+              <div className="relative z-10 flex flex-col items-center gap-4 text-center px-6">
+                <div className="w-20 h-20 rounded-full bg-m3-primary text-m3-on-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <Play className="w-8 h-8 ml-1" />
+                </div>
+                <span className="font-display font-bold uppercase tracking-widest text-sm text-m3-on-surface">
+                  Watch the latest drop on YouTube
+                </span>
+                <span className="text-xs font-medium text-m3-on-surface-variant/70 max-w-sm">
+                  New teardown every week or two.
+                </span>
+              </div>
+            </a>
+          )}
         </section>
 
         {/* 06 — The network (hub) */}
@@ -360,29 +409,35 @@ export default function Home() {
                 Build Notes // archive
               </span>
             </div>
+            <Link
+              to="/notes"
+              className="text-[11px] font-bold uppercase tracking-widest text-m3-on-surface-variant hover:text-m3-primary transition-colors flex items-center gap-1"
+            >
+              All notes <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
-          <div className="bg-m3-surface rounded-[28px] border border-m3-outline/5 p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6">
+          <Link
+            to="/notes/24-hour-task-manager-sprint"
+            className="group bg-m3-surface rounded-[28px] border border-m3-outline/5 p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6 hover:border-m3-primary/30 hover:shadow-xl transition-all"
+          >
             <div className="w-14 h-14 rounded-[18px] bg-m3-primary-container text-m3-on-primary-container flex items-center justify-center shrink-0">
               <Clock className="w-7 h-7" />
             </div>
             <div className="flex-1">
-              <h3 className="display text-xl font-extrabold uppercase tracking-tight text-m3-on-surface mb-2">
-                Long-form teardowns are on the way
+              <div className="text-[11px] font-bold uppercase tracking-widest text-m3-primary mb-2">
+                Build-in-public · 4 min read
+              </div>
+              <h3 className="display text-xl font-extrabold tracking-tight text-m3-on-surface mb-2 group-hover:text-m3-primary transition-colors">
+                I built a task manager from zero in 24 hours with AI
               </h3>
               <p className="text-sm leading-relaxed text-m3-on-surface-variant font-medium max-w-xl">
-                The wiring behind each video — prompts, stack, mistakes, results. First up: building a task manager
-                from zero in 24 hours with AI.
+                The method, what broke, and why LLM context is the new foundational code for builders.
               </p>
             </div>
-            <a
-              href="https://www.linkedin.com/pulse/ai-changing-game-product-builders-swami-guru-6xnnc/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="m3-button-tonal text-sm tracking-wide whitespace-nowrap flex items-center gap-2"
-            >
-              Read the brief <ArrowUpRight className="w-4 h-4" />
-            </a>
-          </div>
+            <span className="m3-button-tonal text-sm tracking-wide whitespace-nowrap flex items-center gap-2">
+              Read the note <ArrowUpRight className="w-4 h-4" />
+            </span>
+          </Link>
         </section>
 
         {/* 09 — About teaser */}

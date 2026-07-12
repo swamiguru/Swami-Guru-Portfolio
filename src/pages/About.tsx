@@ -876,8 +876,8 @@ export default function About() {
                           </motion.h3>
                           <motion.a 
                             whileHover={{ scale: 1.15, rotate: 10 }}
-                            whileActive={{ scale: 0.9 }}
-                            href={exp.website} 
+                            whileTap={{ scale: 0.9 }}
+                            href={exp.website}
                             target="_blank" 
                             rel="noopener noreferrer" 
                             className="w-12 h-12 bg-m3-primary-container text-m3-on-primary-container rounded-full flex items-center justify-center transition-all shadow-sm hover:shadow-md hover:bg-m3-primary hover:text-m3-on-primary"

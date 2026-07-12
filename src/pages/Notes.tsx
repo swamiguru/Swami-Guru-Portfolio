@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Clock, BookOpen } from "lucide-react";
 import { NOTES, formatNoteDate } from "../data/notes";
+import BrandLogo from "../components/BrandLogo";
 
 const YOUTUBE = "https://www.youtube.com/@builtbyswami";
 
@@ -26,14 +27,7 @@ export default function Notes() {
       <div className="max-w-[1100px] mx-auto min-h-[90vh] flex flex-col relative bg-m3-surface-variant overflow-hidden shadow-xl rounded-m3-xl md:rounded-[32px] border border-m3-outline/10">
 
         <header className="h-[70px] md:h-[88px] border-b border-m3-outline/20 flex items-center justify-between px-6 md:px-10 bg-m3-surface/80 backdrop-blur-md sticky top-0 z-30">
-          <Link to="/" className="flex flex-col group">
-            <span className="font-display text-[9px] md:text-[11px] uppercase tracking-[0.25em] font-black text-m3-primary/60">
-              Digital Media Hub
-            </span>
-            <span className="display text-xl md:text-2xl font-extrabold tracking-tighter uppercase text-m3-on-surface">
-              Built<span className="text-m3-primary">By</span>Swami
-            </span>
-          </Link>
+          <BrandLogo />
           <div className="flex items-center gap-2 md:gap-3 font-display font-bold text-sm">
             <Link to="/tech-roundup" className="hidden md:inline-block px-4 py-2.5 hover:bg-m3-surface-variant text-m3-on-surface rounded-m3-full transition-all">Tech Roundup</Link>
             <a href={YOUTUBE} target="_blank" rel="noopener noreferrer" className="hidden md:inline-block px-4 py-2.5 hover:bg-m3-surface-variant text-m3-on-surface rounded-m3-full transition-all">The Channel</a>

@@ -9,7 +9,7 @@
  * Keep the NOTES list in sync with src/data/notes.ts.
  */
 
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -26,6 +26,17 @@ const NOTES = [
       "A solo, single-cycle build of a working task-management engine — the method, what broke, and why LLM context is the new foundational code.",
   },
 ];
+
+// Daily social roundups are created by the automation — read them at build time.
+let digests = [];
+try {
+  const socialDir = join(__dirname, "..", "src", "content", "social");
+  digests = readdirSync(socialDir)
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => JSON.parse(readFileSync(join(socialDir, f), "utf8")));
+} catch {
+  /* no social content yet */
+}
 
 const routes = [
   {
@@ -44,6 +55,17 @@ const routes = [
     path: `notes/${n.slug}`,
     title: `${n.title} | Build Notes`,
     description: n.description,
+  })),
+  {
+    path: "tech",
+    title: "Latest in Tech | Swami Guru",
+    description:
+      "Daily tech & AI roundups from Swami Guru — the biggest stories, honest takes, and practical tips, filtered so you only get what's worth your time.",
+  },
+  ...digests.map((d) => ({
+    path: `tech/${d.date}`,
+    title: `${d.title} | Latest in Tech`,
+    description: d.intro,
   })),
 ];
 

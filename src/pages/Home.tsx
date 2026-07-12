@@ -18,6 +18,7 @@ import {
   Clock,
 } from "lucide-react";
 import { SOCIALS } from "../data/socials";
+import { getLatestDigest, formatDigestDate } from "../data/social";
 import Carousel from "../components/Carousel";
 
 const YOUTUBE = "https://www.youtube.com/@builtbyswami";
@@ -72,17 +73,9 @@ interface Video {
   thumbnail: string;
 }
 
-interface Post {
-  platform: string;
-  text: string;
-  url: string;
-  date: string;
-}
-
 export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [videos, setVideos] = useState<Video[]>([]);
-  const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     let active = true;
@@ -94,14 +87,6 @@ export default function Home() {
       .catch(() => {
         /* fall back to the CTA card */
       });
-    fetch("/api/latest-posts")
-      .then((r) => (r.ok ? r.json() : Promise.reject(new Error("unavailable"))))
-      .then((d) => {
-        if (active && d && Array.isArray(d.posts)) setPosts(d.posts);
-      })
-      .catch(() => {
-        /* section shows a follow-me placeholder */
-      });
     return () => {
       active = false;
     };
@@ -109,6 +94,7 @@ export default function Home() {
 
   const featured = videos[0] ?? null;
   const railVideos = videos.slice(1, 6);
+  const latestDigest = getLatestDigest();
   const socialPath = (name: string) =>
     SOCIALS.find((s) => s.name.toLowerCase() === (name || "").trim().toLowerCase())?.path;
 
@@ -390,7 +376,7 @@ export default function Home() {
           </section>
         )}
 
-        {/* 07 — Latest in Tech (social posts carousel) */}
+        {/* 07 — Latest in Tech (daily social roundup carousel) */}
         <section className="px-6 md:px-14 py-10 md:py-14 bg-m3-surface">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
@@ -399,47 +385,53 @@ export default function Home() {
                 Latest in Tech
               </span>
             </div>
+            <Link
+              to="/tech"
+              className="text-[11px] font-bold uppercase tracking-widest text-m3-on-surface-variant hover:text-m3-primary transition-colors flex items-center gap-1"
+            >
+              All roundups <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
-          {posts.length > 0 ? (
-            <Carousel ariaLabel="Latest social posts">
-              {posts.map((p, i) => {
-                const path = socialPath(p.platform);
-                return (
-                  <a
-                    key={i}
-                    href={p.url || undefined}
-                    target={p.url ? "_blank" : undefined}
-                    rel="noopener noreferrer"
+          {latestDigest ? (
+            <>
+              <div className="mb-5 text-[11px] font-bold uppercase tracking-widest text-m3-primary">
+                {formatDigestDate(latestDigest.date)} · today's 5
+              </div>
+              <Carousel ariaLabel="Latest in tech">
+                {latestDigest.posts.map((p) => (
+                  <Link
+                    key={p.n}
+                    to={`/tech/${latestDigest.date}`}
                     role="listitem"
                     className="group snap-start shrink-0 w-[280px] md:w-[340px] bg-m3-surface-variant/40 rounded-[24px] border border-m3-outline/5 p-6 flex flex-col gap-4 hover:bg-m3-surface hover:border-m3-primary/30 hover:shadow-xl transition-all"
                   >
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-m3-on-surface-variant/70">
-                        <div className="w-8 h-8 rounded-[10px] bg-m3-primary-container text-m3-on-primary-container flex items-center justify-center">
-                          {path ? (
-                            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
-                              <path d={path} />
-                            </svg>
-                          ) : (
-                            <Sparkles className="w-4 h-4" />
-                          )}
-                        </div>
-                        <span className="text-[11px] font-bold uppercase tracking-widest">{p.platform}</span>
-                      </div>
-                      {p.url && <ArrowUpRight className="w-4 h-4 text-m3-on-surface-variant/40 group-hover:text-m3-primary transition-colors" />}
-                    </div>
-                    <p className="text-sm leading-relaxed text-m3-on-surface font-medium line-clamp-6">
-                      {p.text}
-                    </p>
-                    {p.date && (
-                      <span className="mt-auto text-[10px] font-bold uppercase tracking-widest text-m3-on-surface-variant/50">
-                        {p.date}
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-m3-primary">
+                        {p.pillar}
                       </span>
-                    )}
-                  </a>
-                );
-              })}
-            </Carousel>
+                      <div className="flex items-center gap-1">
+                        {p.platforms.map((plat) => {
+                          const path = socialPath(plat);
+                          return path ? (
+                            <span key={plat} className="w-6 h-6 rounded-full bg-m3-primary-container text-m3-on-primary-container flex items-center justify-center" title={plat}>
+                              <svg viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3" aria-hidden="true">
+                                <path d={path} />
+                              </svg>
+                            </span>
+                          ) : null;
+                        })}
+                      </div>
+                    </div>
+                    <p className="text-[15px] leading-snug text-m3-on-surface font-bold line-clamp-4">
+                      {p.hook}
+                    </p>
+                    <span className="mt-auto inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-m3-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                      Read the take <ArrowUpRight className="w-3.5 h-3.5" />
+                    </span>
+                  </Link>
+                ))}
+              </Carousel>
+            </>
           ) : (
             <div className="bg-m3-surface-variant/40 rounded-[24px] border border-m3-outline/5 p-8 flex flex-col md:flex-row md:items-center gap-5">
               <div className="flex-1">

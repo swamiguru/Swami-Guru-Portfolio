@@ -128,6 +128,12 @@ export default function Home() {
             </span>
           </Link>
           <div className="flex items-center gap-2 md:gap-3 font-display font-bold text-sm">
+            <Link
+              to="/tech-roundup"
+              className="hidden md:inline-block px-4 py-2.5 hover:bg-m3-surface-variant text-m3-on-surface rounded-m3-full transition-all"
+            >
+              Tech Roundup
+            </Link>
             <a
               href={YOUTUBE}
               target="_blank"
@@ -377,17 +383,17 @@ export default function Home() {
           </section>
         )}
 
-        {/* 07 — Latest in Tech (daily social roundup carousel) */}
+        {/* 07 — The Daily Tech Roundup (daily social roundup carousel) */}
         <section className="px-6 md:px-14 py-10 md:py-14 bg-m3-surface">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
               <Sparkles className="w-5 h-5 text-m3-primary" />
               <span className="font-display text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-m3-on-surface">
-                Latest in Tech
+                The Daily Tech Roundup
               </span>
             </div>
             <Link
-              to="/tech"
+              to="/tech-roundup"
               className="text-[11px] font-bold uppercase tracking-widest text-m3-on-surface-variant hover:text-m3-primary transition-colors flex items-center gap-1"
             >
               All roundups <ArrowRight className="w-3.5 h-3.5" />
@@ -402,7 +408,7 @@ export default function Home() {
                 {latestDigest.posts.map((p) => (
                   <Link
                     key={p.n}
-                    to={`/tech/${latestDigest.date}`}
+                    to={`/tech-roundup/${latestDigest.date}`}
                     role="listitem"
                     className="group snap-start shrink-0 w-[280px] md:w-[340px] bg-m3-surface-variant/40 rounded-[24px] border border-m3-outline/5 p-6 flex flex-col gap-4 hover:bg-m3-surface hover:border-m3-primary/30 hover:shadow-xl transition-all"
                   >

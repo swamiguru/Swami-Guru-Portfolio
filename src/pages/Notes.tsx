@@ -35,6 +35,7 @@ export default function Notes() {
             </span>
           </Link>
           <div className="flex items-center gap-2 md:gap-3 font-display font-bold text-sm">
+            <Link to="/tech-roundup" className="hidden md:inline-block px-4 py-2.5 hover:bg-m3-surface-variant text-m3-on-surface rounded-m3-full transition-all">Tech Roundup</Link>
             <a href={YOUTUBE} target="_blank" rel="noopener noreferrer" className="hidden md:inline-block px-4 py-2.5 hover:bg-m3-surface-variant text-m3-on-surface rounded-m3-full transition-all">The Channel</a>
             <Link to="/about" className="hidden md:inline-block px-4 py-2.5 hover:bg-m3-surface-variant text-m3-on-surface rounded-m3-full transition-all">The Work</Link>
             <Link to="/" className="px-5 py-2.5 bg-m3-primary text-m3-on-primary rounded-m3-full hover:m3-elevation-1 active:scale-95 transition-all shadow-sm">← Home</Link>

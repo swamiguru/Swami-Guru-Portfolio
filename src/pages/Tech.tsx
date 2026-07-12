@@ -12,7 +12,7 @@ const YOUTUBE = "https://www.youtube.com/@builtbyswami";
 
 export default function Tech() {
   useEffect(() => {
-    document.title = "Latest in Tech | Swami Guru";
+    document.title = "Tech Roundup | Swami Guru";
     document
       .querySelector('meta[name="description"]')
       ?.setAttribute(
@@ -35,6 +35,7 @@ export default function Tech() {
             </span>
           </Link>
           <div className="flex items-center gap-2 md:gap-3 font-display font-bold text-sm">
+            <Link to="/tech-roundup" className="hidden md:inline-block px-4 py-2.5 hover:bg-m3-surface-variant text-m3-on-surface rounded-m3-full transition-all">Tech Roundup</Link>
             <a href={YOUTUBE} target="_blank" rel="noopener noreferrer" className="hidden md:inline-block px-4 py-2.5 hover:bg-m3-surface-variant text-m3-on-surface rounded-m3-full transition-all">The Channel</a>
             <Link to="/notes" className="hidden md:inline-block px-4 py-2.5 hover:bg-m3-surface-variant text-m3-on-surface rounded-m3-full transition-all">Notes</Link>
             <Link to="/" className="px-5 py-2.5 bg-m3-primary text-m3-on-primary rounded-m3-full hover:m3-elevation-1 active:scale-95 transition-all shadow-sm">← Home</Link>
@@ -45,11 +46,11 @@ export default function Tech() {
           <div className="flex items-center gap-3 mb-4">
             <Sparkles className="w-5 h-5 text-m3-primary" />
             <span className="font-display text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-m3-primary">
-              Latest in Tech
+              The Daily Tech Roundup
             </span>
           </div>
           <h1 className="display text-3xl md:text-5xl font-extrabold uppercase tracking-tighter text-m3-on-surface max-w-2xl leading-[0.95]">
-            The daily tech roundup
+            Tech Roundup
           </h1>
           <p className="mt-5 text-base md:text-lg font-medium text-m3-on-surface-variant max-w-xl leading-relaxed">
             The day's biggest tech & AI stories — filtered, with honest takes. Five things worth your time, every day.
@@ -62,7 +63,7 @@ export default function Tech() {
               {DIGESTS.map((d) => (
                 <Link
                   key={d.date}
-                  to={`/tech/${d.date}`}
+                  to={`/tech-roundup/${d.date}`}
                   className="group bg-m3-surface rounded-[24px] border border-m3-outline/5 p-6 md:p-8 hover:border-m3-primary/30 hover:shadow-xl transition-all flex flex-col gap-3"
                 >
                   <div className="text-[11px] font-bold uppercase tracking-widest text-m3-primary">

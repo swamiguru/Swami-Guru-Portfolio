@@ -19,22 +19,22 @@ export default function TechDigest() {
 
   useEffect(() => {
     if (digest) {
-      document.title = `${digest.title} | Latest in Tech`;
+      document.title = `${digest.title} | Tech Roundup`;
       document
         .querySelector('meta[name="description"]')
         ?.setAttribute("content", digest.intro);
     }
   }, [digest]);
 
-  if (!digest) return <Navigate to="/tech" replace />;
+  if (!digest) return <Navigate to="/tech-roundup" replace />;
 
   return (
     <div className="min-h-screen bg-m3-surface md:p-8 selection:bg-m3-primary selection:text-m3-on-primary">
       <div className="max-w-[820px] mx-auto min-h-[90vh] flex flex-col relative bg-m3-surface-variant overflow-hidden shadow-xl rounded-m3-xl md:rounded-[32px] border border-m3-outline/10">
 
         <header className="h-[70px] md:h-[88px] border-b border-m3-outline/20 flex items-center justify-between px-6 md:px-10 bg-m3-surface/80 backdrop-blur-md sticky top-0 z-30">
-          <Link to="/tech" className="font-display font-bold text-sm text-m3-on-surface hover:text-m3-primary transition-colors">
-            ← Latest in Tech
+          <Link to="/tech-roundup" className="font-display font-bold text-sm text-m3-on-surface hover:text-m3-primary transition-colors">
+            ← Tech Roundup
           </Link>
           <Link to="/" className="font-display font-bold text-sm px-5 py-2.5 bg-m3-primary text-m3-on-primary rounded-m3-full hover:m3-elevation-1 active:scale-95 transition-all shadow-sm">
             Home
@@ -126,7 +126,7 @@ export default function TechDigest() {
         </article>
 
         <footer className="mt-auto px-6 md:px-14 py-8 bg-m3-surface flex items-center gap-4 justify-between border-t border-m3-outline/10 rounded-b-m3-xl md:rounded-b-[32px]">
-          <Link to="/tech" className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-m3-primary">
+          <Link to="/tech-roundup" className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-m3-primary">
             ← All roundups
           </Link>
           <span className="text-[10px] font-bold uppercase opacity-30 font-display">© builtbyswami</span>

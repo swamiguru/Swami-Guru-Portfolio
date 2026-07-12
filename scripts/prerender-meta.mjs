@@ -57,14 +57,14 @@ const routes = [
     description: n.description,
   })),
   {
-    path: "tech",
-    title: "Latest in Tech | Swami Guru",
+    path: "tech-roundup",
+    title: "Tech Roundup | Swami Guru",
     description:
       "Daily tech & AI roundups from Swami Guru — the biggest stories, honest takes, and practical tips, filtered so you only get what's worth your time.",
   },
   ...digests.map((d) => ({
-    path: `tech/${d.date}`,
-    title: `${d.title} | Latest in Tech`,
+    path: `tech-roundup/${d.date}`,
+    title: `${d.title} | Tech Roundup`,
     description: d.intro,
   })),
 ];

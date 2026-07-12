@@ -23,14 +23,6 @@ import BrandLogo from "../components/BrandLogo";
 
 const YOUTUBE = "https://www.youtube.com/@builtbyswami";
 
-const CRED = ["Condé Nast", "Newsweek", "Metro International"];
-
-const STATS = [
-  { val: "$20M+", label: "Revenue scaled" },
-  { val: "50M+", label: "Monthly users" },
-  { val: "50%", label: "Faster time-to-market" },
-];
-
 interface Video {
   id: string;
   title: string;
@@ -375,26 +367,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 06 — Credibility strip */}
-        <section className="bg-m3-primary text-m3-on-primary px-6 md:px-14 py-5 md:py-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-display font-black uppercase tracking-[0.15em] text-xs md:text-sm">
-            {CRED.map((c, i) => (
-              <span key={i} className="flex items-center gap-5">
-                {i > 0 && <span className="opacity-40">·</span>}
-                {c}
-              </span>
-            ))}
-          </div>
-          <div className="flex-1 flex flex-wrap gap-x-6 gap-y-1 md:justify-end text-[11px] md:text-[13px] font-bold uppercase tracking-widest text-m3-on-primary/80">
-            {STATS.map((s, i) => (
-              <span key={i}>
-                <span className="text-m3-on-primary font-black">{s.val}</span> {s.label}
-              </span>
-            ))}
-          </div>
-        </section>
-
-        {/* 08 — Build Notes (email capture) */}
+        {/* 07 — Build Notes (email capture) */}
         <section
           id="build-notes"
           className="bg-m3-secondary-container text-m3-on-secondary-container px-6 md:px-14 py-10 md:py-14"

@@ -53,8 +53,6 @@ export default function Home() {
   const featured = videos[0] ?? null;
   const railVideos = videos.slice(1, 6);
   const latestDigest = getLatestDigest();
-  const socialPath = (name: string) =>
-    SOCIALS.find((s) => s.name.toLowerCase() === (name || "").trim().toLowerCase())?.path;
 
   useEffect(() => {
     document.title = "Swami Guru | Building products in public with AI";
@@ -151,23 +149,9 @@ export default function Home() {
                       role="listitem"
                       className="group snap-start shrink-0 w-[280px] md:w-[340px] bg-m3-surface-variant/40 rounded-[24px] border border-m3-outline/5 p-6 flex flex-col gap-4 hover:bg-m3-surface hover:border-m3-primary/30 hover:shadow-xl transition-all"
                     >
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-m3-primary">
-                          {p.pillar}
-                        </span>
-                        <div className="flex items-center gap-1">
-                          {p.platforms.map((plat) => {
-                            const path = socialPath(plat);
-                            return path ? (
-                              <span key={plat} className="w-6 h-6 rounded-full bg-m3-primary-container text-m3-on-primary-container flex items-center justify-center" title={plat}>
-                                <svg viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3" aria-hidden="true">
-                                  <path d={path} />
-                                </svg>
-                              </span>
-                            ) : null;
-                          })}
-                        </div>
-                      </div>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-m3-primary">
+                        {p.pillar}
+                      </span>
                       <p className="text-[15px] leading-snug text-m3-on-surface font-bold line-clamp-4">
                         {p.hook}
                       </p>

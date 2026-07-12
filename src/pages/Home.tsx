@@ -19,23 +19,24 @@ import {
 } from "lucide-react";
 import { SOCIALS } from "../data/socials";
 import { getLatestDigest, formatDigestDate } from "../data/social";
+import { getLatestNotes, formatNoteDate } from "../data/notes";
 import Carousel from "../components/Carousel";
 
 const YOUTUBE = "https://www.youtube.com/@builtbyswami";
 
 const PILLARS = [
   {
-    tag: "RECEIPTS",
-    title: "Proof",
+    tag: "PORTFOLIO",
+    title: "The Work",
     icon: Award,
     detail:
-      "A decade of $20M launches at the world's biggest media brands — Condé Nast, Newsweek, Metro International. The track record.",
+      "A decade of $20M launches at the world's biggest media brands — Condé Nast, Newsweek, Metro International. The full track record.",
     to: "/about",
     external: false,
   },
   {
-    tag: "REPS",
-    title: "Builds",
+    tag: "YOUTUBE",
+    title: "The Channel",
     icon: Hammer,
     detail:
       "Solo sprints and real teardowns. Watch products go from empty repo to shipped, with AI handling the velocity.",
@@ -43,12 +44,12 @@ const PILLARS = [
     external: true,
   },
   {
-    tag: "RECIPES",
-    title: "Playbooks",
+    tag: "WRITING",
+    title: "Notes",
     icon: BookOpen,
     detail:
-      "The AI-native workflow, technical SEO, and go-to-market tactics — the wiring behind the builds, given away.",
-    to: "#notes",
+      "Long-form teardowns of what I'm building and why — the wiring behind the videos: prompts, stack, mistakes, results.",
+    to: "/notes",
     external: false,
   },
 ];
@@ -133,7 +134,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="hidden md:inline-block px-4 py-2.5 hover:bg-m3-surface-variant text-m3-on-surface rounded-m3-full transition-all"
             >
-              Watch
+              The Channel
             </a>
             <button
               onClick={() => scrollTo("notes")}
@@ -145,7 +146,7 @@ export default function Home() {
               to="/about"
               className="hidden md:inline-block px-4 py-2.5 hover:bg-m3-surface-variant text-m3-on-surface rounded-m3-full transition-all"
             >
-              About
+              The Work
             </Link>
             <button
               onClick={() => scrollTo("build-notes")}
@@ -514,7 +515,7 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <BookOpen className="w-5 h-5 text-m3-primary" />
               <span className="font-display text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-m3-on-surface">
-                Build Notes // archive
+                Notes
               </span>
             </div>
             <Link
@@ -524,28 +525,33 @@ export default function Home() {
               All notes <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
-          <Link
-            to="/notes/24-hour-task-manager-sprint"
-            className="group bg-m3-surface rounded-[28px] border border-m3-outline/5 p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6 hover:border-m3-primary/30 hover:shadow-xl transition-all"
-          >
-            <div className="w-14 h-14 rounded-[18px] bg-m3-primary-container text-m3-on-primary-container flex items-center justify-center shrink-0">
-              <Clock className="w-7 h-7" />
-            </div>
-            <div className="flex-1">
-              <div className="text-[11px] font-bold uppercase tracking-widest text-m3-primary mb-2">
-                Build-in-public · 4 min read
-              </div>
-              <h3 className="display text-xl font-extrabold tracking-tight text-m3-on-surface mb-2 group-hover:text-m3-primary transition-colors">
-                I built a task manager from zero in 24 hours with AI
-              </h3>
-              <p className="text-sm leading-relaxed text-m3-on-surface-variant font-medium max-w-xl">
-                The method, what broke, and why LLM context is the new foundational code for builders.
-              </p>
-            </div>
-            <span className="m3-button-tonal text-sm tracking-wide whitespace-nowrap flex items-center gap-2">
-              Read the note <ArrowUpRight className="w-4 h-4" />
-            </span>
-          </Link>
+          <div className="flex flex-col gap-4">
+            {getLatestNotes(3).map((note) => (
+              <Link
+                key={note.slug}
+                to={`/notes/${note.slug}`}
+                className="group bg-m3-surface rounded-[28px] border border-m3-outline/5 p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-5 md:gap-6 hover:border-m3-primary/30 hover:shadow-xl transition-all"
+              >
+                <div className="w-12 h-12 rounded-[16px] bg-m3-primary-container text-m3-on-primary-container flex items-center justify-center shrink-0">
+                  <Clock className="w-6 h-6" />
+                </div>
+                <div className="flex-1">
+                  <div className="text-[11px] font-bold uppercase tracking-widest text-m3-primary mb-2">
+                    {note.tag} · {note.readMinutes} min read · {formatNoteDate(note.date)}
+                  </div>
+                  <h3 className="display text-lg md:text-xl font-extrabold tracking-tight text-m3-on-surface mb-2 group-hover:text-m3-primary transition-colors">
+                    {note.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-m3-on-surface-variant font-medium max-w-xl line-clamp-2">
+                    {note.description}
+                  </p>
+                </div>
+                <span className="m3-button-tonal text-sm tracking-wide whitespace-nowrap flex items-center gap-2 shrink-0">
+                  Read <ArrowUpRight className="w-4 h-4" />
+                </span>
+              </Link>
+            ))}
+          </div>
         </section>
 
         {/* 09 — About teaser */}

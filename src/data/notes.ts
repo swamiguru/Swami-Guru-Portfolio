@@ -34,6 +34,9 @@ export const NOTES: Note[] = [
 export const getNote = (slug: string): Note | undefined =>
   NOTES.find((n) => n.slug === slug);
 
+export const getLatestNotes = (n = 3): Note[] =>
+  [...NOTES].sort((a, b) => b.date.localeCompare(a.date)).slice(0, n);
+
 export const formatNoteDate = (iso: string): string =>
   new Date(iso).toLocaleDateString("en-US", {
     year: "numeric",

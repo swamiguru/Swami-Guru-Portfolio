@@ -1,0 +1,74 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * Post-build: emit per-route HTML shells with correct <title>/description/OG
+ * so social crawlers get real metadata for a client-rendered SPA.
+ * Vercel serves these static files before applying the SPA rewrite.
+ *
+ * Keep the NOTES list in sync with src/data/notes.ts.
+ */
+
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const DIST = join(__dirname, "..", "dist");
+const BASE = "https://www.builtbyswami.com";
+const template = readFileSync(join(DIST, "index.html"), "utf8");
+
+const NOTES = [
+  {
+    slug: "24-hour-task-manager-sprint",
+    title: "I built a task manager from zero in 24 hours with AI",
+    description:
+      "A solo, single-cycle build of a working task-management engine — the method, what broke, and why LLM context is the new foundational code.",
+  },
+];
+
+const routes = [
+  {
+    path: "about",
+    title: "Swami Guru | Product Builder Portfolio",
+    description:
+      "Portfolio of Swami Guru, a Product Builder with 11+ years leading digital strategy, platform transformation, and revenue growth for world-class media brands.",
+  },
+  {
+    path: "notes",
+    title: "Build Notes | Swami Guru",
+    description:
+      "Build Notes by Swami Guru — long-form teardowns of building products in public with AI. The wiring behind the videos: prompts, stack, mistakes, results.",
+  },
+  ...NOTES.map((n) => ({
+    path: `notes/${n.slug}`,
+    title: `${n.title} | Build Notes`,
+    description: n.description,
+  })),
+];
+
+const sub = (html, attr, value) =>
+  html.replace(
+    new RegExp(`(${attr}=")[^"]*(")`),
+    (_m, a, b) => `${a}${value.replace(/"/g, "&quot;")}${b}`
+  );
+
+let count = 0;
+for (const r of routes) {
+  const url = `${BASE}/${r.path}`;
+  let html = template.replace(/<title>[\s\S]*?<\/title>/, `<title>${r.title}</title>`);
+  html = sub(html, '<meta name="description" content', r.description);
+  html = sub(html, '<meta property="og:title" content', r.title);
+  html = sub(html, '<meta property="og:description" content', r.description);
+  html = sub(html, '<meta property="og:url" content', url);
+  html = sub(html, '<meta name="twitter:title" content', r.title);
+  html = sub(html, '<meta name="twitter:description" content', r.description);
+  html = sub(html, '<meta name="twitter:url" content', url);
+
+  const outDir = join(DIST, r.path);
+  mkdirSync(outDir, { recursive: true });
+  writeFileSync(join(outDir, "index.html"), html, "utf8");
+  count += 1;
+  console.log(`  prerendered /${r.path}`);
+}
+console.log(`prerender-meta: wrote ${count} route shell(s).`);

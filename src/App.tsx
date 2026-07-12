@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-route
 import { useEffect } from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Notes from "./pages/Notes";
+import NotePost from "./pages/NotePost";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -23,6 +25,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/notes" element={<Notes />} />
+        <Route path="/notes/:slug" element={<NotePost />} />
         {/* Requested alias — /portfolio redirects to the re-homed portfolio */}
         <Route path="/portfolio" element={<Navigate to="/about" replace />} />
         {/* Unknown routes fall back to the hub */}

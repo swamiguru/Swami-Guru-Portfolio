@@ -39,7 +39,8 @@ import {
   BarChart3,
   MousePointer2,
   ZapOff,
-  Rocket
+  Rocket,
+  Menu
 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -224,6 +225,7 @@ export default function About() {
   }, []);
 
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrambledTitle, setScrambledTitle] = useState("PRODUCT");
   const [scrambledBuilder, setScrambledBuilder] = useState("BUILDER");
 
@@ -383,7 +385,16 @@ export default function About() {
               className="absolute -bottom-1 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-m3-primary/40 to-transparent blur-[1px]"
             />
           </motion.div>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 md:gap-6">
+            <button
+              type="button"
+              onClick={() => setMenuOpen((o) => !o)}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              className="md:hidden w-11 h-11 flex items-center justify-center rounded-full bg-m3-outline/10 text-m3-on-surface hover:text-m3-primary transition-colors"
+            >
+              {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
             <nav className="hidden md:flex gap-4 font-display font-bold text-sm">
               <Link
                 to="/"
@@ -419,6 +430,18 @@ export default function About() {
             </motion.button>
           </div>
         </header>
+
+        {menuOpen && (
+          <nav className="md:hidden border-b border-m3-outline/20 bg-m3-surface px-4 py-4 flex flex-col gap-1 font-display font-bold text-base">
+            <Link to="/" onClick={() => setMenuOpen(false)} className="px-4 py-3 rounded-m3-lg hover:bg-m3-surface-variant text-m3-on-surface transition-all">Home</Link>
+            <Link to="/tech-roundup" onClick={() => setMenuOpen(false)} className="px-4 py-3 rounded-m3-lg hover:bg-m3-surface-variant text-m3-on-surface transition-all">Tech Roundup</Link>
+            <a href="https://www.youtube.com/@builtbyswami" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)} className="px-4 py-3 rounded-m3-lg hover:bg-m3-surface-variant text-m3-on-surface transition-all">The Channel</a>
+            <Link to="/notes" onClick={() => setMenuOpen(false)} className="px-4 py-3 rounded-m3-lg hover:bg-m3-surface-variant text-m3-on-surface transition-all">Notes</Link>
+            <a href="#skills" onClick={() => setMenuOpen(false)} className="px-4 py-3 rounded-m3-lg hover:bg-m3-surface-variant text-m3-on-surface transition-all">Toolkit</a>
+            <a href="#work" onClick={() => setMenuOpen(false)} className="px-4 py-3 rounded-m3-lg hover:bg-m3-surface-variant text-m3-on-surface transition-all">Experience</a>
+            <Link to="/#build-notes" onClick={() => setMenuOpen(false)} className="mt-2 px-5 py-3 bg-m3-primary text-m3-on-primary rounded-m3-full text-center hover:m3-elevation-1 active:scale-95 transition-all">Subscribe</Link>
+          </nav>
+        )}
 
         <AnimatePresence>
           {isChatOpen && (

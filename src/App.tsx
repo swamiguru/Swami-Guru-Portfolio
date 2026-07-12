@@ -18,10 +18,20 @@ function TechRedirect() {
 }
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
+    if (hash) {
+      // Wait a tick so the target section has mounted, then scroll to it.
+      const id = hash.slice(1);
+      const t = setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+        else window.scrollTo(0, 0);
+      }, 60);
+      return () => clearTimeout(t);
+    }
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, hash]);
   return null;
 }
 

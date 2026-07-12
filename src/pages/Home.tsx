@@ -19,7 +19,7 @@ import { SOCIALS } from "../data/socials";
 import { getLatestDigest, formatDigestDate } from "../data/social";
 import { getLatestNotes, formatNoteDate } from "../data/notes";
 import Carousel from "../components/Carousel";
-import BrandLogo from "../components/BrandLogo";
+import SiteHeader from "../components/SiteHeader";
 
 const YOUTUBE = "https://www.youtube.com/@builtbyswami";
 
@@ -64,52 +64,12 @@ export default function Home() {
       );
   }, []);
 
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <div className="min-h-screen bg-m3-surface md:p-8 selection:bg-m3-primary selection:text-m3-on-primary">
       <div className="max-w-[1400px] mx-auto min-h-[90vh] flex flex-col relative bg-m3-surface-variant overflow-hidden shadow-xl rounded-m3-xl md:rounded-[32px] border border-m3-outline/10">
 
         {/* 01 — Nav */}
-        <header className="h-[70px] md:h-[88px] border-b border-m3-outline/20 flex items-center justify-between px-6 md:px-10 bg-m3-surface/80 backdrop-blur-md sticky top-0 z-30">
-          <BrandLogo />
-          <div className="flex items-center gap-2 md:gap-3 font-display font-bold text-sm">
-            <Link
-              to="/tech-roundup"
-              className="hidden md:inline-block px-4 py-2.5 hover:bg-m3-surface-variant text-m3-on-surface rounded-m3-full transition-all"
-            >
-              Tech Roundup
-            </Link>
-            <a
-              href={YOUTUBE}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:inline-block px-4 py-2.5 hover:bg-m3-surface-variant text-m3-on-surface rounded-m3-full transition-all"
-            >
-              The Channel
-            </a>
-            <button
-              onClick={() => scrollTo("notes")}
-              className="hidden md:inline-block px-4 py-2.5 hover:bg-m3-surface-variant text-m3-on-surface rounded-m3-full transition-all"
-            >
-              Notes
-            </button>
-            <Link
-              to="/about"
-              className="hidden md:inline-block px-4 py-2.5 hover:bg-m3-surface-variant text-m3-on-surface rounded-m3-full transition-all"
-            >
-              The Work
-            </Link>
-            <button
-              onClick={() => scrollTo("build-notes")}
-              className="px-5 py-2.5 bg-m3-primary text-m3-on-primary rounded-m3-full hover:m3-elevation-1 active:scale-95 transition-all shadow-sm"
-            >
-              Subscribe
-            </button>
-          </div>
-        </header>
+        <SiteHeader />
 
         {/* 02 — The Daily Tech Roundup (LEAD) */}
         <section className="relative overflow-hidden px-6 md:px-14 pt-10 md:pt-16 pb-10 md:pb-14 bg-m3-surface">

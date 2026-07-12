@@ -11,8 +11,6 @@ import {
   ArrowRight,
   Play,
   Mail,
-  Award,
-  Hammer,
   BookOpen,
   Sparkles,
   Clock,
@@ -24,41 +22,7 @@ import Carousel from "../components/Carousel";
 
 const YOUTUBE = "https://www.youtube.com/@builtbyswami";
 
-const PILLARS = [
-  {
-    tag: "PORTFOLIO",
-    title: "The Work",
-    icon: Award,
-    detail:
-      "A decade of $20M launches at the world's biggest media brands — Condé Nast, Newsweek, Metro International. The full track record.",
-    to: "/about",
-    external: false,
-  },
-  {
-    tag: "YOUTUBE",
-    title: "The Channel",
-    icon: Hammer,
-    detail:
-      "Solo sprints and real teardowns. Watch products go from empty repo to shipped, with AI handling the velocity.",
-    to: YOUTUBE,
-    external: true,
-  },
-  {
-    tag: "WRITING",
-    title: "Notes",
-    icon: BookOpen,
-    detail:
-      "Long-form teardowns of what I'm building and why — the wiring behind the videos: prompts, stack, mistakes, results.",
-    to: "/notes",
-    external: false,
-  },
-];
-
-const CRED = [
-  "Condé Nast",
-  "Newsweek",
-  "Metro International",
-];
+const CRED = ["Condé Nast", "Newsweek", "Metro International"];
 
 const STATS = [
   { val: "$20M+", label: "Revenue scaled" },
@@ -163,113 +127,102 @@ export default function Home() {
           </div>
         </header>
 
-        {/* 02 — Hero */}
-        <section className="relative overflow-hidden px-6 md:px-14 pt-12 md:pt-20 pb-10 md:pb-14 bg-m3-surface">
+        {/* 02 — The Daily Tech Roundup (LEAD) */}
+        <section className="relative overflow-hidden px-6 md:px-14 pt-10 md:pt-16 pb-10 md:pb-14 bg-m3-surface">
           <div className="absolute top-0 right-0 w-96 h-96 bg-m3-primary/5 rounded-full -mr-24 -mt-24 blur-3xl pointer-events-none" />
-          <div className="max-w-3xl relative z-10">
-            <div className="font-mono text-[10px] md:text-[11px] text-m3-primary/70 font-bold tracking-[0.2em] flex items-center gap-2 mb-5">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-              </span>
-              LIVE // BUILDING IN PUBLIC — 2026
-            </div>
-            <h1 className="display text-3xl md:text-6xl font-extrabold tracking-tighter uppercase leading-[0.95] text-m3-on-surface">
-              Product builder.
-              <br />
-              <span className="text-m3-primary">11 years scaling $20M media products.</span>
-            </h1>
-            <p className="mt-6 md:mt-8 text-base md:text-xl font-medium text-m3-on-surface-variant max-w-xl leading-relaxed">
-              Now I build them solo with LLMs — and show you exactly how. Operator taste × AI velocity.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <button
-                onClick={() => scrollTo("build-notes")}
-                className="m3-button-filled flex items-center gap-2 text-sm tracking-wide"
-              >
-                <Play className="w-4 h-4" /> Get Build Notes
-              </button>
-              <a
-                href={YOUTUBE}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="m3-button-outlined flex items-center gap-2 text-sm tracking-wide"
-              >
-                Watch the latest build <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* 03 — Credibility strip */}
-        <section className="bg-m3-primary text-m3-on-primary px-6 md:px-14 py-5 md:py-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-display font-black uppercase tracking-[0.15em] text-xs md:text-sm">
-            {CRED.map((c, i) => (
-              <span key={i} className="flex items-center gap-5">
-                {i > 0 && <span className="opacity-40">·</span>}
-                {c}
-              </span>
-            ))}
-          </div>
-          <div className="flex-1 flex flex-wrap gap-x-6 gap-y-1 md:justify-end text-[11px] md:text-[13px] font-bold uppercase tracking-widest text-m3-on-primary/80">
-            {STATS.map((s, i) => (
-              <span key={i}>
-                <span className="text-m3-on-primary font-black">{s.val}</span> {s.label}
-              </span>
-            ))}
-          </div>
-        </section>
-
-        {/* 04 — Build Notes (email capture) */}
-        <section
-          id="build-notes"
-          className="bg-m3-secondary-container text-m3-on-secondary-container px-6 md:px-14 py-10 md:py-14"
-        >
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-3">
-              <Mail className="w-5 h-5 text-m3-primary" />
-              <h2 className="display text-2xl md:text-3xl font-extrabold uppercase tracking-tight">
-                Build Notes
-              </h2>
-            </div>
-            <p className="text-sm md:text-base font-medium opacity-80 mb-6 max-w-xl">
-              What I'm building with AI each week — and what actually worked (and broke). No theory, just receipts.
-            </p>
-            {submitted ? (
-              <div className="bg-m3-surface/70 border border-m3-primary/20 rounded-m3-lg p-5 text-sm font-bold">
-                Noted — email delivery isn't wired up just yet. Hit{" "}
-                <a href={YOUTUBE} target="_blank" rel="noopener noreferrer" className="text-m3-primary underline underline-offset-4">
-                  subscribe on YouTube
-                </a>{" "}
-                so you don't miss the next build in the meantime.
+          <div className="relative z-10">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-3">
+                <Sparkles className="w-5 h-5 text-m3-primary" />
+                <span className="font-display text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-m3-primary">
+                  The Daily Tech Roundup
+                </span>
               </div>
-            ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSubmitted(true);
-                }}
-                className="flex flex-col sm:flex-row gap-3 max-w-lg"
+              <Link
+                to="/tech-roundup"
+                className="text-[11px] font-bold uppercase tracking-widest text-m3-on-surface-variant hover:text-m3-primary transition-colors flex items-center gap-1"
               >
-                <input
-                  type="email"
-                  required
-                  placeholder="your@email.com"
-                  className="flex-1 bg-m3-surface rounded-m3-full py-3.5 px-6 text-sm font-bold focus:outline-none focus:ring-4 focus:ring-m3-primary/15 text-m3-on-surface shadow-inner placeholder:text-m3-on-surface/30"
-                />
-                <button type="submit" className="m3-button-filled text-sm tracking-wide whitespace-nowrap">
-                  Subscribe →
-                </button>
-              </form>
+                All roundups <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {latestDigest ? (
+              <>
+                <h1 className="display text-2xl md:text-4xl font-extrabold tracking-tighter text-m3-on-surface max-w-3xl leading-[1.05] mb-4">
+                  {latestDigest.title}
+                </h1>
+                <p className="text-base md:text-lg text-m3-on-surface-variant font-medium max-w-2xl leading-relaxed mb-8">
+                  {latestDigest.intro}
+                </p>
+                <div className="mb-5 text-[11px] font-bold uppercase tracking-widest text-m3-primary">
+                  {formatDigestDate(latestDigest.date)} · today's 5
+                </div>
+                <Carousel ariaLabel="Today's tech roundup">
+                  {latestDigest.posts.map((p) => (
+                    <Link
+                      key={p.n}
+                      to={`/tech-roundup/${latestDigest.date}`}
+                      role="listitem"
+                      className="group snap-start shrink-0 w-[280px] md:w-[340px] bg-m3-surface-variant/40 rounded-[24px] border border-m3-outline/5 p-6 flex flex-col gap-4 hover:bg-m3-surface hover:border-m3-primary/30 hover:shadow-xl transition-all"
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-m3-primary">
+                          {p.pillar}
+                        </span>
+                        <div className="flex items-center gap-1">
+                          {p.platforms.map((plat) => {
+                            const path = socialPath(plat);
+                            return path ? (
+                              <span key={plat} className="w-6 h-6 rounded-full bg-m3-primary-container text-m3-on-primary-container flex items-center justify-center" title={plat}>
+                                <svg viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3" aria-hidden="true">
+                                  <path d={path} />
+                                </svg>
+                              </span>
+                            ) : null;
+                          })}
+                        </div>
+                      </div>
+                      <p className="text-[15px] leading-snug text-m3-on-surface font-bold line-clamp-4">
+                        {p.hook}
+                      </p>
+                      <span className="mt-auto inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-m3-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                        Read the take <ArrowUpRight className="w-3.5 h-3.5" />
+                      </span>
+                    </Link>
+                  ))}
+                </Carousel>
+              </>
+            ) : (
+              <div className="bg-m3-surface-variant/40 rounded-[24px] border border-m3-outline/5 p-8 flex flex-col md:flex-row md:items-center gap-5">
+                <div className="flex-1">
+                  <p className="font-display font-bold text-m3-on-surface mb-1">The daily roundup is coming online</p>
+                  <p className="text-sm text-m3-on-surface-variant font-medium">
+                    Fresh tech & AI stories will land here every day. In the meantime, follow along:
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  {SOCIALS.map((s) => (
+                    <a
+                      key={s.name}
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`@builtbyswami on ${s.name}`}
+                      className="w-10 h-10 bg-m3-surface text-m3-on-surface-variant rounded-full flex items-center justify-center hover:bg-m3-primary hover:text-m3-on-primary transition-colors shadow-sm border border-m3-outline/10"
+                    >
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
+                        <path d={s.path} />
+                      </svg>
+                    </a>
+                  ))}
+                </div>
+              </div>
             )}
-            <p className="text-[11px] font-bold uppercase tracking-widest opacity-50 mt-4">
-              Newsletter launching soon · one email, weekly-ish
-            </p>
           </div>
         </section>
 
-        {/* 05 — Latest build (anchor) */}
-        <section className="px-6 md:px-14 py-10 md:py-14 bg-m3-surface">
+        {/* 03 — Latest build (featured video) */}
+        <section className="px-6 md:px-14 py-10 md:py-14 bg-m3-surface-variant border-y border-m3-outline/10">
           <div className="flex items-center justify-between mb-6">
             <span className="font-display text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-m3-primary">
               Latest build
@@ -330,9 +283,9 @@ export default function Home() {
           )}
         </section>
 
-        {/* 06 — Latest Videos (carousel) */}
+        {/* 04 — Latest Videos (carousel) */}
         {railVideos.length > 0 && (
-          <section className="px-6 md:px-14 py-10 md:py-14 bg-m3-surface-variant border-y border-m3-outline/10">
+          <section className="px-6 md:px-14 py-10 md:py-14 bg-m3-surface">
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center gap-3">
                 <Play className="w-5 h-5 text-m3-primary" />
@@ -383,139 +336,7 @@ export default function Home() {
           </section>
         )}
 
-        {/* 07 — The Daily Tech Roundup (daily social roundup carousel) */}
-        <section className="px-6 md:px-14 py-10 md:py-14 bg-m3-surface">
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center gap-3">
-              <Sparkles className="w-5 h-5 text-m3-primary" />
-              <span className="font-display text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-m3-on-surface">
-                The Daily Tech Roundup
-              </span>
-            </div>
-            <Link
-              to="/tech-roundup"
-              className="text-[11px] font-bold uppercase tracking-widest text-m3-on-surface-variant hover:text-m3-primary transition-colors flex items-center gap-1"
-            >
-              All roundups <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-          {latestDigest ? (
-            <>
-              <div className="mb-5 text-[11px] font-bold uppercase tracking-widest text-m3-primary">
-                {formatDigestDate(latestDigest.date)} · today's 5
-              </div>
-              <Carousel ariaLabel="Latest in tech">
-                {latestDigest.posts.map((p) => (
-                  <Link
-                    key={p.n}
-                    to={`/tech-roundup/${latestDigest.date}`}
-                    role="listitem"
-                    className="group snap-start shrink-0 w-[280px] md:w-[340px] bg-m3-surface-variant/40 rounded-[24px] border border-m3-outline/5 p-6 flex flex-col gap-4 hover:bg-m3-surface hover:border-m3-primary/30 hover:shadow-xl transition-all"
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-m3-primary">
-                        {p.pillar}
-                      </span>
-                      <div className="flex items-center gap-1">
-                        {p.platforms.map((plat) => {
-                          const path = socialPath(plat);
-                          return path ? (
-                            <span key={plat} className="w-6 h-6 rounded-full bg-m3-primary-container text-m3-on-primary-container flex items-center justify-center" title={plat}>
-                              <svg viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3" aria-hidden="true">
-                                <path d={path} />
-                              </svg>
-                            </span>
-                          ) : null;
-                        })}
-                      </div>
-                    </div>
-                    <p className="text-[15px] leading-snug text-m3-on-surface font-bold line-clamp-4">
-                      {p.hook}
-                    </p>
-                    <span className="mt-auto inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-m3-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                      Read the take <ArrowUpRight className="w-3.5 h-3.5" />
-                    </span>
-                  </Link>
-                ))}
-              </Carousel>
-            </>
-          ) : (
-            <div className="bg-m3-surface-variant/40 rounded-[24px] border border-m3-outline/5 p-8 flex flex-col md:flex-row md:items-center gap-5">
-              <div className="flex-1">
-                <p className="font-display font-bold text-m3-on-surface mb-1">The live feed is coming online</p>
-                <p className="text-sm text-m3-on-surface-variant font-medium">
-                  Fresh posts from across the network will appear here. In the meantime, follow along:
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                {SOCIALS.map((s) => (
-                  <a
-                    key={s.name}
-                    href={s.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`@builtbyswami on ${s.name}`}
-                    className="w-10 h-10 bg-m3-surface text-m3-on-surface-variant rounded-full flex items-center justify-center hover:bg-m3-primary hover:text-m3-on-primary transition-colors shadow-sm border border-m3-outline/10"
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
-                      <path d={s.path} />
-                    </svg>
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-        </section>
-
-        {/* 07 — Start here (3 pillars) */}
-        <section className="px-6 md:px-14 py-12 md:py-16 bg-m3-surface">
-          <h2 className="display text-2xl md:text-4xl font-extrabold uppercase tracking-tighter text-m3-on-surface mb-10">
-            Start here
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
-            {PILLARS.map((p) => {
-              const Icon = p.icon;
-              const inner = (
-                <>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 rounded-[16px] bg-m3-primary text-m3-on-primary flex items-center justify-center">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <span className="font-mono text-[10px] font-bold tracking-[0.2em] text-m3-primary/60">
-                      {p.tag}
-                    </span>
-                  </div>
-                  <h3 className="display text-2xl font-extrabold uppercase tracking-tight text-m3-on-surface mb-3">
-                    {p.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-m3-on-surface-variant font-medium">
-                    {p.detail}
-                  </p>
-                  <span className="mt-6 inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-m3-primary">
-                    Explore <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
-                </>
-              );
-              const cls =
-                "group bg-m3-surface-variant/40 rounded-[28px] p-7 border border-m3-outline/5 hover:bg-m3-surface hover:shadow-xl hover:border-m3-primary/20 transition-all flex flex-col";
-              return p.external ? (
-                <a key={p.tag} href={p.to} target="_blank" rel="noopener noreferrer" className={cls}>
-                  {inner}
-                </a>
-              ) : p.to.startsWith("#") ? (
-                <button key={p.tag} onClick={() => scrollTo(p.to.slice(1))} className={`${cls} text-left`}>
-                  {inner}
-                </button>
-              ) : (
-                <Link key={p.tag} to={p.to} className={cls}>
-                  {inner}
-                </Link>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* 08 — Notes teaser */}
+        {/* 05 — Notes */}
         <section id="notes" className="px-6 md:px-14 py-12 md:py-16 bg-m3-surface-variant border-t border-m3-outline/10">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
@@ -557,6 +378,111 @@ export default function Home() {
                 </span>
               </Link>
             ))}
+          </div>
+        </section>
+
+        {/* 06 — About the builder (hero, moved to bottom) */}
+        <section className="relative overflow-hidden px-6 md:px-14 pt-12 md:pt-16 pb-10 md:pb-12 bg-m3-surface">
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-m3-primary/5 rounded-full -ml-24 -mb-24 blur-3xl pointer-events-none" />
+          <div className="max-w-3xl relative z-10">
+            <div className="font-mono text-[10px] md:text-[11px] text-m3-primary/70 font-bold tracking-[0.2em] flex items-center gap-2 mb-5">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+              </span>
+              LIVE // BUILDING IN PUBLIC — 2026
+            </div>
+            <h2 className="display text-3xl md:text-6xl font-extrabold tracking-tighter uppercase leading-[0.95] text-m3-on-surface">
+              Product builder.
+              <br />
+              <span className="text-m3-primary">11 years scaling $20M media products.</span>
+            </h2>
+            <p className="mt-6 md:mt-8 text-base md:text-xl font-medium text-m3-on-surface-variant max-w-xl leading-relaxed">
+              Now I build them solo with LLMs — and show you exactly how. Operator taste × AI velocity.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <button
+                onClick={() => scrollTo("build-notes")}
+                className="m3-button-filled flex items-center gap-2 text-sm tracking-wide"
+              >
+                <Play className="w-4 h-4" /> Get Build Notes
+              </button>
+              <a
+                href={YOUTUBE}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="m3-button-outlined flex items-center gap-2 text-sm tracking-wide"
+              >
+                Watch the latest build <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* 07 — Credibility strip */}
+        <section className="bg-m3-primary text-m3-on-primary px-6 md:px-14 py-5 md:py-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-display font-black uppercase tracking-[0.15em] text-xs md:text-sm">
+            {CRED.map((c, i) => (
+              <span key={i} className="flex items-center gap-5">
+                {i > 0 && <span className="opacity-40">·</span>}
+                {c}
+              </span>
+            ))}
+          </div>
+          <div className="flex-1 flex flex-wrap gap-x-6 gap-y-1 md:justify-end text-[11px] md:text-[13px] font-bold uppercase tracking-widest text-m3-on-primary/80">
+            {STATS.map((s, i) => (
+              <span key={i}>
+                <span className="text-m3-on-primary font-black">{s.val}</span> {s.label}
+              </span>
+            ))}
+          </div>
+        </section>
+
+        {/* 08 — Build Notes (email capture) */}
+        <section
+          id="build-notes"
+          className="bg-m3-secondary-container text-m3-on-secondary-container px-6 md:px-14 py-10 md:py-14"
+        >
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-3 mb-3">
+              <Mail className="w-5 h-5 text-m3-primary" />
+              <h2 className="display text-2xl md:text-3xl font-extrabold uppercase tracking-tight">
+                Build Notes
+              </h2>
+            </div>
+            <p className="text-sm md:text-base font-medium opacity-80 mb-6 max-w-xl">
+              What I'm building with AI each week — and what actually worked (and broke). No theory, just receipts.
+            </p>
+            {submitted ? (
+              <div className="bg-m3-surface/70 border border-m3-primary/20 rounded-m3-lg p-5 text-sm font-bold">
+                Noted — email delivery isn't wired up just yet. Hit{" "}
+                <a href={YOUTUBE} target="_blank" rel="noopener noreferrer" className="text-m3-primary underline underline-offset-4">
+                  subscribe on YouTube
+                </a>{" "}
+                so you don't miss the next build in the meantime.
+              </div>
+            ) : (
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setSubmitted(true);
+                }}
+                className="flex flex-col sm:flex-row gap-3 max-w-lg"
+              >
+                <input
+                  type="email"
+                  required
+                  placeholder="your@email.com"
+                  className="flex-1 bg-m3-surface rounded-m3-full py-3.5 px-6 text-sm font-bold focus:outline-none focus:ring-4 focus:ring-m3-primary/15 text-m3-on-surface shadow-inner placeholder:text-m3-on-surface/30"
+                />
+                <button type="submit" className="m3-button-filled text-sm tracking-wide whitespace-nowrap">
+                  Subscribe →
+                </button>
+              </form>
+            )}
+            <p className="text-[11px] font-bold uppercase tracking-widest opacity-50 mt-4">
+              Newsletter launching soon · one email, weekly-ish
+            </p>
           </div>
         </section>
 

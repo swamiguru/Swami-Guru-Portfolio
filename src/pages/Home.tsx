@@ -593,7 +593,7 @@ export default function Home() {
             ))}
           </div>
           <div className="text-[10px] font-bold uppercase opacity-30 font-display">
-            © Swami Guru • Built with AI Context
+            © builtbyswami
           </div>
         </footer>
       </div>

@@ -89,7 +89,7 @@ export default function Tech() {
           <span className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-m3-primary flex items-center gap-3">
             <span className="w-3 h-3 rounded-full bg-m3-primary animate-pulse" /> Live operational status — 2026
           </span>
-          <span className="text-[10px] font-bold uppercase opacity-30 font-display">© Swami Guru • Built with AI Context</span>
+          <span className="text-[10px] font-bold uppercase opacity-30 font-display">© builtbyswami</span>
         </footer>
       </div>
     </div>

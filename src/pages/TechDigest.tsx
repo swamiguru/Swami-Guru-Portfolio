@@ -52,12 +52,29 @@ export default function TechDigest() {
             {digest.intro}
           </p>
 
+          {digest.cover && (
+            <img
+              src={digest.cover}
+              alt=""
+              loading="lazy"
+              className="w-full rounded-[24px] border border-m3-outline/10 mb-12"
+            />
+          )}
+
           <div className="flex flex-col gap-8">
             {digest.posts.map((p) => (
               <div
                 key={p.n}
                 className="bg-m3-surface rounded-[24px] border border-m3-outline/5 p-6 md:p-8"
               >
+                {p.image && (
+                  <img
+                    src={p.image}
+                    alt=""
+                    loading="lazy"
+                    className="w-full max-w-[420px] rounded-[16px] border border-m3-outline/10 mb-5"
+                  />
+                )}
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-display text-[11px] font-black uppercase tracking-[0.2em] text-m3-primary">
                     {String(p.n).padStart(2, "0")} · {p.pillar}

@@ -13,12 +13,14 @@ export interface SocialPost {
   hook: string;
   body: string;
   url?: string;
+  image?: string; // e.g. /social/2026-07-12/card_1.png
 }
 
 export interface Digest {
   date: string; // YYYY-MM-DD
   title: string;
   intro: string;
+  cover?: string; // optional hero image path
   posts: SocialPost[];
 }
 

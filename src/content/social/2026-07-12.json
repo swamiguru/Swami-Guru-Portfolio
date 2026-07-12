@@ -1,0 +1,42 @@
+{
+  "date": "2026-07-12",
+  "title": "Today in Tech — the model war, hidden iPhone tricks & a foldable reality check",
+  "intro": "Five things worth your time from July 12: two frontier models shipped the same morning, Gemini 3.5 Pro finally rolls out, iPhone features hiding in plain sight, what 'per-token' pricing really costs you, and why you don't need the new foldable.",
+  "posts": [
+    {
+      "n": 1,
+      "pillar": "News & Commentary",
+      "platforms": ["X", "Threads"],
+      "hook": "OpenAI and xAI shipped flagship models the same morning",
+      "body": "Two frontier models. One morning. July 9. OpenAI pushed GPT-5.6 in three sizes — Sol for the hard stuff, Terra for daily, Luna for cheap. Same day, xAI dropped Grok 4.5 at roughly a third of Opus-class pricing. The honest read: nobody \"won.\" The interesting part is that agentic + computer-use took the biggest jump while prices kept falling. Stop picking a logo, start picking the model for the job."
+    },
+    {
+      "n": 2,
+      "pillar": "AI Update",
+      "platforms": ["X", "Threads"],
+      "hook": "Gemini 3.5 Pro is finally rolling out",
+      "body": "Gemini 3.5 Pro is shipping — better late than vaporware. After slipping past both its May and June GA targets, Google's flagship is expanding in Vertex AI preview with a gradual developer rollout. Timing's rough: it's arriving the same week GPT-5.6 and Grok 4.5 went public. Google can't afford a soft launch here."
+    },
+    {
+      "n": 3,
+      "pillar": "Tips & Tricks",
+      "platforms": ["X", "Threads", "Instagram"],
+      "hook": "Five iPhone features hiding in plain sight",
+      "body": "Five iPhone features hiding in plain sight. Back Tap turns the Apple logo into a screenshot button. Type-to-Siri saves you from talking to your phone in public. Shake-to-undo fixes typos instantly. Spotlight quietly does math and unit conversions. And Silence Unknown Callers kills spam without an app. All built in. All free. No subscription required."
+    },
+    {
+      "n": 4,
+      "pillar": "Explainer",
+      "platforms": ["X", "Threads"],
+      "hook": "What 'per-token' AI pricing actually means",
+      "body": "\"$5 per million input, $30 per million output.\" What does that actually mean for your bill? A token is roughly three-quarters of a word. You pay for tokens going in (your prompt) and tokens coming out (the reply) — and output almost always costs several times more than input. Practical takeaway: verbose prompts are cheap, verbose answers are not. Ask for concise output and you cut cost without cutting quality."
+    },
+    {
+      "n": 5,
+      "pillar": "Hot Take",
+      "platforms": ["X", "Threads"],
+      "hook": "You probably don't need the new foldable",
+      "body": "Unpopular opinion before Galaxy Unpacked (July 22): most of you don't need the new fold. Samsung's teasing a wider, squarer Z Fold 8 to front-run Apple's foldable. It'll be a genuinely good phone. It'll also do almost exactly what your current foldable already does. The upgrade cycle is a marketing calendar, not a need. Buy when yours breaks or truly can't keep up — not because a keynote told you to."
+    }
+  ]
+}

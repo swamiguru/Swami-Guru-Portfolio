@@ -9,6 +9,8 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Notes from "./pages/Notes";
 import NotePost from "./pages/NotePost";
+import Tech from "./pages/Tech";
+import TechDigest from "./pages/TechDigest";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -27,6 +29,8 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/notes" element={<Notes />} />
         <Route path="/notes/:slug" element={<NotePost />} />
+        <Route path="/tech" element={<Tech />} />
+        <Route path="/tech/:date" element={<TechDigest />} />
         {/* Requested alias — /portfolio redirects to the re-homed portfolio */}
         <Route path="/portfolio" element={<Navigate to="/about" replace />} />
         {/* Unknown routes fall back to the hub */}

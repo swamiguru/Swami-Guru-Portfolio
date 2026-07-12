@@ -10,9 +10,6 @@ import { SOCIALS } from "../data/socials";
 
 const YOUTUBE = "https://www.youtube.com/@builtbyswami";
 
-const socialPath = (name: string) =>
-  SOCIALS.find((s) => s.name.toLowerCase() === (name || "").trim().toLowerCase())?.path;
-
 export default function TechDigest() {
   const { date } = useParams<{ date: string }>();
   const digest = date ? getDigest(date) : undefined;
@@ -75,26 +72,10 @@ export default function TechDigest() {
                     className="w-full max-w-[420px] rounded-[16px] border border-m3-outline/10 mb-5"
                   />
                 )}
-                <div className="flex items-center justify-between mb-4">
+                <div className="mb-4">
                   <span className="font-display text-[11px] font-black uppercase tracking-[0.2em] text-m3-primary">
                     {String(p.n).padStart(2, "0")} · {p.pillar}
                   </span>
-                  <div className="flex items-center gap-1.5">
-                    {p.platforms.map((plat) => {
-                      const path = socialPath(plat);
-                      return path ? (
-                        <span
-                          key={plat}
-                          title={plat}
-                          className="w-7 h-7 rounded-full bg-m3-surface-variant text-m3-on-surface-variant flex items-center justify-center"
-                        >
-                          <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5" aria-hidden="true">
-                            <path d={path} />
-                          </svg>
-                        </span>
-                      ) : null;
-                    })}
-                  </div>
                 </div>
                 <h2 className="display text-xl md:text-2xl font-extrabold tracking-tight text-m3-on-surface mb-3 leading-snug">
                   {p.hook}

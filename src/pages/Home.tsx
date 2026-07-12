@@ -23,14 +23,6 @@ import BrandLogo from "../components/BrandLogo";
 
 const YOUTUBE = "https://www.youtube.com/@builtbyswami";
 
-const CRED = ["Condé Nast", "Newsweek", "Metro International"];
-
-const STATS = [
-  { val: "$20M+", label: "Revenue scaled" },
-  { val: "50M+", label: "Monthly users" },
-  { val: "50%", label: "Faster time-to-market" },
-];
-
 interface Video {
   id: string;
   title: string;
@@ -61,8 +53,6 @@ export default function Home() {
   const featured = videos[0] ?? null;
   const railVideos = videos.slice(1, 6);
   const latestDigest = getLatestDigest();
-  const socialPath = (name: string) =>
-    SOCIALS.find((s) => s.name.toLowerCase() === (name || "").trim().toLowerCase())?.path;
 
   useEffect(() => {
     document.title = "Swami Guru | Building products in public with AI";
@@ -159,23 +149,9 @@ export default function Home() {
                       role="listitem"
                       className="group snap-start shrink-0 w-[280px] md:w-[340px] bg-m3-surface-variant/40 rounded-[24px] border border-m3-outline/5 p-6 flex flex-col gap-4 hover:bg-m3-surface hover:border-m3-primary/30 hover:shadow-xl transition-all"
                     >
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-m3-primary">
-                          {p.pillar}
-                        </span>
-                        <div className="flex items-center gap-1">
-                          {p.platforms.map((plat) => {
-                            const path = socialPath(plat);
-                            return path ? (
-                              <span key={plat} className="w-6 h-6 rounded-full bg-m3-primary-container text-m3-on-primary-container flex items-center justify-center" title={plat}>
-                                <svg viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3" aria-hidden="true">
-                                  <path d={path} />
-                                </svg>
-                              </span>
-                            ) : null;
-                          })}
-                        </div>
-                      </div>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-m3-primary">
+                        {p.pillar}
+                      </span>
                       <p className="text-[15px] leading-snug text-m3-on-surface font-bold line-clamp-4">
                         {p.hook}
                       </p>
@@ -375,26 +351,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 06 — Credibility strip */}
-        <section className="bg-m3-primary text-m3-on-primary px-6 md:px-14 py-5 md:py-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 font-display font-black uppercase tracking-[0.15em] text-xs md:text-sm">
-            {CRED.map((c, i) => (
-              <span key={i} className="flex items-center gap-5">
-                {i > 0 && <span className="opacity-40">·</span>}
-                {c}
-              </span>
-            ))}
-          </div>
-          <div className="flex-1 flex flex-wrap gap-x-6 gap-y-1 md:justify-end text-[11px] md:text-[13px] font-bold uppercase tracking-widest text-m3-on-primary/80">
-            {STATS.map((s, i) => (
-              <span key={i}>
-                <span className="text-m3-on-primary font-black">{s.val}</span> {s.label}
-              </span>
-            ))}
-          </div>
-        </section>
-
-        {/* 08 — Build Notes (email capture) */}
+        {/* 07 — Build Notes (email capture) */}
         <section
           id="build-notes"
           className="bg-m3-secondary-container text-m3-on-secondary-container px-6 md:px-14 py-10 md:py-14"

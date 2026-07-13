@@ -7,14 +7,20 @@ import { useEffect } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { ArrowUpRight, Clock } from "lucide-react";
-import { getNote, formatNoteDate } from "../data/notes";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Clock } from "lucide-react";
+import { NOTES_SORTED, getNote, formatNoteDate } from "../data/notes";
 
 const YOUTUBE = "https://www.youtube.com/@builtbyswami";
 
 export default function NotePost() {
   const { slug } = useParams<{ slug: string }>();
   const note = slug ? getNote(slug) : undefined;
+
+  // NOTES_SORTED is newest-first, so the older note sits at index + 1
+  // and the newer one at index - 1.
+  const index = note ? NOTES_SORTED.findIndex((n) => n.slug === note.slug) : -1;
+  const older = index >= 0 ? NOTES_SORTED[index + 1] : undefined;
+  const newer = index > 0 ? NOTES_SORTED[index - 1] : undefined;
 
   useEffect(() => {
     if (note) {
@@ -35,6 +41,36 @@ export default function NotePost() {
           <Link to="/notes" className="font-display font-bold text-sm text-m3-on-surface hover:text-m3-primary transition-colors">
             ← Build Notes
           </Link>
+          <div className="flex items-center gap-1">
+            {older ? (
+              <Link
+                to={`/notes/${older.slug}`}
+                aria-label={`Previous note: ${older.title}`}
+                title={`Previous: ${older.title}`}
+                className="w-9 h-9 rounded-full flex items-center justify-center text-m3-on-surface-variant hover:text-m3-primary hover:bg-m3-surface-variant/60 transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" />
+              </Link>
+            ) : (
+              <span className="w-9 h-9 flex items-center justify-center text-m3-on-surface-variant/20">
+                <ArrowLeft className="w-4 h-4" />
+              </span>
+            )}
+            {newer ? (
+              <Link
+                to={`/notes/${newer.slug}`}
+                aria-label={`Next note: ${newer.title}`}
+                title={`Next: ${newer.title}`}
+                className="w-9 h-9 rounded-full flex items-center justify-center text-m3-on-surface-variant hover:text-m3-primary hover:bg-m3-surface-variant/60 transition-colors"
+              >
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            ) : (
+              <span className="w-9 h-9 flex items-center justify-center text-m3-on-surface-variant/20">
+                <ArrowRight className="w-4 h-4" />
+              </span>
+            )}
+          </div>
           <Link to="/" className="font-display font-bold text-sm px-5 py-2.5 bg-m3-primary text-m3-on-primary rounded-m3-full hover:m3-elevation-1 active:scale-95 transition-all shadow-sm">
             Home
           </Link>
@@ -63,6 +99,44 @@ export default function NotePost() {
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{note.content}</ReactMarkdown>
           </div>
         </article>
+
+        {(older || newer) && (
+          <nav
+            aria-label="Note navigation"
+            className="px-6 md:px-14 pb-10 grid grid-cols-1 md:grid-cols-2 gap-4"
+          >
+            {older ? (
+              <Link
+                to={`/notes/${older.slug}`}
+                className="group bg-m3-surface rounded-[20px] border border-m3-outline/5 p-5 md:p-6 hover:border-m3-primary/30 hover:shadow-lg transition-all flex flex-col gap-2"
+              >
+                <span className="text-[11px] font-bold uppercase tracking-widest text-m3-on-surface-variant flex items-center gap-1.5">
+                  <ArrowLeft className="w-3.5 h-3.5" /> Previous · {formatNoteDate(older.date)}
+                </span>
+                <span className="font-display font-bold text-sm md:text-base text-m3-on-surface line-clamp-2 group-hover:text-m3-primary transition-colors">
+                  {older.title}
+                </span>
+              </Link>
+            ) : (
+              <div />
+            )}
+            {newer ? (
+              <Link
+                to={`/notes/${newer.slug}`}
+                className="group bg-m3-surface rounded-[20px] border border-m3-outline/5 p-5 md:p-6 hover:border-m3-primary/30 hover:shadow-lg transition-all flex flex-col gap-2 md:items-end md:text-right"
+              >
+                <span className="text-[11px] font-bold uppercase tracking-widest text-m3-on-surface-variant flex items-center gap-1.5 md:flex-row-reverse">
+                  Next · {formatNoteDate(newer.date)} <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+                <span className="font-display font-bold text-sm md:text-base text-m3-on-surface line-clamp-2 group-hover:text-m3-primary transition-colors">
+                  {newer.title}
+                </span>
+              </Link>
+            ) : (
+              <div />
+            )}
+          </nav>
+        )}
 
         <footer className="mt-auto px-6 md:px-14 py-8 bg-m3-surface flex items-center gap-4 justify-between border-t border-m3-outline/10 rounded-b-m3-xl md:rounded-b-[32px]">
           <Link to="/notes" className="font-display text-[11px] font-bold uppercase tracking-[0.2em] text-m3-primary">

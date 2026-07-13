@@ -34,6 +34,12 @@ export const NOTES: Note[] = [
 export const getNote = (slug: string): Note | undefined =>
   NOTES.find((n) => n.slug === slug);
 
+// Newest-first, regardless of how NOTES is authored above — used for the
+// archive listing and prev/next navigation on individual note pages.
+export const NOTES_SORTED: Note[] = [...NOTES].sort((a, b) =>
+  b.date.localeCompare(a.date)
+);
+
 export const getLatestNotes = (n = 3): Note[] =>
   [...NOTES].sort((a, b) => b.date.localeCompare(a.date)).slice(0, n);
 

@@ -36,7 +36,7 @@ export default function NotePost() {
 
   return (
     <div className="min-h-screen bg-m3-surface md:p-8 selection:bg-m3-primary selection:text-m3-on-primary">
-      <div className="max-w-[1100px] mx-auto min-h-[90vh] flex flex-col relative bg-m3-surface-variant overflow-hidden shadow-xl rounded-m3-xl md:rounded-[32px] border border-m3-outline/10">
+      <div className="max-w-[820px] mx-auto min-h-[90vh] flex flex-col relative bg-m3-surface-variant overflow-hidden shadow-xl rounded-m3-xl md:rounded-[32px] border border-m3-outline/10">
 
         <SiteHeader />
 
@@ -78,7 +78,7 @@ export default function NotePost() {
           </div>
         </div>
 
-        <article className="max-w-[820px] mx-auto px-6 md:px-14 py-10 md:py-16">
+        <article className="px-6 md:px-14 py-10 md:py-16">
           <div className="flex items-center gap-4 text-[11px] font-bold uppercase tracking-widest text-m3-on-surface-variant/60 mb-5">
             <span className="text-m3-primary">{note.tag}</span>
             <span>{formatNoteDate(note.date)}</span>
@@ -87,15 +87,29 @@ export default function NotePost() {
           <h1 className="display text-3xl md:text-5xl font-extrabold tracking-tighter text-m3-on-surface leading-[1.02] mb-6">
             {note.title}
           </h1>
-          {note.videoUrl && (
-            <a
-              href={note.videoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mb-10 m3-button-tonal text-sm tracking-wide"
-            >
-              Watch the build on YouTube <ArrowUpRight className="w-4 h-4" />
-            </a>
+          {(note.ctaUrl || note.videoUrl) && (
+            <div className="flex flex-wrap items-center gap-3 mb-10">
+              {note.ctaUrl && (
+                <a
+                  href={note.ctaUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 m3-button-tonal text-sm tracking-wide"
+                >
+                  {note.ctaLabel ?? "Visit the live site"} <ArrowUpRight className="w-4 h-4" />
+                </a>
+              )}
+              {note.videoUrl && (
+                <a
+                  href={note.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 m3-button-tonal text-sm tracking-wide"
+                >
+                  Watch the build on YouTube <ArrowUpRight className="w-4 h-4" />
+                </a>
+              )}
+            </div>
           )}
           <div className="prose-notes">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{note.content}</ReactMarkdown>
@@ -105,7 +119,7 @@ export default function NotePost() {
         {(older || newer) && (
           <nav
             aria-label="Note navigation"
-            className="max-w-[820px] mx-auto px-6 md:px-14 pb-10 grid grid-cols-1 md:grid-cols-2 gap-4"
+            className="px-6 md:px-14 pb-10 grid grid-cols-1 md:grid-cols-2 gap-4"
           >
             {older ? (
               <Link

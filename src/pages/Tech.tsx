@@ -3,13 +3,33 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { DIGESTS, formatDigestDate } from "../data/social";
+import { DIGESTS, formatDigestDate, type Digest } from "../data/social";
 import SiteHeader from "../components/SiteHeader";
 
+const formatMonth = (key: string): string =>
+  new Date(key + "-01T00:00:00").toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+  });
+
 export default function Tech() {
+  // Group digests by month (YYYY-MM) for the archive view. DIGESTS is
+  // already sorted newest-first, and Map preserves insertion order, so
+  // months come out newest-first with no extra sorting needed.
+  const monthGroups = useMemo(() => {
+    const map = new Map<string, Digest[]>();
+    for (const d of DIGESTS) {
+      const key = d.date.slice(0, 7);
+      const list = map.get(key);
+      if (list) list.push(d);
+      else map.set(key, [d]);
+    }
+    return Array.from(map.entries());
+  }, []);
+
   useEffect(() => {
     document.title = "Tech Roundup | Swami Guru";
     document
@@ -42,27 +62,34 @@ export default function Tech() {
         </section>
 
         <section className="px-6 md:px-14 pb-14 flex-1">
-          {DIGESTS.length > 0 ? (
-            <div className="flex flex-col gap-4 md:gap-5">
-              {DIGESTS.map((d) => (
-                <Link
-                  key={d.date}
-                  to={`/tech-roundup/${d.date}`}
-                  className="group bg-m3-surface rounded-[24px] border border-m3-outline/5 p-6 md:p-8 hover:border-m3-primary/30 hover:shadow-xl transition-all flex flex-col gap-3"
-                >
-                  <div className="text-[11px] font-bold uppercase tracking-widest text-m3-primary">
-                    {formatDigestDate(d.date)} · {d.posts.length} stories
-                  </div>
-                  <h2 className="display text-xl md:text-2xl font-extrabold tracking-tight text-m3-on-surface group-hover:text-m3-primary transition-colors">
-                    {d.title}
+          {monthGroups.length > 0 ? (
+            <div className="flex flex-col gap-10">
+              {monthGroups.map(([month, items]) => (
+                <div key={month} className="flex flex-col gap-4 md:gap-5">
+                  <h2 className="font-display text-xs font-black uppercase tracking-[0.25em] text-m3-on-surface-variant/60">
+                    {formatMonth(month)}
                   </h2>
-                  <p className="text-sm leading-relaxed text-m3-on-surface-variant font-medium max-w-2xl line-clamp-2">
-                    {d.intro}
-                  </p>
-                  <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-m3-primary">
-                    Read the roundup <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
-                </Link>
+                  {items.map((d) => (
+                    <Link
+                      key={d.date}
+                      to={`/tech-roundup/${d.date}`}
+                      className="group bg-m3-surface rounded-[24px] border border-m3-outline/5 p-6 md:p-8 hover:border-m3-primary/30 hover:shadow-xl transition-all flex flex-col gap-3"
+                    >
+                      <div className="text-[11px] font-bold uppercase tracking-widest text-m3-primary">
+                        {formatDigestDate(d.date)} · {d.posts.length} stories
+                      </div>
+                      <h3 className="display text-xl md:text-2xl font-extrabold tracking-tight text-m3-on-surface group-hover:text-m3-primary transition-colors">
+                        {d.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-m3-on-surface-variant font-medium max-w-2xl line-clamp-2">
+                        {d.intro}
+                      </p>
+                      <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-m3-primary">
+                        Read the roundup <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
+                    </Link>
+                  ))}
+                </div>
               ))}
             </div>
           ) : (

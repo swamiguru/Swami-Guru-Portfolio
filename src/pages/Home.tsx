@@ -107,17 +107,27 @@ export default function Home() {
                       key={p.n}
                       to={`/tech-roundup/${latestDigest.date}`}
                       role="listitem"
-                      className="group snap-start shrink-0 w-[280px] md:w-[340px] bg-m3-surface-variant/40 rounded-[24px] border border-m3-outline/5 p-6 flex flex-col gap-4 hover:bg-m3-surface hover:border-m3-primary/30 hover:shadow-xl transition-all"
+                      className="group snap-start shrink-0 w-[280px] md:w-[340px] bg-m3-surface-variant/40 rounded-[24px] border border-m3-outline/5 overflow-hidden flex flex-col hover:bg-m3-surface hover:border-m3-primary/30 hover:shadow-xl transition-all"
                     >
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-m3-primary">
-                        {p.pillar}
-                      </span>
-                      <p className="text-[15px] leading-snug text-m3-on-surface font-bold line-clamp-4">
-                        {p.hook}
-                      </p>
-                      <span className="mt-auto inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-m3-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                        Read the take <ArrowUpRight className="w-3.5 h-3.5" />
-                      </span>
+                      {p.image && (
+                        <img
+                          src={p.image}
+                          alt=""
+                          loading="lazy"
+                          className="w-full aspect-square object-cover"
+                        />
+                      )}
+                      <div className="p-6 flex flex-col gap-4 flex-1">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-m3-primary">
+                          {p.pillar}
+                        </span>
+                        <p className="text-[15px] leading-snug text-m3-on-surface font-bold line-clamp-4">
+                          {p.hook}
+                        </p>
+                        <span className="mt-auto inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-m3-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                          Read the take <ArrowUpRight className="w-3.5 h-3.5" />
+                        </span>
+                      </div>
                     </Link>
                   ))}
                 </Carousel>

@@ -15,6 +15,8 @@ export interface Note {
   readMinutes: number;
   tag: string;
   videoUrl?: string;
+  ctaUrl?: string;
+  ctaLabel?: string;
   content: string;
 }
 
@@ -38,6 +40,8 @@ export const NOTES: Note[] = [
     date: "2026-07-13",
     readMinutes: 4,
     tag: "Build-in-public",
+    ctaUrl: "https://www.freewordtool.com/",
+    ctaLabel: "Try Free Word Tool",
     content: freeWordToolPost,
   },
 ];

@@ -1,0 +1,46 @@
+{
+  "date": "2026-07-13",
+  "title": "Galaxy Unpacked Confirmed, Apple Sues OpenAI, and a Gmail Fix You'll Actually Use",
+  "intro": "Samsung locks in its July 22 Unpacked date, Apple takes OpenAI to court over trade secrets, and a Gmail setting most people never touch.",
+  "posts": [
+    {
+      "n": 1,
+      "pillar": "News & Commentary",
+      "platforms": ["X", "Threads", "Instagram"],
+      "hook": "Samsung Unpacked confirmed for July 22 in London",
+      "body": "Samsung has officially confirmed Galaxy Unpacked for July 22 in London. Expected, though still rumor until stage time: the Galaxy Z Fold8 and Fold8 Ultra, the Z Flip8, a couple of new Galaxy Watches, and possibly Samsung's first smart glasses. Pre-orders are expected to open the same day, with sales starting around August 7. Foldables are clearly the story of this cycle — the real question is whether the Fold8 Ultra's price jump is worth it over a regular Fold8.",
+      "image": "/social/2026-07-13/card_1.png"
+    },
+    {
+      "n": 2,
+      "pillar": "AI Update",
+      "platforms": ["X", "Threads"],
+      "hook": "Apple sues OpenAI over alleged trade secret theft",
+      "body": "Apple has officially sued OpenAI, filing suit on July 10 in a California federal court. The claim: OpenAI stole Apple trade secrets to build its own hardware, with theft occurring \"at every level,\" from technical staff up to OpenAI's Chief Hardware Officer. Two allegations stand out — OpenAI's hardware chief, an ex-Apple VP, allegedly told job candidates to bring actual Apple parts to interviews for \"show and tell,\" and a former Apple engineer allegedly kept his company laptop after joining OpenAI and pulled confidential documents off it. OpenAI says it has \"no interest in other companies' trade secrets.\" Two years ago these companies were partners — now it's a lawsuit.",
+      "image": "/social/2026-07-13/card_2.png"
+    },
+    {
+      "n": 3,
+      "pillar": "Tips & Tricks",
+      "platforms": ["X", "Threads"],
+      "hook": "Your Gmail Undo Send window is shorter than it needs to be",
+      "body": "Most people don't know Gmail's Undo Send window is adjustable. The default is 5 seconds — barely enough time to blink. Head to Settings, See all settings, General, Undo Send, and bump the send cancellation period to 30 seconds. That's a full 30 seconds to catch the wrong attachment, an accidental reply-all, or a typo before it's too late.",
+      "image": "/social/2026-07-13/card_3.png"
+    },
+    {
+      "n": 4,
+      "pillar": "AI Workflow",
+      "platforms": ["X", "Threads"],
+      "hook": "Turn a pile of receipts into an expense sheet in seconds",
+      "body": "Here's an AI workflow that actually saves time: next time you have a pile of receipts to expense, snap photos of all of them, upload to Gemini, ChatGPT, or Claude, and prompt it to read the receipts and return a table with vendor, date, amount, and category for each. You get a clean, copy-paste-ready expense sheet in seconds instead of 20 minutes of manual entry.",
+      "image": "/social/2026-07-13/card_4.png"
+    },
+    {
+      "n": 5,
+      "pillar": "Community / Poll",
+      "platforms": ["X", "Threads"],
+      "hook": "Book-style fold or wallet-style fold — which wins?",
+      "body": "Samsung has spent eight generations refining the book-style fold that opens like a mini tablet, with the Fold8 landing July 22. Apple's rumored foldable is expected to take a different approach — a more compact, wallet-style vertical fold closer to a flip phone that opens into a bigger screen. Two very different bets on what people actually want from a foldable phone."
+    }
+  ]
+}

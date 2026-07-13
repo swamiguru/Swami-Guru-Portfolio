@@ -3,13 +3,33 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Clock, BookOpen } from "lucide-react";
-import { NOTES, formatNoteDate } from "../data/notes";
+import { NOTES_SORTED, formatNoteDate, type Note } from "../data/notes";
 import SiteHeader from "../components/SiteHeader";
 
+const formatMonth = (key: string): string =>
+  new Date(key + "-01T00:00:00").toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+  });
+
 export default function Notes() {
+  // Group notes by month (YYYY-MM) for the archive view. NOTES_SORTED is
+  // already newest-first, and Map preserves insertion order, so months
+  // come out newest-first with no extra sorting needed.
+  const monthGroups = useMemo(() => {
+    const map = new Map<string, Note[]>();
+    for (const n of NOTES_SORTED) {
+      const key = n.date.slice(0, 7);
+      const list = map.get(key);
+      if (list) list.push(n);
+      else map.set(key, [n]);
+    }
+    return Array.from(map.entries());
+  }, []);
+
   useEffect(() => {
     document.title = "Build Notes | Swami Guru";
     document
@@ -42,32 +62,43 @@ export default function Notes() {
         </section>
 
         <section className="px-6 md:px-14 pb-14 flex-1">
-          <div className="flex flex-col gap-4 md:gap-5">
-            {NOTES.map((n) => (
-              <Link
-                key={n.slug}
-                to={`/notes/${n.slug}`}
-                className="group bg-m3-surface rounded-[24px] border border-m3-outline/5 p-6 md:p-8 hover:border-m3-primary/30 hover:shadow-xl transition-all flex flex-col gap-3"
-              >
-                <div className="flex items-center gap-4 text-[11px] font-bold uppercase tracking-widest text-m3-on-surface-variant/60">
-                  <span className="text-m3-primary">{n.tag}</span>
-                  <span>{formatNoteDate(n.date)}</span>
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" /> {n.readMinutes} min
-                  </span>
+          {monthGroups.length > 0 ? (
+            <div className="flex flex-col gap-10">
+              {monthGroups.map(([month, items]) => (
+                <div key={month} className="flex flex-col gap-4 md:gap-5">
+                  <h2 className="font-display text-xs font-black uppercase tracking-[0.25em] text-m3-on-surface-variant/60">
+                    {formatMonth(month)}
+                  </h2>
+                  {items.map((n) => (
+                    <Link
+                      key={n.slug}
+                      to={`/notes/${n.slug}`}
+                      className="group bg-m3-surface rounded-[24px] border border-m3-outline/5 p-6 md:p-8 hover:border-m3-primary/30 hover:shadow-xl transition-all flex flex-col gap-3"
+                    >
+                      <div className="flex items-center gap-4 text-[11px] font-bold uppercase tracking-widest text-m3-on-surface-variant/60">
+                        <span className="text-m3-primary">{n.tag}</span>
+                        <span>{formatNoteDate(n.date)}</span>
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3.5 h-3.5" /> {n.readMinutes} min
+                        </span>
+                      </div>
+                      <h3 className="display text-xl md:text-2xl font-extrabold tracking-tight text-m3-on-surface group-hover:text-m3-primary transition-colors">
+                        {n.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed text-m3-on-surface-variant font-medium max-w-2xl">
+                        {n.description}
+                      </p>
+                      <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-m3-primary">
+                        Read <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
+                    </Link>
+                  ))}
                 </div>
-                <h2 className="display text-xl md:text-2xl font-extrabold tracking-tight text-m3-on-surface group-hover:text-m3-primary transition-colors">
-                  {n.title}
-                </h2>
-                <p className="text-sm leading-relaxed text-m3-on-surface-variant font-medium max-w-2xl">
-                  {n.description}
-                </p>
-                <span className="mt-1 inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest text-m3-primary">
-                  Read <ArrowRight className="w-3.5 h-3.5" />
-                </span>
-              </Link>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-m3-on-surface-variant font-medium">Notes are on the way — check back soon.</p>
+          )}
         </section>
 
         <footer className="px-6 md:px-14 py-8 bg-m3-surface flex items-center gap-4 justify-between border-t border-m3-outline/10 rounded-b-m3-xl md:rounded-b-[32px]">

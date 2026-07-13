@@ -5,6 +5,7 @@
 
 // Raw markdown is imported at build time via Vite's ?raw suffix.
 import sprintPost from "../content/notes/24-hour-task-manager-sprint.md?raw";
+import freeWordToolPost from "../content/notes/freewordtool-one-day-sprint.md?raw";
 
 export interface Note {
   slug: string;
@@ -28,6 +29,16 @@ export const NOTES: Note[] = [
     tag: "Build-in-public",
     videoUrl: "https://www.youtube.com/@builtbyswami",
     content: sprintPost,
+  },
+  {
+    slug: "freewordtool-one-day-sprint",
+    title: "I built a word counter in one day — and it almost turned into five products",
+    description:
+      "A one-day, eight-commit build of a privacy-first word counter — the brief, the method, and the scope creep I had to catch mid-sprint.",
+    date: "2026-07-13",
+    readMinutes: 4,
+    tag: "Build-in-public",
+    content: freeWordToolPost,
   },
 ];
 

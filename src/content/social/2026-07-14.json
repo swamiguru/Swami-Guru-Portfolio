@@ -1,0 +1,47 @@
+{
+  "date": "2026-07-14",
+  "title": "Galaxy Unpacked Locked In, Apple Sues OpenAI, and Threads Fixes a Real Annoyance",
+  "intro": "Samsung sets a date for its next foldable reveal, Apple and OpenAI's rivalry lands in court, and a quiet Threads update is worth turning on today.",
+  "posts": [
+    {
+      "n": 1,
+      "pillar": "News & Commentary",
+      "platforms": ["X", "Threads", "Instagram"],
+      "hook": "Samsung confirms Galaxy Unpacked for July 22 in London",
+      "body": "Samsung has officially confirmed Galaxy Unpacked for July 22 in London. The date is locked, but the biggest rumor is a shake-up to the Fold lineup itself: a wider, shorter 'passport' shaped Galaxy Z Fold 8 alongside a separate Z Fold 8 Ultra for people who want the classic narrow form. Watch 9, Watch Ultra 2, and possibly Samsung's long-rumored smart glasses could round out the event. 📱 Until Samsung takes the stage, treat the specifics as rumor and the date as the only sure thing.",
+      "image": "/social/2026-07-14/card_1.png"
+    },
+    {
+      "n": 2,
+      "pillar": "AI Update",
+      "platforms": ["X", "Threads"],
+      "hook": "Apple sues OpenAI over alleged trade secret theft",
+      "body": "Apple filed a trade secret lawsuit against OpenAI on July 11, and the weekend that followed turned into a public spectacle. Elon Musk amplified the suit and criticized OpenAI's hiring practices, while Sam Altman fired back on X. Two of tech's biggest egos are now tangled in a courtroom fight that's really about who controls the next decade of AI talent and intellectual property. ⚖️",
+      "image": "/social/2026-07-14/card_2.png"
+    },
+    {
+      "n": 3,
+      "pillar": "Tips & Tricks",
+      "platforms": ["X", "Threads"],
+      "hook": "Threads' Hidden Words filter just got its own settings",
+      "body": "Threads quietly gave its Hidden Words filter its own settings, separate from Instagram. Head to Settings, then Content preferences, then Hidden Words, and you can block up to 10 custom words, phrases, or emojis from showing up in your feed, search, and replies. Filters can also be set to auto-expire in 30 days instead of hiding things forever, making it the cleanest way to mute spoilers or noisy topics without unfollowing anyone.",
+      "image": "/social/2026-07-14/card_3.png"
+    },
+    {
+      "n": 4,
+      "pillar": "Myth-Buster",
+      "platforms": ["X", "Threads"],
+      "hook": "Force-quitting your apps isn't saving any battery",
+      "body": "There's a persistent myth that force-quitting all your apps saves battery. In most cases it does the opposite. iOS and Android are both built to freeze background apps automatically, so they aren't draining power just sitting there. Force-quitting and reopening an app means it has to reload everything from scratch, which costs more time and battery than leaving it paused. The only real exception is an app that's frozen, glitching, or visibly draining battery in your settings — everything else is better left alone. 🔋",
+      "image": "/social/2026-07-14/card_4.png"
+    },
+    {
+      "n": 5,
+      "pillar": "AI Workflow",
+      "platforms": ["X", "Threads"],
+      "hook": "Steal Gemini's Daily Brief idea for any AI app",
+      "body": "Google's Gemini just added a 'Daily Brief' feature that automatically summarizes your inbox, calendar, and tasks each morning. If you don't have access to it yet, you can build a rough version yourself in seconds: paste your calendar or task list into ChatGPT, Gemini, or Claude and ask it to summarize your top three priorities for the day, flag anything urgent, and suggest one thing you could skip or delegate. It's a personal daily briefing without installing anything new.",
+      "image": "/social/2026-07-14/card_5.png"
+    }
+  ]
+}

@@ -1,46 +1,46 @@
 {
   "date": "2026-07-17",
-  "title": "AI's Biggest Day: Gemini 3.5 Pro Looms, WAIC Opens, Foldables Incoming",
-  "intro": "Today lands on the busiest date of the AI calendar: a rumored Gemini 3.5 Pro drop, the world's first self-branded 'AI phone' at Shanghai's WAIC, plus a Chrome speed trick, a clear-eyed model comparison, and Samsung's confirmed July 22 Unpacked.",
+  "title": "AI Agent Phones Arrive + The Gemini 3.5 Pro Guessing Game",
+  "intro": "Today's tech is all about agents: nubia calls its NaviX Ultra the world's first AI-agent phone, while the whole industry refreshes Google's page waiting on a still-unconfirmed Gemini 3.5 Pro. Plus a genuinely useful iPhone tip, an honest AI chatbot comparison, and one battery myth worth killing.",
   "posts": [
     {
       "n": 1,
       "pillar": "News & Commentary",
       "platforms": ["X", "Threads"],
-      "hook": "Gemini 3.5 Pro is reportedly landing today",
-      "body": "Gemini 3.5 Pro is widely tipped to launch today, July 17, as Shanghai's World AI Conference opens. The chatter: a 2-million-token context window and Deep Think reasoning on the Ultra tier. One honest caveat though — Google hasn't confirmed any of it. No model card, no pricing page, no date. Treat the specs as leaks, not gospel. If it ships today, it's a genuinely big deal; if it slips again, remember it already moved from June. Exciting, but hold the hype until there's an official page to point at.",
+      "hook": "Gemini 3.5 Pro is 'launching today' — everyone says so except Google",
+      "body": "Every leak points to Gemini 3.5 Pro going live today, July 17 — a 2M-token context window (double the field), input pricing that reportedly undercuts GPT-5.6, and a 'Deep Think' reasoning mode. The catch: Google hasn't confirmed a word. There's no model card, no pricing page, and nothing in the public API docs yet. 🤖 The date itself slipped from June after Google reportedly rebuilt the model following internal failures. If it ships today and delivers, it's a real shot at the top of the frontier. Until it's actually on the API, treat all of it as rumor, not fact. ⏳",
       "image": "/social/2026-07-17/card_1.png"
     },
     {
       "n": 2,
       "pillar": "News / AI Update",
       "platforms": ["X", "Threads"],
-      "hook": "Nubia is unveiling the 'world's first AI phone' today",
-      "body": "Nubia is officially unveiling what it's calling the world's first AI-powered smartphone today at WAIC 2026 in Shanghai. The pitch is a phone that completes tasks for you with deep AI baked into app control, not just another chatbot bolted on. The label is marketing — every flagship already ships AI features — but the idea of the OS itself acting as an agent is the direction the whole industry is walking toward. Worth watching what's real versus what's a demo.",
+      "hook": "The world's first AI agent phone is officially here",
+      "body": "It's official: nubia unveiled the NaviX Ultra and is branding it the world's first AI agent smartphone, launching at WAIC 2026 in Shanghai today. 🚀 The difference versus every 'AI phone' so far is that this isn't a chatbot stapled onto the OS — the agent is baked into the system and can run multi-step tasks across apps on its own, powered by ByteDance's Doubao assistant. And it's real, not a concept: mass production is confirmed and it already picked up a 2026 SAIL award. 'World's first' is a marketing flex, but agentic-by-default is clearly where every phone is heading. The real test is reliability. 🤖",
       "image": "/social/2026-07-17/card_2.png"
     },
     {
       "n": 3,
       "pillar": "Tips & Tricks",
-      "platforms": ["X", "Threads"],
-      "hook": "Chrome's address bar has hidden '@' shortcuts",
-      "body": "Chrome's address bar can search inside itself. Type @tabs to jump to any open tab, @history to dig through pages you've visited, or @bookmarks to pull up a saved link — all without leaving the omnibox. Hit space after the @ keyword and start typing. If you're the type who keeps 40 tabs open, @tabs alone will save you a genuine amount of hunting every day. Free, already built in, and almost nobody uses it.",
+      "platforms": ["X", "Threads", "Instagram"],
+      "hook": "iPhone Calculator hack: swipe to delete the last digit",
+      "body": "Typed a wrong digit in the iPhone Calculator app? You don't need to hit C and start the whole sum over. 💡 Just swipe left or right across the number display — it deletes the last digit one at a time, like a backspace. It's been hiding in the default Calculator app for years, and it's one of those tiny things that quietly saves you a hundred restarts. ✅",
       "image": "/social/2026-07-17/card_3.png"
     },
     {
       "n": 4,
       "pillar": "Comparison",
-      "platforms": ["X", "Threads", "Instagram"],
-      "hook": "Gemini 3.5 vs GPT-5.6 vs Claude Fable 5 — which one to actually use",
-      "body": "Three AI titans, three different jobs. Claude Fable 5 holds the coding crown at 80.3% on SWE-Bench Pro and shines on long agentic runs — but it's the priciest at $10 / $50 per million tokens. GPT-5.6 (Sol, Terra, Luna) is the value all-rounder, ChatGPT's new default, with a 1M-token context and strong multi-agent tooling from around $1 per million input. Gemini 3.5 Pro, if today's leaks hold, brings a rumored 2M-token window and Deep Think — though those specs are still unconfirmed. The takeaway: there's no single best. Match the model to the task, not the headline.",
+      "platforms": ["X", "Threads"],
+      "hook": "ChatGPT vs Gemini vs Claude — which one for what?",
+      "body": "Everyone asks 'which AI is best?' — wrong question. Best for what? Here's the honest split. 🤖 ChatGPT is the default all-rounder with the best voice mode and biggest ecosystem. Gemini is unbeatable if you live in Google apps and Search, and its context window is massive. Claude is the pick for writing and coding — clean, careful output. ChatGPT still leads on usage at roughly 54% share, but 'most popular' isn't the same as 'best for your task.' Use the right tool for the job, not the one you're loyal to. 🧠",
       "image": "/social/2026-07-17/card_4.png"
     },
     {
       "n": 5,
-      "pillar": "Hot Take / Launch",
+      "pillar": "Myth-Buster",
       "platforms": ["X", "Threads"],
-      "hook": "Samsung Unpacked is officially set for July 22",
-      "body": "It's official: Samsung Galaxy Unpacked lands July 22 in London, with the Galaxy Z Fold 8, Z Flip 8, new Watches, and reportedly Samsung's first smart glasses. The interesting bit is the Fold 8's rumored shorter, wider shape — a real design rethink rather than a spec bump. Foldables have plateaued on 'thinner and pricier'; a genuinely new form factor plus a glasses play is Samsung trying to make the category exciting again. Pre-orders expected July 22, sales around August 7.",
+      "hook": "Closing background apps won't save your battery",
+      "body": "Time to bust the most stubborn phone myth: 'close your background apps to save battery.' 🔥 Both iOS and Android already suspend apps in the background — a suspended app isn't draining anything. When you force-close everything, the OS has to cold-start each app the next time you open it, which uses more CPU and battery, not less. 🪫 Do this instead: only force-close an app when it's actually frozen or misbehaving. Otherwise, let the system do its job. ✅",
       "image": "/social/2026-07-17/card_5.png"
     }
   ]

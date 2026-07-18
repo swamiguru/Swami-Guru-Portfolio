@@ -3,3 +3,4 @@
 seed | iOS | Back Tap (double/triple tap back of iPhone)
 2026-07-17 | Chrome | Omnibox @ shortcuts (@tabs, @history, @bookmarks) to scope address-bar search
 2026-07-17 | iOS | Calculator swipe left/right on display to delete last digit (backspace)
+2026-07-18 | Android | Audio Sharing — stream to two Bluetooth devices at once (Settings > Connected devices > Connection preferences > Audio sharing)

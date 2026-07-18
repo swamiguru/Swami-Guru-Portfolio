@@ -1,0 +1,47 @@
+{
+  "date": "2026-07-18",
+  "title": "Apple sues OpenAI, Gemini 3.5 Pro stalls, and August's phone wave loads up",
+  "intro": "A blockbuster Apple-vs-OpenAI trade-secrets lawsuit, Google's flagship AI missing a third deadline, a hidden Android audio trick, an honest coding-AI face-off, and a look at the phones landing in the next few weeks.",
+  "posts": [
+    {
+      "n": 1,
+      "pillar": "News & Commentary",
+      "platforms": ["X", "Threads"],
+      "hook": "Apple just sued OpenAI, and it reads like a spy thriller",
+      "body": "Apple has filed a blockbuster lawsuit against OpenAI over alleged theft of hardware trade secrets. The claims are striking: more than 400 former Apple employees now work at OpenAI, an ex-engineer allegedly never returned a laptop loaded with confidential documents, and Apple project code-names were reportedly used during OpenAI's recruiting. My read is that lawsuits like this rarely kill a rival, they signal fear. Apple sees the race to build the first great AI device slipping, and the io team it is fighting was co-founded by Apple's own former design boss.",
+      "image": "/social/2026-07-18/card_1.png"
+    },
+    {
+      "n": 2,
+      "pillar": "AI Update",
+      "platforms": ["X", "Threads"],
+      "hook": "Google's flagship AI just missed its third deadline",
+      "body": "Google's Gemini 3.5 Pro has quietly slipped past a third deadline, reportedly over coding performance below target, multi-step reasoning gaps, and reliability issues serious enough that Google rebuilt parts of the model rather than just fine-tuning it. I would rather Google hold a model back than ship a half-baked flagship, but every week it waits, OpenAI's GPT-5.6 and xAI's Grok 4.5 chip away at the lead.",
+      "image": "/social/2026-07-18/card_2.png"
+    },
+    {
+      "n": 3,
+      "pillar": "Tips & Tricks",
+      "platforms": ["X", "Threads"],
+      "hook": "Your Android can play audio to two Bluetooth devices at once",
+      "body": "Most people have no idea Android can stream audio to two Bluetooth devices at the same time, your earbuds and a friend's, together. Turn it on under Settings, then Connected devices, then Connection preferences, then Audio sharing. It is perfect for sharing a movie on a flight, a gym playlist with a buddy, or watching something in bed, with no splitter or dongle. It works on Pixel and most newer Android phones with LE Audio.",
+      "image": "/social/2026-07-18/card_3.png"
+    },
+    {
+      "n": 4,
+      "pillar": "Comparison",
+      "platforms": ["X", "Threads", "Instagram"],
+      "hook": "ChatGPT vs Gemini vs Claude, who wins for coding right now",
+      "body": "The honest coding verdict for mid-2026: Claude is still the model most developers trust for clean, reliable, ship-it code. ChatGPT with GPT-5.6 is the best all-rounder thanks to its huge ecosystem and quick prototyping. Gemini is genuinely powerful in the Google stack, but 3.5 Pro's delays have stalled its momentum. For serious code, reach for Claude; for a do-everything assistant, ChatGPT; and if you live in Google Workspace, Gemini. There is no universal winner, it is about your workflow.",
+      "image": "/social/2026-07-18/card_4.png"
+    },
+    {
+      "n": 5,
+      "pillar": "Launch Radar",
+      "platforms": ["X", "Threads"],
+      "hook": "August is about to get loaded with phones",
+      "body": "The next few weeks could be stacked, though all of this is still rumor and leak with nothing officially confirmed. The Google Pixel 11 Pro is tipped for an August 12 reveal, and Samsung's Galaxy Z Fold 8 and Z Flip 8 are expected in July or August with thinner bodies and near-invisible creases. My hot take is that 2026 is the year foldables finally stop feeling like a science experiment, thin enough, crease-free enough, and durable enough to be your only phone. That is the real story, not the spec sheet.",
+      "image": "/social/2026-07-18/card_5.png"
+    }
+  ]
+}

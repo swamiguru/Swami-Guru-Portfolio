@@ -1,0 +1,47 @@
+{
+  "date": "2026-07-19",
+  "title": "Unpacked Countdown, a Gemini Rebrand, and Apple vs OpenAI",
+  "intro": "Samsung's Galaxy Unpacked is three days out, Google quietly folded NotebookLM into Gemini, and Apple just took OpenAI to court. Plus a one-click Mac audio trick and an honest mid-2026 AI showdown.",
+  "posts": [
+    {
+      "n": 1,
+      "pillar": "News & Commentary",
+      "platforms": ["X", "Threads"],
+      "hook": "Galaxy Unpacked is 3 days away (July 22).",
+      "body": "Samsung's Galaxy Unpacked is officially set for July 22 in London, and leaks point to five devices — refreshed Fold and Flip foldables plus a rumored mystery fifth device. It streams live on Samsung.com and YouTube at 9AM ET / 6:30PM IST. The real question isn't specs, it's whether this is the year foldables finally stop being a flex and start being the default. Leak details are still rumor until Samsung says otherwise; the date and event are confirmed.",
+      "image": "/social/2026-07-19/card_1.png"
+    },
+    {
+      "n": 2,
+      "pillar": "News / AI Update",
+      "platforms": ["X", "Threads"],
+      "hook": "NotebookLM is now Gemini Notebook.",
+      "body": "Google has renamed NotebookLM to Gemini Notebook, folding one of its most genuinely useful research tools fully under the Gemini brand. Same idea — drop your sources, get grounded answers and audio overviews — now with clearer Gemini integration. The tool itself is still one of the best ways to actually reason over your own documents instead of trusting a model's memory.",
+      "image": "/social/2026-07-19/card_2.png"
+    },
+    {
+      "n": 3,
+      "pillar": "Tips & Tricks",
+      "platforms": ["X", "Threads"],
+      "hook": "Switch your Mac's audio device in one click.",
+      "body": "Hold Option and click the Sound icon in your Mac's menu bar — you get an instant switcher for every audio output and input device, no diving into System Settings. Jumping between AirPods, speakers, and a headset becomes a single click. Small habit, saves you the settings detour every single day.",
+      "image": "/social/2026-07-19/card_3.png"
+    },
+    {
+      "n": 4,
+      "pillar": "Comparison",
+      "platforms": ["X", "Threads", "Instagram"],
+      "hook": "ChatGPT vs Gemini vs Claude — the mid-2026 verdict.",
+      "body": "There's no single winner anymore, so pick per job. ChatGPT (GPT-5.6) is the best all-rounder and still owns voice. Gemini 2.5 Deep Think is the research beast with a 2M-token context window for long documents. Claude Fable 5 is the coding king at ~80% on SWE-Bench. Everyday use and voice lean ChatGPT, deep research leans Gemini, and coding or agents lean Claude. Match the tool to the task instead of chasing one app to rule them all.",
+      "image": "/social/2026-07-19/card_4.png"
+    },
+    {
+      "n": 5,
+      "pillar": "Hot Take",
+      "platforms": ["X", "Threads"],
+      "hook": "Apple just sued OpenAI — and it says a lot.",
+      "body": "Apple has filed suit against OpenAI alleging theft of trade secrets. Whatever the legal merits, the subtext is loud: the friendly AI-partnership era is over, and the platform owners now see the model labs as direct rivals. When the company that once shipped ChatGPT into its OS is reaching for lawyers, you know the AI power map is being redrawn in real time.",
+      "image": "/social/2026-07-19/card_5.png"
+    }
+  ]
+}

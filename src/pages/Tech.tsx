@@ -120,7 +120,7 @@ export default function Tech() {
               </h2>
             </div>
             <p className="text-sm md:text-base font-medium opacity-80 mb-6 max-w-xl">
-              The five stories that mattered this week, plus what I'm building — from an 11-year Cond&eacute; Nast/Newsweek editor now going solo with AI. Weekly-ish, free.
+              The five stories that mattered this week, plus what I'm building — 11 years building product across Cond&eacute; Nast's full portfolio and Newsweek. Weekly-ish, free.
             </p>
             <NewsletterSignup />
           </div>

@@ -20,6 +20,7 @@ import { getLatestDigest, formatDigestDate } from "../data/social";
 import { getLatestNotes, formatNoteDate } from "../data/notes";
 import Carousel from "../components/Carousel";
 import SiteHeader from "../components/SiteHeader";
+import NewsletterSignup from "../components/NewsletterSignup";
 
 const YOUTUBE = "https://www.youtube.com/@builtbyswami";
 
@@ -32,7 +33,6 @@ interface Video {
 }
 
 export default function Home() {
-  const [submitted, setSubmitted] = useState(false);
   const [videos, setVideos] = useState<Video[]>([]);
 
   useEffect(() => {
@@ -336,35 +336,9 @@ export default function Home() {
             <p className="text-sm md:text-base font-medium opacity-80 mb-6 max-w-xl">
               What I'm building with AI each week — and what actually worked (and broke). No theory, just receipts.
             </p>
-            {submitted ? (
-              <div className="bg-m3-surface/70 border border-m3-primary/20 rounded-m3-lg p-5 text-sm font-bold">
-                Noted — email delivery isn't wired up just yet. Hit{" "}
-                <a href={YOUTUBE} target="_blank" rel="noopener noreferrer" className="text-m3-primary underline underline-offset-4">
-                  subscribe on YouTube
-                </a>{" "}
-                so you don't miss the next build in the meantime.
-              </div>
-            ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSubmitted(true);
-                }}
-                className="flex flex-col sm:flex-row gap-3 max-w-lg"
-              >
-                <input
-                  type="email"
-                  required
-                  placeholder="your@email.com"
-                  className="flex-1 bg-m3-surface rounded-m3-full py-3.5 px-6 text-sm font-bold focus:outline-none focus:ring-4 focus:ring-m3-primary/15 text-m3-on-surface shadow-inner placeholder:text-m3-on-surface/30"
-                />
-                <button type="submit" className="m3-button-filled text-sm tracking-wide whitespace-nowrap">
-                  Subscribe →
-                </button>
-              </form>
-            )}
+            <NewsletterSignup />
             <p className="text-[11px] font-bold uppercase tracking-widest opacity-50 mt-4">
-              Newsletter launching soon · one email, weekly-ish
+              Builtbyswami Weekly · one email, weekly-ish
             </p>
           </div>
         </section>

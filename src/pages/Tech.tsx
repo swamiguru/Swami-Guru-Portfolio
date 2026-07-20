@@ -6,8 +6,10 @@
 import { useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { Mail } from "lucide-react";
 import { DIGESTS, formatDigestDate, type Digest } from "../data/social";
 import SiteHeader from "../components/SiteHeader";
+import NewsletterSignup from "../components/NewsletterSignup";
 
 const formatMonth = (key: string): string =>
   new Date(key + "-01T00:00:00").toLocaleDateString("en-US", {
@@ -59,6 +61,21 @@ export default function Tech() {
           <p className="mt-5 text-base md:text-lg font-medium text-m3-on-surface-variant max-w-xl leading-relaxed">
             The day's biggest tech & AI stories — filtered, with honest takes. Five things worth your time, every day.
           </p>
+        </section>
+
+        <section className="bg-m3-secondary-container text-m3-on-secondary-container px-6 md:px-14 py-10 md:py-12">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-3 mb-3">
+              <Mail className="w-5 h-5 text-m3-primary" />
+              <h2 className="display text-xl md:text-2xl font-extrabold uppercase tracking-tight">
+                Get the week's five, one email
+              </h2>
+            </div>
+            <p className="text-sm md:text-base font-medium opacity-80 mb-6 max-w-xl">
+              Builtbyswami Weekly distills that week's roundups into the five stories that mattered — plus what I'm building. Weekly-ish, free.
+            </p>
+            <NewsletterSignup />
+          </div>
         </section>
 
         <section className="px-6 md:px-14 pb-14 flex-1">

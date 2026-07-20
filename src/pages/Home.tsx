@@ -22,6 +22,7 @@ import { getLatestNotes, formatNoteDate } from "../data/notes";
 import Carousel from "../components/Carousel";
 import SiteHeader from "../components/SiteHeader";
 import NewsletterSignup from "../components/NewsletterSignup";
+import { useImageOrientation } from "../hooks/useImageOrientation";
 
 const YOUTUBE = "https://www.youtube.com/@builtbyswami";
 
@@ -31,6 +32,103 @@ interface Video {
   url: string;
   embedUrl: string;
   thumbnail: string;
+}
+
+/**
+ * The channel mixes landscape long-form videos and portrait Shorts, so
+ * neither a fixed 16:9 nor 9:16 box is ever right for everything. This
+ * measures the real thumbnail and sizes itself to match — and defers
+ * mounting the YouTube iframe until the visitor actually clicks play, so
+ * the embed's own chrome/loading weight isn't paid on every homepage visit.
+ */
+function FeaturedVideo({ video }: { video: Video }) {
+  const [playing, setPlaying] = useState(false);
+  const orientation = useImageOrientation(video.thumbnail);
+  const isPortrait = orientation === "portrait";
+
+  return (
+    <div
+      className={`rounded-[28px] overflow-hidden border border-m3-outline/10 bg-m3-surface shadow-sm ${
+        isPortrait ? "max-w-[420px] mx-auto" : ""
+      }`}
+    >
+      <div className={`relative bg-black ${isPortrait ? "aspect-[9/16]" : "aspect-video"}`}>
+        {playing ? (
+          <iframe
+            className="w-full h-full"
+            src={`${video.embedUrl}?autoplay=1`}
+            title={video.title}
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        ) : (
+          <button
+            type="button"
+            onClick={() => setPlaying(true)}
+            aria-label={`Play ${video.title}`}
+            className="group absolute inset-0 w-full h-full"
+          >
+            <img src={video.thumbnail} alt="" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+              <div className="w-16 h-16 rounded-full bg-m3-primary text-m3-on-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <Play className="w-6 h-6 ml-1" />
+              </div>
+            </div>
+          </button>
+        )}
+      </div>
+      <a
+        href={video.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-between gap-4 p-5 md:p-6 hover:bg-m3-surface-variant/40 transition-colors group"
+      >
+        <span className="font-display font-bold text-sm md:text-base text-m3-on-surface line-clamp-2">
+          {video.title}
+        </span>
+        <ArrowUpRight className="w-5 h-5 text-m3-on-surface-variant/50 group-hover:text-m3-primary shrink-0 transition-colors" />
+      </a>
+    </div>
+  );
+}
+
+/** Rail card for the "Latest Videos" carousel — same orientation-matching
+ * approach as FeaturedVideo, just sized down for a horizontal scroller. */
+function VideoCard({ video }: { video: Video }) {
+  const orientation = useImageOrientation(video.thumbnail);
+  const isPortrait = orientation === "portrait";
+
+  return (
+    <a
+      href={video.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      role="listitem"
+      className={`group snap-start shrink-0 bg-m3-surface rounded-[20px] border border-m3-outline/5 overflow-hidden hover:border-m3-primary/30 hover:shadow-xl transition-all ${
+        isPortrait ? "w-[160px] md:w-[190px]" : "w-[240px] md:w-[280px]"
+      }`}
+    >
+      <div className={`relative bg-black overflow-hidden ${isPortrait ? "aspect-[9/16]" : "aspect-video"}`}>
+        <img
+          src={video.thumbnail}
+          alt=""
+          loading="lazy"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+          <div className="w-12 h-12 rounded-full bg-m3-primary text-m3-on-primary flex items-center justify-center shadow-lg">
+            <Play className="w-5 h-5 ml-0.5" />
+          </div>
+        </div>
+      </div>
+      <div className="p-4">
+        <p className="font-display font-bold text-sm text-m3-on-surface line-clamp-2 leading-snug">
+          {video.title}
+        </p>
+      </div>
+    </a>
+  );
 }
 
 export default function Home() {
@@ -265,29 +363,7 @@ export default function Home() {
             </a>
           </div>
           {featured ? (
-            <div className="rounded-[28px] overflow-hidden border border-m3-outline/10 bg-m3-surface shadow-sm">
-              <div className="aspect-video bg-black">
-                <iframe
-                  className="w-full h-full"
-                  src={featured.embedUrl}
-                  title={featured.title}
-                  loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
-              </div>
-              <a
-                href={featured.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between gap-4 p-5 md:p-6 hover:bg-m3-surface-variant/40 transition-colors group"
-              >
-                <span className="font-display font-bold text-sm md:text-base text-m3-on-surface line-clamp-2">
-                  {featured.title}
-                </span>
-                <ArrowUpRight className="w-5 h-5 text-m3-on-surface-variant/50 group-hover:text-m3-primary shrink-0 transition-colors" />
-              </a>
-            </div>
+            <FeaturedVideo video={featured} />
           ) : (
             <a
               href={YOUTUBE}
@@ -332,33 +408,7 @@ export default function Home() {
             </div>
             <Carousel ariaLabel="Latest videos">
               {railVideos.map((v) => (
-                <a
-                  key={v.id}
-                  href={v.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  role="listitem"
-                  className="group snap-start shrink-0 w-[240px] md:w-[280px] bg-m3-surface rounded-[20px] border border-m3-outline/5 overflow-hidden hover:border-m3-primary/30 hover:shadow-xl transition-all"
-                >
-                  <div className="relative aspect-video bg-black overflow-hidden">
-                    <img
-                      src={v.thumbnail}
-                      alt=""
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
-                      <div className="w-12 h-12 rounded-full bg-m3-primary text-m3-on-primary flex items-center justify-center shadow-lg">
-                        <Play className="w-5 h-5 ml-0.5" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <p className="font-display font-bold text-sm text-m3-on-surface line-clamp-2 leading-snug">
-                      {v.title}
-                    </p>
-                  </div>
-                </a>
+                <VideoCard key={v.id} video={v} />
               ))}
             </Carousel>
           </section>

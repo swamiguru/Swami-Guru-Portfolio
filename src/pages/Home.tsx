@@ -84,7 +84,7 @@ function FeaturedVideo({ video }: { video: Video }) {
         rel="noopener noreferrer"
         className="flex items-center justify-between gap-4 p-5 md:p-6 hover:bg-m3-surface-variant/40 transition-colors group"
       >
-        <span className="font-display font-bold text-sm md:text-base text-m3-on-surface line-clamp-2">
+        <span className="flex-1 min-w-0 font-display font-bold text-sm md:text-base text-m3-on-surface line-clamp-2">
           {video.title}
         </span>
         <ArrowUpRight className="w-5 h-5 text-m3-on-surface-variant/50 group-hover:text-m3-primary shrink-0 transition-colors" />
@@ -176,7 +176,7 @@ export default function Home() {
         <section className="relative overflow-hidden px-6 md:px-14 pt-10 md:pt-16 pb-10 md:pb-14 bg-m3-surface">
           <div className="absolute top-0 right-0 w-96 h-96 bg-m3-primary/5 rounded-full -mr-24 -mt-24 blur-3xl pointer-events-none" />
           <div className="relative z-10">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mb-6">
               <div className="flex items-center gap-3">
                 <Sparkles className="w-5 h-5 text-m3-primary" />
                 <span className="font-display text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-m3-primary">
@@ -303,7 +303,7 @@ export default function Home() {
                 loading="lazy"
                 className="w-full md:w-[320px] aspect-square object-cover shrink-0"
               />
-              <div className="p-6 md:p-8 flex flex-col justify-center gap-3">
+              <div className="p-6 md:p-8 flex flex-col justify-center gap-3 flex-1 min-w-0">
                 <span className="text-[11px] font-bold uppercase tracking-widest opacity-70">
                   Issue #{latestIssue.issueNumber} · {formatDigestDate(latestIssue.publishedDate)}
                 </span>
@@ -349,7 +349,7 @@ export default function Home() {
 
         {/* 04 — Latest build (featured video) */}
         <section className="px-6 md:px-14 py-10 md:py-14 bg-m3-surface-variant border-y border-m3-outline/10">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mb-6">
             <span className="font-display text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-m3-primary">
               The Channel
             </span>
@@ -390,7 +390,7 @@ export default function Home() {
         {/* 05 — Latest Videos (carousel) */}
         {railVideos.length > 0 && (
           <section className="px-6 md:px-14 py-10 md:py-14 bg-m3-surface">
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mb-8">
               <div className="flex items-center gap-3">
                 <Play className="w-5 h-5 text-m3-primary" />
                 <span className="font-display text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-m3-on-surface">
@@ -416,7 +416,7 @@ export default function Home() {
 
         {/* 06 — Notes */}
         <section id="notes" className="px-6 md:px-14 py-12 md:py-16 bg-m3-surface-variant border-t border-m3-outline/10">
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 mb-8">
             <div className="flex items-center gap-3">
               <BookOpen className="w-5 h-5 text-m3-primary" />
               <span className="font-display text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-m3-on-surface">
@@ -440,7 +440,7 @@ export default function Home() {
                 <div className="w-12 h-12 rounded-[16px] bg-m3-primary-container text-m3-on-primary-container flex items-center justify-center shrink-0">
                   <Clock className="w-6 h-6" />
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <div className="text-[11px] font-bold uppercase tracking-widest text-m3-primary mb-2">
                     {note.tag} · {note.readMinutes} min read · {formatNoteDate(note.date)}
                   </div>

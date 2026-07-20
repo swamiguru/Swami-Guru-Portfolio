@@ -18,7 +18,15 @@ import { useState, type FormEvent } from "react";
 // for that script if a no-redirect inline experience is preferred later.
 const SUBSCRIBE_URL = "https://builtbyswami.beehiiv.com/subscribe";
 
-export default function NewsletterSignup() {
+interface NewsletterSignupProps {
+  /** Force a single-column layout regardless of viewport width — for use
+   * inside narrow containers like a nav dropdown, where the default
+   * `sm:flex-row` would trigger from viewport width even though the
+   * container itself is small. */
+  stacked?: boolean;
+}
+
+export default function NewsletterSignup({ stacked = false }: NewsletterSignupProps) {
   const [email, setEmail] = useState("");
   const [redirecting, setRedirecting] = useState(false);
 
@@ -33,7 +41,11 @@ export default function NewsletterSignup() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col sm:flex-row gap-3 max-w-lg"
+      className={
+        stacked
+          ? "flex flex-col gap-3 w-full"
+          : "flex flex-col sm:flex-row gap-3 max-w-lg"
+      }
     >
       <input
         type="email"

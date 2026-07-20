@@ -3,10 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import BrandLogo from "./BrandLogo";
+import NewsletterSignup from "./NewsletterSignup";
 
 const YOUTUBE = "https://www.youtube.com/@builtbyswami";
 
@@ -31,6 +32,27 @@ export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
 
+  const [subscribeOpen, setSubscribeOpen] = useState(false);
+  const subscribeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!subscribeOpen) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (subscribeRef.current && !subscribeRef.current.contains(e.target as Node)) {
+        setSubscribeOpen(false);
+      }
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSubscribeOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [subscribeOpen]);
+
   const renderItem = (item: NavItem, className: string) =>
     item.external ? (
       <a key={item.label} href={item.to} target="_blank" rel="noopener noreferrer" className={className} onClick={close}>
@@ -53,12 +75,28 @@ export default function SiteHeader() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-2 md:gap-3 font-display font-bold text-sm">
           {NAV.map((item) => renderItem(item, desktopLink))}
-          <Link
-            to="/#build-notes"
-            className="px-5 py-2.5 bg-m3-primary text-m3-on-primary rounded-m3-full hover:m3-elevation-1 active:scale-95 transition-all shadow-sm"
-          >
-            Subscribe
-          </Link>
+          <div className="relative" ref={subscribeRef}>
+            <button
+              type="button"
+              onClick={() => setSubscribeOpen((o) => !o)}
+              aria-expanded={subscribeOpen}
+              aria-haspopup="true"
+              className="px-5 py-2.5 bg-m3-primary text-m3-on-primary rounded-m3-full hover:m3-elevation-1 active:scale-95 transition-all shadow-sm"
+            >
+              Subscribe
+            </button>
+            {subscribeOpen && (
+              <div className="absolute right-0 top-[calc(100%+10px)] w-[320px] bg-m3-surface border border-m3-outline/10 rounded-[20px] shadow-xl p-5 z-40">
+                <p className="font-display font-bold text-sm text-m3-on-surface mb-1">
+                  Get the week's five, one email
+                </p>
+                <p className="text-xs text-m3-on-surface-variant font-medium mb-4">
+                  Weekly-ish, free. Unsubscribe anytime.
+                </p>
+                <NewsletterSignup stacked />
+              </div>
+            )}
+          </div>
         </nav>
 
         {/* Mobile toggle */}
@@ -77,13 +115,17 @@ export default function SiteHeader() {
       {open && (
         <nav className="md:hidden border-t border-m3-outline/10 bg-m3-surface px-4 py-4 flex flex-col gap-1 font-display font-bold text-base">
           {NAV.map((item) => renderItem(item, mobileLink))}
-          <Link
-            to="/#build-notes"
-            onClick={close}
-            className="mt-2 px-5 py-3 bg-m3-primary text-m3-on-primary rounded-m3-full text-center hover:m3-elevation-1 active:scale-95 transition-all"
-          >
-            Subscribe
-          </Link>
+          <div className="mt-3 pt-4 border-t border-m3-outline/10">
+            <p className="px-4 font-display font-bold text-sm text-m3-on-surface mb-1">
+              Get the week's five, one email
+            </p>
+            <p className="px-4 text-xs text-m3-on-surface-variant font-medium mb-4">
+              Weekly-ish, free. Unsubscribe anytime.
+            </p>
+            <div className="px-4">
+              <NewsletterSignup stacked />
+            </div>
+          </div>
         </nav>
       )}
     </header>

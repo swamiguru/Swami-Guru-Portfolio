@@ -4,10 +4,16 @@
  */
 
 import { useEffect, useMemo } from "react";
-import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { Link, useSearchParams } from "react-router-dom";
+import { ArrowRight, Sparkles, X } from "lucide-react";
 import { Mail } from "lucide-react";
-import { DIGESTS, formatDigestDate, type Digest } from "../data/social";
+import {
+  DIGESTS,
+  formatDigestDate,
+  normalizeCategory,
+  getTopCategories,
+  type Digest,
+} from "../data/social";
 import SiteHeader from "../components/SiteHeader";
 import NewsletterSignup from "../components/NewsletterSignup";
 
@@ -18,19 +24,32 @@ const formatMonth = (key: string): string =>
   });
 
 export default function Tech() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeCategory = searchParams.get("category");
+  const categories = useMemo(() => getTopCategories(), []);
+
+  const filteredDigests = useMemo(() => {
+    if (!activeCategory) return DIGESTS;
+    return DIGESTS.filter((d) =>
+      d.posts.some((p) => normalizeCategory(p.pillar) === activeCategory)
+    );
+  }, [activeCategory]);
+
+  const clearFilter = () => setSearchParams({});
+
   // Group digests by month (YYYY-MM) for the archive view. DIGESTS is
   // already sorted newest-first, and Map preserves insertion order, so
   // months come out newest-first with no extra sorting needed.
   const monthGroups = useMemo(() => {
     const map = new Map<string, Digest[]>();
-    for (const d of DIGESTS) {
+    for (const d of filteredDigests) {
       const key = d.date.slice(0, 7);
       const list = map.get(key);
       if (list) list.push(d);
       else map.set(key, [d]);
     }
     return Array.from(map.entries());
-  }, []);
+  }, [filteredDigests]);
 
   useEffect(() => {
     document.title = "Tech Roundup | Swami Guru";
@@ -61,6 +80,35 @@ export default function Tech() {
           <p className="mt-5 text-base md:text-lg font-medium text-m3-on-surface-variant max-w-xl leading-relaxed">
             The day's biggest tech & AI stories — filtered, with honest takes. Five things worth your time, every day.
           </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-2">
+            {categories.map(({ category, count }) => {
+              const isActive = category === activeCategory;
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setSearchParams(isActive ? {} : { category })}
+                  className={
+                    isActive
+                      ? "text-xs font-bold px-3 py-1.5 rounded-full bg-m3-primary text-m3-on-primary transition-colors"
+                      : "text-xs font-bold px-3 py-1.5 rounded-full bg-m3-surface text-m3-on-surface hover:bg-m3-primary hover:text-m3-on-primary transition-colors"
+                  }
+                >
+                  {category} <span className="opacity-60">({count})</span>
+                </button>
+              );
+            })}
+            {activeCategory && (
+              <button
+                type="button"
+                onClick={clearFilter}
+                className="text-xs font-bold px-3 py-1.5 rounded-full text-m3-on-surface-variant hover:text-m3-primary transition-colors flex items-center gap-1"
+              >
+                Clear <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
         </section>
 
         <section className="bg-m3-secondary-container text-m3-on-secondary-container px-6 md:px-14 py-10 md:py-12">
@@ -127,6 +175,13 @@ export default function Tech() {
                 </div>
               ))}
             </div>
+          ) : activeCategory ? (
+            <p className="text-m3-on-surface-variant font-medium">
+              No roundups tagged "{activeCategory}" yet.{" "}
+              <button type="button" onClick={clearFilter} className="text-m3-primary font-bold underline underline-offset-4">
+                Clear the filter
+              </button>
+            </p>
           ) : (
             <p className="text-m3-on-surface-variant font-medium">Roundups are on the way — check back soon.</p>
           )}

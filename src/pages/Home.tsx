@@ -16,7 +16,7 @@ import {
   Clock,
 } from "lucide-react";
 import { SOCIALS } from "../data/socials";
-import { getLatestDigest, formatDigestDate } from "../data/social";
+import { getLatestDigest, formatDigestDate, getTopCategories } from "../data/social";
 import { getLatestNotes, formatNoteDate } from "../data/notes";
 import Carousel from "../components/Carousel";
 import SiteHeader from "../components/SiteHeader";
@@ -53,6 +53,7 @@ export default function Home() {
   const featured = videos[0] ?? null;
   const railVideos = videos.slice(1, 6);
   const latestDigest = getLatestDigest();
+  const categories = getTopCategories();
 
   useEffect(() => {
     document.title = "Swami Guru | Building products in public with AI";
@@ -169,6 +170,23 @@ export default function Home() {
                     </a>
                   ))}
                 </div>
+              </div>
+            )}
+
+            {categories.length > 0 && (
+              <div className="mt-8 pt-6 border-t border-m3-outline/10 flex flex-wrap items-center gap-2">
+                <span className="text-[11px] font-bold uppercase tracking-widest text-m3-on-surface-variant/60 mr-1">
+                  Browse
+                </span>
+                {categories.map(({ category, count }) => (
+                  <Link
+                    key={category}
+                    to={`/tech-roundup?category=${encodeURIComponent(category)}`}
+                    className="text-xs font-bold px-3 py-1.5 rounded-full bg-m3-surface-variant/60 text-m3-on-surface hover:bg-m3-primary hover:text-m3-on-primary transition-colors"
+                  >
+                    {category} <span className="opacity-60">({count})</span>
+                  </Link>
+                ))}
               </div>
             )}
           </div>

@@ -44,3 +44,48 @@ export const formatDigestDate = (iso: string): string =>
     month: "long",
     day: "numeric",
   });
+
+// Story pillars are written freely by the daily pipeline (e.g. "AI Update",
+// "News / AI Update", "Tips & Tricks"), so there's more raw variety than is
+// useful for browsing. This folds them into a small set of umbrella
+// categories for the homepage chip row and the /tech-roundup filter — no
+// hardcoded category list to maintain, just a normalization rule over
+// whatever pillars the content actually contains.
+export function normalizeCategory(pillar: string): string {
+  const p = pillar.toLowerCase();
+  if (p.includes("myth")) return "Myth-Buster";
+  if (p.includes("hot take")) return "Hot Take";
+  if (p.includes("launch")) return "Launch Radar";
+  if (p.includes("tips") || p.includes("trick")) return "Tips";
+  if (p.includes("comparison")) return "Comparison";
+  if (p.includes("security") || p.includes("privacy")) return "Security";
+  if (p.includes("community") || p.includes("poll")) return "Community";
+  if (p.includes("ai")) return "AI";
+  if (p.includes("news")) return "News";
+  return pillar;
+}
+
+export interface CategoryCount {
+  category: string;
+  count: number;
+}
+
+/** Umbrella categories ranked by how many posts fall into them, across every
+ * published digest — used to decide which chips are worth showing. */
+export const getTopCategories = (limit = 8): CategoryCount[] => {
+  const counts = new Map<string, number>();
+  for (const d of DIGESTS) {
+    for (const p of d.posts) {
+      const cat = normalizeCategory(p.pillar);
+      counts.set(cat, (counts.get(cat) ?? 0) + 1);
+    }
+  }
+  return Array.from(counts.entries())
+    .map(([category, count]) => ({ category, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, limit);
+};
+
+/** Digests containing at least one post that normalizes to `category`. */
+export const getDigestsByCategory = (category: string): Digest[] =>
+  DIGESTS.filter((d) => d.posts.some((p) => normalizeCategory(p.pillar) === category));

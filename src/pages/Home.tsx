@@ -330,16 +330,13 @@ export default function Home() {
             <div className="flex items-center gap-3 mb-3">
               <Mail className="w-5 h-5 text-m3-primary" />
               <h2 className="display text-2xl md:text-3xl font-extrabold uppercase tracking-tight">
-                Build Notes
+                Get the week's five, one email
               </h2>
             </div>
             <p className="text-sm md:text-base font-medium opacity-80 mb-6 max-w-xl">
-              What I'm building with AI each week — and what actually worked (and broke). No theory, just receipts.
+              Builtbyswami Weekly distills that week's roundups into the five stories that mattered — plus what I'm building. Weekly-ish, free.
             </p>
             <NewsletterSignup />
-            <p className="text-[11px] font-bold uppercase tracking-widest opacity-50 mt-4">
-              Builtbyswami Weekly · one email, weekly-ish
-            </p>
           </div>
         </section>
 

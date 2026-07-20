@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { SOCIALS } from "../data/socials";
 import { getLatestDigest, formatDigestDate, getTopCategories } from "../data/social";
+import { getLatestWeeklyIssue } from "../data/weekly";
 import { getLatestNotes, formatNoteDate } from "../data/notes";
 import Carousel from "../components/Carousel";
 import SiteHeader from "../components/SiteHeader";
@@ -54,6 +55,7 @@ export default function Home() {
   const railVideos = videos.slice(1, 6);
   const latestDigest = getLatestDigest();
   const categories = getTopCategories();
+  const latestIssue = getLatestWeeklyIssue();
 
   useEffect(() => {
     document.title = "Swami Guru | Building products in public with AI";
@@ -181,6 +183,53 @@ export default function Home() {
               </div>
             )}
           </div>
+        </section>
+
+        {/* 02b — Last Week's Tech Roundup (weekly issue teaser) */}
+        <section className="px-6 md:px-14 py-10 md:py-12 bg-m3-surface border-t border-m3-outline/10">
+          <div className="flex items-center gap-3 mb-6">
+            <Clock className="w-5 h-5 text-m3-primary" />
+            <span className="font-display text-[11px] md:text-sm font-black uppercase tracking-[0.3em] text-m3-primary">
+              Last Week's Tech Roundup
+            </span>
+          </div>
+
+          {latestIssue ? (
+            <a
+              href={latestIssue.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col md:flex-row bg-m3-secondary-container text-m3-on-secondary-container rounded-[28px] overflow-hidden hover:shadow-xl transition-all"
+            >
+              <img
+                src={latestIssue.thumbnail}
+                alt=""
+                loading="lazy"
+                className="w-full md:w-[320px] aspect-video md:aspect-square object-cover shrink-0"
+              />
+              <div className="p-6 md:p-8 flex flex-col justify-center gap-3">
+                <span className="text-[11px] font-bold uppercase tracking-widest opacity-70">
+                  Issue #{latestIssue.issueNumber} · {formatDigestDate(latestIssue.publishedDate)}
+                </span>
+                <h2 className="display text-xl md:text-2xl font-extrabold tracking-tight leading-snug">
+                  {latestIssue.title}
+                </h2>
+                <p className="text-sm md:text-base font-medium opacity-80 leading-relaxed line-clamp-3 max-w-2xl">
+                  {latestIssue.teaser}
+                </p>
+                <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest group-hover:gap-2 transition-all">
+                  Read this week's issue <ArrowUpRight className="w-3.5 h-3.5" />
+                </span>
+              </div>
+            </a>
+          ) : (
+            <div className="bg-m3-surface-variant/40 rounded-[24px] border border-m3-outline/5 p-8">
+              <p className="font-display font-bold text-m3-on-surface mb-1">First weekly issue coming soon</p>
+              <p className="text-sm text-m3-on-surface-variant font-medium">
+                Once the first Builtbyswami Weekly issue is live, the week's biggest stories will round up right here.
+              </p>
+            </div>
+          )}
         </section>
 
         {/* 03 — Weekly digest (email capture) */}

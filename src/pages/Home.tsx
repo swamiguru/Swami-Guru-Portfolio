@@ -102,7 +102,7 @@ export default function Home() {
                   {latestDigest.intro}
                 </p>
                 <div className="mb-5 text-[11px] font-bold uppercase tracking-widest text-m3-primary">
-                  {formatDigestDate(latestDigest.date)} · today's 5
+                  {formatDigestDate(latestDigest.date)} · today's five
                 </div>
                 <Carousel ariaLabel="Today's tech roundup">
                   {latestDigest.posts.map((p) => (

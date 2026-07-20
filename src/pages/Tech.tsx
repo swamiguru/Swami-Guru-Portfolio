@@ -86,7 +86,12 @@ export default function Tech() {
                   <h2 className="font-display text-xs font-black uppercase tracking-[0.25em] text-m3-on-surface-variant/60">
                     {formatMonth(month)}
                   </h2>
-                  {items.map((d) => (
+                  {items.map((d) => {
+                    // Surface up to 4 distinct editorial pillars from that
+                    // day's stories as tags — cheap visual differentiation
+                    // pulled straight from data that's already there.
+                    const tags = Array.from(new Set(d.posts.map((p) => p.pillar))).slice(0, 4);
+                    return (
                     <Link
                       key={d.date}
                       to={`/tech-roundup/${d.date}`}
@@ -95,6 +100,18 @@ export default function Tech() {
                       <div className="text-[11px] font-bold uppercase tracking-widest text-m3-primary">
                         {formatDigestDate(d.date)} · {d.posts.length} stories
                       </div>
+                      {tags.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                          {tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="text-[10px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full bg-m3-primary/10 text-m3-primary"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                       <h3 className="display text-xl md:text-2xl font-extrabold tracking-tight text-m3-on-surface group-hover:text-m3-primary transition-colors">
                         {d.title}
                       </h3>
@@ -105,7 +122,8 @@ export default function Tech() {
                         Read the roundup <ArrowRight className="w-3.5 h-3.5" />
                       </span>
                     </Link>
-                  ))}
+                    );
+                  })}
                 </div>
               ))}
             </div>

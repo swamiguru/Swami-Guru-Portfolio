@@ -196,9 +196,7 @@ export default function Home() {
 
           {latestIssue ? (
             <a
-              href={latestIssue.url}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#build-notes"
               className="group flex flex-col md:flex-row bg-m3-secondary-container text-m3-on-secondary-container rounded-[28px] overflow-hidden hover:shadow-xl transition-all"
             >
               <img
@@ -218,7 +216,7 @@ export default function Home() {
                   {latestIssue.teaser}
                 </p>
                 <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-widest group-hover:gap-2 transition-all">
-                  Read this week's issue <ArrowUpRight className="w-3.5 h-3.5" />
+                  Subscribe to read this issue <ArrowUpRight className="w-3.5 h-3.5" />
                 </span>
               </div>
             </a>

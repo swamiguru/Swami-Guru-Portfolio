@@ -88,7 +88,7 @@ export default function SiteHeader() {
             {subscribeOpen && (
               <div className="absolute right-0 top-[calc(100%+10px)] w-[320px] max-w-[calc(100vw-3rem)] bg-m3-surface border border-m3-outline/10 rounded-[20px] shadow-xl p-5 z-40">
                 <p className="font-display font-bold text-sm text-m3-on-surface mb-1">
-                  Get the week's five, one email
+                  Every day's five, one weekly digest
                 </p>
                 <p className="text-xs text-m3-on-surface-variant font-medium mb-4">
                   Weekly-ish, free. Unsubscribe anytime.
@@ -117,7 +117,7 @@ export default function SiteHeader() {
           {NAV.map((item) => renderItem(item, mobileLink))}
           <div className="mt-3 pt-4 border-t border-m3-outline/10">
             <p className="px-4 font-display font-bold text-sm text-m3-on-surface mb-1">
-              Get the week's five, one email
+              Every day's five, one weekly digest
             </p>
             <p className="px-4 text-xs text-m3-on-surface-variant font-medium mb-4">
               Weekly-ish, free. Unsubscribe anytime.

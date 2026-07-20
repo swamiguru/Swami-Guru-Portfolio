@@ -116,11 +116,11 @@ export default function Tech() {
             <div className="flex items-center gap-3 mb-3">
               <Mail className="w-5 h-5 text-m3-primary" />
               <h2 className="display text-xl md:text-2xl font-extrabold uppercase tracking-tight">
-                Get the week's five, one email
+                Every day's five, one weekly digest
               </h2>
             </div>
             <p className="text-sm md:text-base font-medium opacity-80 mb-6 max-w-xl">
-              The five stories that mattered this week, plus what I'm building — 11 years building product across Cond&eacute; Nast's full portfolio and Newsweek. Weekly-ish, free.
+              I run Top 5 Daily all week — this is the distilled best of it, plus what I'm building. 11 years building product across Cond&eacute; Nast's full portfolio and Newsweek. Weekly-ish, free.
             </p>
             <NewsletterSignup />
           </div>

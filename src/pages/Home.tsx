@@ -460,17 +460,17 @@ export default function Home() {
         </section>
 
         {/* 09 — About teaser */}
-        <section className="px-6 md:px-14 py-8 md:py-10 bg-m3-primary text-m3-on-primary">
+        <section className="px-6 md:px-14 py-5 md:py-7 bg-m3-primary text-m3-on-primary">
           <div className="max-w-3xl">
-            <span className="font-display text-[10px] md:text-[12px] uppercase tracking-[0.4em] font-extrabold text-m3-on-primary/60 mb-2.5 block">
+            <span className="font-display text-[10px] md:text-[12px] uppercase tracking-[0.4em] font-extrabold text-m3-on-primary/60 mb-2 block">
               The operator behind the builds
             </span>
-            <h2 className="display text-2xl md:text-[2rem] font-bold tracking-tighter leading-[0.95] mb-5">
+            <h2 className="display text-xl md:text-[1.75rem] font-bold tracking-tighter leading-[0.95] mb-4">
               11 years, three global media companies, $20M+ scaled — now composing products solo with AI from Bengaluru.
             </h2>
             <Link
               to="/about"
-              className="inline-flex items-center gap-2 bg-m3-surface text-m3-on-surface font-display font-bold px-6 py-3 rounded-m3-full hover:m3-elevation-2 active:scale-95 transition-all text-sm tracking-wide"
+              className="inline-flex items-center gap-2 bg-m3-surface text-m3-on-surface font-display font-bold px-6 py-2.5 rounded-m3-full hover:m3-elevation-2 active:scale-95 transition-all text-sm tracking-wide"
             >
               The full story <ArrowUpRight className="w-4 h-4" />
             </Link>

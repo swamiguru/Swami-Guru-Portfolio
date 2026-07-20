@@ -71,6 +71,19 @@ export default function Home() {
         {/* 01 — Nav */}
         <SiteHeader />
 
+        {/* 01b — Credibility strap */}
+        <div className="px-6 md:px-14 py-3 bg-m3-primary/5 border-b border-m3-outline/10 flex items-center justify-between gap-4">
+          <p className="text-xs md:text-sm font-medium text-m3-on-surface-variant">
+            <span className="font-bold text-m3-on-surface">11 years, $20M+ scaled</span> at Cond&eacute; Nast and Newsweek — now building solo with AI, in public.
+          </p>
+          <Link
+            to="/about"
+            className="shrink-0 text-[11px] font-bold uppercase tracking-widest text-m3-primary hover:underline"
+          >
+            The story →
+          </Link>
+        </div>
+
         {/* 02 — The Daily Tech Roundup (LEAD) */}
         <section className="relative overflow-hidden px-6 md:px-14 pt-10 md:pt-16 pb-10 md:pb-14 bg-m3-surface">
           <div className="absolute top-0 right-0 w-96 h-96 bg-m3-primary/5 rounded-full -mr-24 -mt-24 blur-3xl pointer-events-none" />

@@ -81,7 +81,7 @@ export default function Tech() {
             The day's biggest tech & AI stories — filtered, with honest takes. Five things worth your time, every day.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-2">
+          <div className="mt-8 flex md:flex-wrap flex-nowrap items-center gap-2 overflow-x-auto md:overflow-visible -mx-6 px-6 md:mx-0 md:px-0 pb-1 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {categories.map(({ category, count }) => {
               const isActive = category === activeCategory;
               return (
@@ -91,8 +91,8 @@ export default function Tech() {
                   onClick={() => setSearchParams(isActive ? {} : { category })}
                   className={
                     isActive
-                      ? "text-xs font-bold px-3 py-1.5 rounded-full bg-m3-primary text-m3-on-primary transition-colors"
-                      : "text-xs font-bold px-3 py-1.5 rounded-full bg-m3-surface text-m3-on-surface hover:bg-m3-primary hover:text-m3-on-primary transition-colors"
+                      ? "shrink-0 text-xs font-bold px-3 py-1.5 rounded-full bg-m3-primary text-m3-on-primary transition-colors"
+                      : "shrink-0 text-xs font-bold px-3 py-1.5 rounded-full bg-m3-surface text-m3-on-surface hover:bg-m3-primary hover:text-m3-on-primary transition-colors"
                   }
                 >
                   {category} <span className="opacity-60">({count})</span>
@@ -103,7 +103,7 @@ export default function Tech() {
               <button
                 type="button"
                 onClick={clearFilter}
-                className="text-xs font-bold px-3 py-1.5 rounded-full text-m3-on-surface-variant hover:text-m3-primary transition-colors flex items-center gap-1"
+                className="shrink-0 text-xs font-bold px-3 py-1.5 rounded-full text-m3-on-surface-variant hover:text-m3-primary transition-colors flex items-center gap-1"
               >
                 Clear <X className="w-3.5 h-3.5" />
               </button>
@@ -153,7 +153,7 @@ export default function Tech() {
                           {tags.map((tag) => (
                             <span
                               key={tag}
-                              className="text-[10px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full bg-m3-primary/10 text-m3-primary"
+                              className="shrink-0 text-[10px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full bg-m3-primary/10 text-m3-primary"
                             >
                               {tag}
                             </span>

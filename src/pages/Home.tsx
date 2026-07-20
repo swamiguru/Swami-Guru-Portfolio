@@ -161,19 +161,23 @@ export default function Home() {
             )}
 
             {categories.length > 0 && (
-              <div className="mt-8 pt-6 border-t border-m3-outline/10 flex flex-wrap items-center gap-2">
-                <span className="text-[11px] font-bold uppercase tracking-widest text-m3-on-surface-variant/60 mr-1">
-                  Browse
-                </span>
-                {categories.map(({ category, count }) => (
-                  <Link
-                    key={category}
-                    to={`/tech-roundup?category=${encodeURIComponent(category)}`}
-                    className="text-xs font-bold px-3 py-1.5 rounded-full bg-m3-surface-variant/60 text-m3-on-surface hover:bg-m3-primary hover:text-m3-on-primary transition-colors"
-                  >
-                    {category} <span className="opacity-60">({count})</span>
-                  </Link>
-                ))}
+              <div className="mt-8 pt-6 border-t border-m3-outline/10">
+                <div
+                  className="flex md:flex-wrap flex-nowrap items-center gap-2 overflow-x-auto md:overflow-visible -mx-6 px-6 md:mx-0 md:px-0 pb-1 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                >
+                  <span className="shrink-0 text-[11px] font-bold uppercase tracking-widest text-m3-on-surface-variant/60 mr-1">
+                    Browse
+                  </span>
+                  {categories.map(({ category, count }) => (
+                    <Link
+                      key={category}
+                      to={`/tech-roundup?category=${encodeURIComponent(category)}`}
+                      className="shrink-0 text-xs font-bold px-3 py-1.5 rounded-full bg-m3-surface-variant/60 text-m3-on-surface hover:bg-m3-primary hover:text-m3-on-primary transition-colors"
+                    >
+                      {category} <span className="opacity-60">({count})</span>
+                    </Link>
+                  ))}
+                </div>
               </div>
             )}
           </div>

@@ -86,7 +86,7 @@ export default function SiteHeader() {
               Subscribe
             </button>
             {subscribeOpen && (
-              <div className="absolute right-0 top-[calc(100%+10px)] w-[320px] bg-m3-surface border border-m3-outline/10 rounded-[20px] shadow-xl p-5 z-40">
+              <div className="absolute right-0 top-[calc(100%+10px)] w-[320px] max-w-[calc(100vw-3rem)] bg-m3-surface border border-m3-outline/10 rounded-[20px] shadow-xl p-5 z-40">
                 <p className="font-display font-bold text-sm text-m3-on-surface mb-1">
                   Get the week's five, one email
                 </p>

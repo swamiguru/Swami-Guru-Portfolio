@@ -203,7 +203,7 @@ export default function Home() {
                 src={latestIssue.thumbnail}
                 alt=""
                 loading="lazy"
-                className="w-full md:w-[320px] aspect-video md:aspect-square object-cover shrink-0"
+                className="w-full md:w-[320px] aspect-square object-cover shrink-0"
               />
               <div className="p-6 md:p-8 flex flex-col justify-center gap-3">
                 <span className="text-[11px] font-bold uppercase tracking-widest opacity-70">

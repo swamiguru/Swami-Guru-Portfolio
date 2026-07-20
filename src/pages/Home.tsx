@@ -460,12 +460,12 @@ export default function Home() {
         </section>
 
         {/* 09 — About teaser */}
-        <section className="px-6 md:px-14 py-12 md:py-16 bg-m3-primary text-m3-on-primary">
+        <section className="px-6 md:px-14 py-8 md:py-10 bg-m3-primary text-m3-on-primary">
           <div className="max-w-3xl">
-            <span className="font-display text-[10px] md:text-[12px] uppercase tracking-[0.4em] font-extrabold text-m3-on-primary/60 mb-4 block">
+            <span className="font-display text-[10px] md:text-[12px] uppercase tracking-[0.4em] font-extrabold text-m3-on-primary/60 mb-2.5 block">
               The operator behind the builds
             </span>
-            <h2 className="display text-2xl md:text-4xl font-bold tracking-tighter leading-[0.95] mb-6">
+            <h2 className="display text-2xl md:text-[2rem] font-bold tracking-tighter leading-[0.95] mb-5">
               11 years, three global media companies, $20M+ scaled — now composing products solo with AI from Bengaluru.
             </h2>
             <Link

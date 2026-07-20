@@ -1,0 +1,47 @@
+{
+  "date": "2026-07-20",
+  "title": "Samsung Unpacked lands July 22, GPT-5.6 goes default & the AI-picking playbook",
+  "intro": "Today's five: Samsung's foldable-heavy Unpacked set for July 22, GPT-5.6 quietly becoming ChatGPT's default, a Gmail anti-spam trick, an honest ChatGPT-vs-Gemini-vs-Claude split, and why megapixels don't make the camera.",
+  "posts": [
+    {
+      "n": 1,
+      "pillar": "News & Commentary",
+      "platforms": ["X", "Threads"],
+      "hook": "Samsung Unpacked is July 22 — and it's all about foldables",
+      "body": "Samsung Galaxy Unpacked is officially set for July 22, and it's shaping up to be a foldable-heavy show. Expect the Galaxy Z Fold 8 alongside a larger Z Fold 8 Ultra, a lighter Z Flip 8 (around 180g), the Watch 9 series, and possibly a first look at Samsung's Galaxy Glasses. The creases keep shrinking — but so does your wallet, with the Fold 8 starting near $1,900 and the Ultra around $2,100. Worth watching the value, not just the hype. 📱",
+      "image": "/social/2026-07-20/card_1.png"
+    },
+    {
+      "n": 2,
+      "pillar": "News / AI Update",
+      "platforms": ["X", "Threads"],
+      "hook": "GPT-5.6 is now ChatGPT's default model",
+      "body": "GPT-5.6 is now the default model inside ChatGPT. It's stronger at coding, reasoning and long context (a full 1M-token window), and the balanced 'Terra' tier reportedly matches the older GPT-5.5 at roughly half the cost. The best part: there's no setting to flip — the upgrade just landed for everyone. 🤖",
+      "image": "/social/2026-07-20/card_2.png"
+    },
+    {
+      "n": 3,
+      "pillar": "Tips & Tricks",
+      "platforms": ["X", "Threads"],
+      "hook": "The Gmail '+tag' trick that catches who sold your email",
+      "body": "One Gmail trick most people miss: add a '+tag' before the @, like yourname+shopping@gmail.com. Mail still reaches your normal inbox, but now you can auto-filter it by tag and, crucially, spot exactly who leaked or sold your address when spam starts arriving at a tagged version. Zero setup, works today. 💡",
+      "image": "/social/2026-07-20/card_3.png"
+    },
+    {
+      "n": 4,
+      "pillar": "Comparison",
+      "platforms": ["X", "Threads", "Instagram"],
+      "hook": "ChatGPT vs Gemini vs Claude — the honest mid-2026 split",
+      "body": "'Which AI is best?' is the wrong question in mid-2026. The honest split: Claude leads for coding and agents (Fable 5 tops SWE-Bench Pro), ChatGPT is the everyday and voice pick (GPT-5.6 is now default), and Gemini wins if you live in Google apps and search. All three now handle 1M-token context for long documents, and Gemini 3.5 Pro is still delayed. There's no universal winner — keep two open and match the tool to the task. 🤖",
+      "image": "/social/2026-07-20/card_4.png"
+    },
+    {
+      "n": 5,
+      "pillar": "Myth-Buster",
+      "platforms": ["X", "Threads"],
+      "hook": "More megapixels doesn't mean a better camera",
+      "body": "Time to bust a spec-sheet myth: more megapixels does not mean better photos. What actually decides image quality is sensor size, pixel-binning (combining pixels for cleaner low-light shots), and image processing. That's why a 48MP iPhone or Pixel can out-shoot a 200MP spec sheet. If you're phone-shopping this launch season, stop counting megapixels and look at the sensor and software instead. 📸",
+      "image": "/social/2026-07-20/card_5.png"
+    }
+  ]
+}

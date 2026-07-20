@@ -483,10 +483,10 @@ export default function Home() {
           <div className="px-6 md:px-14 pt-10 pb-8 flex flex-col md:flex-row md:items-start gap-8 md:gap-12 justify-between">
             <div className="max-w-sm">
               <p className="font-display text-base font-bold leading-snug text-m3-on-surface">
-                Built in public from Bengaluru — 11 years in media product, now shipping solo with AI.
+                The Daily Tech Roundup, distilled.
               </p>
               <p className="mt-2 text-sm leading-relaxed text-m3-on-surface-variant font-medium">
-                The Daily Tech Roundup and build notes, distilled. One email a week, free.
+                Build notes and the week&rsquo;s best tech, in one email. Free.
               </p>
               <a
                 href="#build-notes"

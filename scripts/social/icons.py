@@ -1,92 +1,107 @@
 #!/usr/bin/env python3
-"""Simple brand line-art icons for builtbyswami cards (drawn in PIL, no assets)."""
+"""Playful brand icons for builtbyswami cards — colour + glow + sparkles (PIL, no assets).
+Public API:
+  ACCENT: dict of icon-keyword -> RGB accent colour
+  pick(name): returns the shape fn or None (kept for back-compat)
+  render(img, name, cx, cy, r): draws the full illustration (glow + tile + icon + sparkles)
+     onto an RGBA `img` at centre (cx,cy) with tile half-size r. Returns True if drawn.
+"""
+import math
+from PIL import Image, ImageDraw, ImageFilter
+
 CYAN = (34, 211, 238)
 WHITE = (240, 243, 246)
 BG = (18, 20, 24)
+DARK = (10, 12, 15)
 PANELC = (26, 30, 36)
 RING = (44, 52, 62)
 
-def panel(d, cx, cy, r):
-    d.rounded_rectangle((cx-r, cy-r, cx+r, cy+r), radius=int(r*0.30), fill=PANELC, outline=RING, width=3)
+# per-story accent colours (icon pops; brand cyan stays the through-line)
+ACCENT = {
+    "disc": (96, 165, 250), "gaming": (96, 165, 250), "console": (96, 165, 250), "game": (96, 165, 250),
+    "chat": (37, 211, 102), "whatsapp": (37, 211, 102), "message": (37, 211, 102),
+    "search": (168, 130, 255), "x": (168, 130, 255),
+    "chip": (245, 170, 66), "laptop": (245, 170, 66), "cpu": (245, 170, 66), "processor": (245, 170, 66),
+    "incognito": (167, 139, 250), "privacy": (167, 139, 250), "security": (167, 139, 250),
+    "phone": (34, 211, 238), "iphone": (34, 211, 238), "android": (52, 211, 153),
+    "robot": (94, 234, 212), "ai": (94, 234, 212),
+    "tip": (250, 204, 21), "bulb": (250, 204, 21),
+}
 
-def _dot(d, x, y, r, col):
-    d.ellipse((x-r, y-r, x+r, y+r), fill=col)
 
-def chat(d, cx, cy, s):
-    # speech bubble with three dots (messaging / WhatsApp)
+def _sparkle(d, x, y, r, col):
+    k = r * 0.30
+    d.polygon([(x, y-r), (x+k, y-k), (x+r, y), (x+k, y+k),
+               (x, y+r), (x-k, y+k), (x-r, y), (x-k, y-k)], fill=col)
+
+
+def _glow(img, cx, cy, col, r):
+    g = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    ImageDraw.Draw(g).ellipse((cx-r, cy-r, cx+r, cy+r), fill=col + (120,))
+    img.alpha_composite(g.filter(ImageFilter.GaussianBlur(70)))
+
+
+# ---- colour-aware icon shapes ----
+def chat(d, cx, cy, s, c):
     w, h = s*1.9, s*1.4
     x0, y0 = cx-w/2, cy-h/2-s*0.15
-    d.rounded_rectangle((x0, y0, x0+w, y0+h), radius=int(s*0.42), outline=CYAN, width=10)
-    d.polygon([(x0+s*0.55, y0+h-3), (x0+s*0.30, y0+h+s*0.45), (x0+s*1.05, y0+h-3)], fill=CYAN)
-    cyd = y0+h/2
+    d.rounded_rectangle((x0, y0, x0+w, y0+h), radius=int(s*0.42), outline=c, width=11)
+    d.polygon([(x0+s*0.55, y0+h-3), (x0+s*0.30, y0+h+s*0.45), (x0+s*1.05, y0+h-3)], fill=c)
     for dx in (-s*0.45, 0, s*0.45):
-        _dot(d, cx+dx, cyd, 11, WHITE)
+        d.ellipse((cx+dx-11, y0+h/2-11, cx+dx+11, y0+h/2+11), fill=WHITE)
 
-def disc(d, cx, cy, s):
-    # optical disc (PlayStation physical discs)
-    d.ellipse((cx-s, cy-s, cx+s, cy+s), outline=CYAN, width=11)
-    d.ellipse((cx-s*0.62, cy-s*0.62, cx+s*0.62, cy+s*0.62), outline=RING, width=4)
-    d.ellipse((cx-s*0.30, cy-s*0.30, cx+s*0.30, cy+s*0.30), outline=CYAN, width=8, fill=BG)
-    # highlight arc
-    d.arc((cx-s*0.82, cy-s*0.82, cx+s*0.82, cy+s*0.82), start=210, end=270, fill=WHITE, width=8)
+def disc(d, cx, cy, s, c):
+    d.ellipse((cx-s, cy-s, cx+s, cy+s), outline=c, width=12)
+    d.ellipse((cx-s*0.6, cy-s*0.6, cx+s*0.6, cy+s*0.6), outline=RING, width=4)
+    d.ellipse((cx-s*0.28, cy-s*0.28, cx+s*0.28, cy+s*0.28), outline=c, width=8, fill=BG)
+    d.arc((cx-s*0.82, cy-s*0.82, cx+s*0.82, cy+s*0.82), start=205, end=265, fill=WHITE, width=9)
 
-def search(d, cx, cy, s):
-    # magnifying glass (search operators)
-    r = s*0.72
-    ox, oy = cx-s*0.22, cy-s*0.22
-    d.ellipse((ox-r, oy-r, ox+r, oy+r), outline=CYAN, width=12)
-    import math
+def search(d, cx, cy, s, c):
+    r = s*0.72; ox, oy = cx-s*0.22, cy-s*0.22
+    d.ellipse((ox-r, oy-r, ox+r, oy+r), outline=c, width=13)
     a = math.radians(45)
-    x1, y1 = ox+math.cos(a)*r, oy+math.sin(a)*r
-    x2, y2 = ox+math.cos(a)*(r+s*0.7), oy+math.sin(a)*(r+s*0.7)
-    d.line((x1, y1, x2, y2), fill=CYAN, width=16)
+    d.line((ox+math.cos(a)*r, oy+math.sin(a)*r, ox+math.cos(a)*(r+s*0.7), oy+math.sin(a)*(r+s*0.7)), fill=c, width=17)
 
-def chip(d, cx, cy, s):
-    # CPU / chip (laptop chips)
+def chip(d, cx, cy, s, c):
     b = s*0.85
-    d.rounded_rectangle((cx-b, cy-b, cx+b, cy+b), radius=int(s*0.14), outline=CYAN, width=10)
+    d.rounded_rectangle((cx-b, cy-b, cx+b, cy+b), radius=int(s*0.14), outline=c, width=11)
     ib = s*0.42
     d.rounded_rectangle((cx-ib, cy-ib, cx+ib, cy+ib), radius=int(s*0.10), outline=WHITE, width=6)
     pin = s*0.22
     for i in (-0.5, 0, 0.5):
         px = cx+i*b*1.1
-        d.line((px, cy-b, px, cy-b-pin), fill=CYAN, width=9)   # top
-        d.line((px, cy+b, px, cy+b+pin), fill=CYAN, width=9)   # bottom
+        d.line((px, cy-b, px, cy-b-pin), fill=c, width=10)
+        d.line((px, cy+b, px, cy+b+pin), fill=c, width=10)
         py = cy+i*b*1.1
-        d.line((cx-b, py, cx-b-pin, py), fill=CYAN, width=9)   # left
-        d.line((cx+b, py, cx+b+pin, py), fill=CYAN, width=9)   # right
+        d.line((cx-b, py, cx-b-pin, py), fill=c, width=10)
+        d.line((cx+b, py, cx+b+pin, py), fill=c, width=10)
 
-def incognito(d, cx, cy, s):
-    # hat + glasses (privacy / incognito)
-    # brim
-    d.ellipse((cx-s*1.05, cy-s*0.5, cx+s*1.05, cy-s*0.12), fill=CYAN)
-    # crown
-    d.rounded_rectangle((cx-s*0.6, cy-s*0.95, cx+s*0.6, cy-s*0.28), radius=int(s*0.22), fill=CYAN)
-    # glasses
-    gy = cy+s*0.45
-    gr = s*0.34
+def incognito(d, cx, cy, s, c):
+    d.ellipse((cx-s*1.05, cy-s*0.5, cx+s*1.05, cy-s*0.12), fill=c)
+    d.rounded_rectangle((cx-s*0.6, cy-s*0.95, cx+s*0.6, cy-s*0.28), radius=int(s*0.22), fill=c)
+    gy, gr = cy+s*0.45, s*0.34
     d.ellipse((cx-s*0.78-gr, gy-gr, cx-s*0.78+gr, gy+gr), outline=WHITE, width=10, fill=BG)
     d.ellipse((cx+s*0.78-gr, gy-gr, cx+s*0.78+gr, gy+gr), outline=WHITE, width=10, fill=BG)
     d.line((cx-s*0.44, gy-4, cx+s*0.44, gy-4), fill=WHITE, width=10)
 
-def phone(d, cx, cy, s):
+def phone(d, cx, cy, s, c):
     w, h = s*1.15, s*1.9
-    d.rounded_rectangle((cx-w/2, cy-h/2, cx+w/2, cy+h/2), radius=int(s*0.24), outline=CYAN, width=10)
-    d.line((cx-s*0.18, cy-h/2+s*0.16, cx+s*0.18, cy-h/2+s*0.16), fill=CYAN, width=8)
-    _dot(d, cx, cy+h/2-s*0.22, 10, CYAN)
+    d.rounded_rectangle((cx-w/2, cy-h/2, cx+w/2, cy+h/2), radius=int(s*0.24), outline=c, width=10)
+    d.line((cx-s*0.18, cy-h/2+s*0.16, cx+s*0.18, cy-h/2+s*0.16), fill=c, width=8)
+    d.ellipse((cx-10, cy+h/2-s*0.22-10, cx+10, cy+h/2-s*0.22+10), fill=c)
 
-def robot(d, cx, cy, s):
-    d.rounded_rectangle((cx-s*0.85, cy-s*0.55, cx+s*0.85, cy+s*0.75), radius=int(s*0.22), outline=CYAN, width=10)
-    _dot(d, cx-s*0.35, cy+s*0.05, 15, CYAN)
-    _dot(d, cx+s*0.35, cy+s*0.05, 15, CYAN)
-    d.line((cx, cy-s*0.55, cx, cy-s*0.95), fill=CYAN, width=8)
-    _dot(d, cx, cy-s*1.02, 11, CYAN)
+def robot(d, cx, cy, s, c):
+    d.rounded_rectangle((cx-s*0.85, cy-s*0.55, cx+s*0.85, cy+s*0.75), radius=int(s*0.22), outline=c, width=10)
+    d.ellipse((cx-s*0.35-15, cy+s*0.05-15, cx-s*0.35+15, cy+s*0.05+15), fill=c)
+    d.ellipse((cx+s*0.35-15, cy+s*0.05-15, cx+s*0.35+15, cy+s*0.05+15), fill=c)
+    d.line((cx, cy-s*0.55, cx, cy-s*0.95), fill=c, width=8)
+    d.ellipse((cx-11, cy-s*1.02-11, cx+11, cy-s*1.02+11), fill=c)
 
-def bulb(d, cx, cy, s):
-    d.ellipse((cx-s*0.7, cy-s*0.9, cx+s*0.7, cy+s*0.5), outline=CYAN, width=11)
-    d.rounded_rectangle((cx-s*0.3, cy+s*0.42, cx+s*0.3, cy+s*0.8), radius=6, outline=CYAN, width=9)
+def bulb(d, cx, cy, s, c):
+    d.ellipse((cx-s*0.7, cy-s*0.9, cx+s*0.7, cy+s*0.5), outline=c, width=11)
+    d.rounded_rectangle((cx-s*0.3, cy+s*0.42, cx+s*0.3, cy+s*0.8), radius=6, outline=c, width=9)
 
-ICONS = {
+SHAPES = {
     "chat": chat, "whatsapp": chat, "message": chat,
     "disc": disc, "playstation": disc, "gaming": disc, "game": disc, "console": disc,
     "search": search, "x": search,
@@ -97,5 +112,28 @@ ICONS = {
     "tip": bulb, "bulb": bulb,
 }
 
+
 def pick(name):
-    return ICONS.get((name or "").lower())
+    return SHAPES.get((name or "").lower())
+
+
+def render(img, name, cx, cy, r):
+    """Draw glow + tile + colour icon + sparkles onto RGBA img. Returns True if drawn."""
+    fn = SHAPES.get((name or "").lower())
+    if not fn:
+        return False
+    c = ACCENT.get((name or "").lower(), CYAN)
+    _glow(img, cx, cy, c, r + 55)
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle((cx-r, cy-r, cx+r, cy+r), radius=int(r*0.30), fill=PANELC, outline=RING, width=3)
+    fn(d, cx, cy, int(r*0.62), c)
+    _sparkle(d, cx-r+18, cy-r+8, 26, CYAN)
+    _sparkle(d, cx+r-6, int(cy-r*0.15), 17, WHITE)
+    _sparkle(d, int(cx-r*0.2), cy+r-2, 14, c)
+    d.ellipse((cx+r-30, cy+r-30, cx+r-14, cy+r-14), fill=CYAN)
+    return True
+
+
+# back-compat: panel() used by older callers
+def panel(d, cx, cy, r):
+    d.rounded_rectangle((cx-r, cy-r, cx+r, cy+r), radius=int(r*0.30), fill=PANELC, outline=RING, width=3)

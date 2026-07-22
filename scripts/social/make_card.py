@@ -55,17 +55,10 @@ def wordmark(draw, W, H):
     draw.ellipse((80, y - 6, 80 + 34, y + 28), fill=CYAN)
     draw.text((128, y + 11), "@builtbyswami", font=fnt, fill=WHITE, anchor="lm")
 
-def draw_icon(d, icon, W, H):
+def draw_icon(img, icon, W, H):
     if not (_icons and icon):
         return
-    fn = _icons.pick(icon)
-    if not fn:
-        return
-    cx = W - 250
-    cy = H - 250
-    r = 175
-    _icons.panel(d, cx, cy, r)
-    fn(d, cx, cy, int(r * 0.62))
+    _icons.render(img, icon, W - 250, H - 250, 175)
 
 def make(pillar, hook, sub, out, mode, icon=None):
     if mode == "ig":
@@ -74,7 +67,7 @@ def make(pillar, hook, sub, out, mode, icon=None):
         W, H = 1080, 1080
     else:
         W, H = 1080, 1080
-    img = Image.new("RGB", (W, H), BG)
+    img = Image.new("RGBA", (W, H), BG + (255,))
     d = ImageDraw.Draw(img)
     # subtle top accent bar
     d.rectangle((0, 0, W, 10), fill=CYAN)
@@ -100,9 +93,9 @@ def make(pillar, hook, sub, out, mode, icon=None):
             y += 20
             d.text((margin, y), ln, font=sf, fill=MUTED, anchor="lm")
             y += 46
-    draw_icon(d, icon, W, H)
-    wordmark(d, W, H)
-    img.save(out)
+    draw_icon(img, icon, W, H)
+    wordmark(ImageDraw.Draw(img), W, H)
+    img.convert("RGB").save(out)
     print("saved", out)
 
 if __name__ == "__main__":

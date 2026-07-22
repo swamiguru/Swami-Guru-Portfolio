@@ -40,7 +40,7 @@ def wrap(draw, text, fnt, max_w):
     return lines
 
 def base(tag, idx, total):
-    img = Image.new("RGB", (W, H), BG)
+    img = Image.new("RGBA", (W, H), BG + (255,))
     d = ImageDraw.Draw(img)
     d.rectangle((0, 0, W, 10), fill=CYAN)
     m = 80
@@ -72,10 +72,8 @@ def cover(tag, s, idx, total):
         for ln in wrap(d, s["sub"], sf, W - m*2):
             d.text((m, y), ln, font=sf, fill=CYAN, anchor="lm"); y += 58
     icon = s.get("icon")
-    if _icons and icon and _icons.pick(icon):
-        cx, cy, r = W - 250, H - 470, 180
-        _icons.panel(d, cx, cy, r)
-        _icons.pick(icon)(d, cx, cy, int(r * 0.62))
+    if _icons and icon:
+        _icons.render(img, icon, W - 250, H - 470, 180)
     sw = font(40, "SemiBold")
     d.text((m, H - 200), "Swipe →", font=sw, fill=MUTED, anchor="lm")
     wordmark(d)
@@ -127,7 +125,7 @@ def main():
         else:
             img = take(tag, s, i, total)
         out = f"{prefix}_slide{i}.png"
-        img.save(out)
+        img.convert("RGB").save(out)
         print("saved", out)
 
 if __name__ == "__main__":

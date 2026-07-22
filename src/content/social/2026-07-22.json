@@ -1,0 +1,47 @@
+{
+  "date": "2026-07-22",
+  "title": "Samsung splits the Fold, robots hit Wall Street, plus 3 tricks worth stealing",
+  "intro": "Samsung's Unpacked reshaped its foldable lineup, humanoid robots had their biggest business week yet, and we've packed in a Google Photos search hack, a 5-minute privacy win, and an AI prompt you'll actually reuse.",
+  "posts": [
+    {
+      "n": 1,
+      "pillar": "News & Commentary",
+      "platforms": ["X", "Threads", "Instagram"],
+      "hook": "The Fold is now two phones",
+      "body": "Samsung just rewrote its foldable playbook at Unpacked in London. The big move: the 'Fold' is now two different phones — the Z Fold 8 Ultra, the true no-compromise successor to the Fold 7, and the Z Fold 8, a new passport-style foldable that's shorter and wider. Alongside them came the Z Flip 8 clamshell, the Galaxy Watch 9 series, One UI 9, and Samsung's first Galaxy Glasses. 🔥 Honest take: giving people an 'Ultra' and a 'regular' fold is smart for margins, but it also means you now have to think harder about which fold is actually for you — and the Glasses are the real wildcard.",
+      "image": "/social/2026-07-22/card_1.png"
+    },
+    {
+      "n": 2,
+      "pillar": "News / Global Tech",
+      "platforms": ["X", "Threads"],
+      "hook": "Robots just went public",
+      "body": "This may have been the week humanoid robots stopped being a demo and started being a business. In seven days, three humanoid robotics companies moved toward public markets, a $650,000 transforming 'mecha' robot was revealed as pure spectacle, and a roughly $17,000 mass-produced humanoid racked up more than 13,000 orders on day one. Wheeled humanoids were even livestreamed running a real factory quality-inspection line for days. 🤖 The takeaway: benchmarks and viral clips are fun, but 'it went public' and 'it's on a production line' are the numbers that actually matter now.",
+      "image": "/social/2026-07-22/card_2.png"
+    },
+    {
+      "n": 3,
+      "pillar": "Tips & Tricks",
+      "platforms": ["X", "Threads"],
+      "hook": "Search the text inside your photos",
+      "body": "Here's a Google Photos trick that feels illegal once you know it: you can search the actual text inside your photos and screenshots. Type 'wifi password' and it surfaces that screenshot you took six months ago. Search a shop name off a receipt, a line from a poster, or a word from a slide — Google Photos reads text in images with OCR and finds it instantly. Basically your gallery is a search engine, and nobody told you.",
+      "image": "/social/2026-07-22/card_3.png"
+    },
+    {
+      "n": 4,
+      "pillar": "Security & Privacy Quick-Win",
+      "platforms": ["X", "Threads"],
+      "hook": "Revoke old app access",
+      "body": "Quick privacy win you can do in five minutes: every time you tapped 'Sign in with Google' or 'Sign in with Apple,' that app got standing access to your account — and years later most of those apps are dead while the access is still live. Clean it up. On Google, visit myaccount.google.com/permissions; on Apple, go to Settings, tap your name, then Sign in with Apple, and remove anything you don't actively use. Fewer apps holding keys means fewer ways a future breach touches you.",
+      "image": "/social/2026-07-22/card_4.png"
+    },
+    {
+      "n": 5,
+      "pillar": "AI Workflow / Prompt of the Day",
+      "platforms": ["X", "Threads"],
+      "hook": "The prompt that clears your inbox",
+      "body": "Steal this AI prompt — it's one of the most useful ones you'll run: 'Summarize this in 3 bullets, tell me the ONE decision I need to make, and draft a 2-line reply: [paste the email or message].' It works because three bullets give you the gist in seconds, forcing 'one decision' cuts through vague summaries, and the ready 2-line reply means you're done instead of staring at a blank box. Works in ChatGPT, Gemini, or Claude — whatever you use.",
+      "image": "/social/2026-07-22/card_5.png"
+    }
+  ]
+}

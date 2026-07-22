@@ -9,3 +9,7 @@
 2026-07-21 | 2 | Creator economy | YouTube monetization | 'Inauthentic content' policy + satisfaction-over-watchtime algorithm shift
 2026-07-21 | 4 | Wearables | Smart ring vs smartwatch | 2026 buyer's comparison — insight vs control
 2026-07-21 | 5 | AI | AI agents trust poll | Would you let an AI agent pay with your card?
+2026-07-22 | 1 | Phones | Samsung Galaxy Unpacked | Unpacked HAPPENED — Fold split into Z Fold 8 Ultra + passport-style Z Fold 8, Z Flip 8, Watch 9, Galaxy Glasses, One UI 9
+2026-07-22 | 2 | Global tech / Robotics | Humanoid robot IPO week (Unitree / Agility / UBTech) | Humanoids go public + $650K mecha + $17K humanoid 13k day-one orders (neutral, product-focused)
+2026-07-22 | 4 | Security & Privacy | Revoke third-party 'Sign in with Google/Apple' app access | 5-minute permissions cleanup quick-win
+2026-07-22 | 5 | AI workflow | Prompt of the day | Summarize + one-decision + 2-line-reply email prompt

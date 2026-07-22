@@ -26,6 +26,10 @@ ACCENT = {
     "phone": (34, 211, 238), "iphone": (34, 211, 238), "android": (52, 211, 153),
     "robot": (94, 234, 212), "ai": (94, 234, 212),
     "tip": (250, 204, 21), "bulb": (250, 204, 21),
+    "mail": (234, 120, 60), "email": (234, 120, 60), "gmail": (234, 120, 60),
+    "rocket": (251, 146, 60), "space": (251, 146, 60), "isro": (251, 146, 60), "launch": (251, 146, 60),
+    "video": (239, 88, 88), "youtube": (239, 88, 88), "creator": (239, 88, 88), "play": (239, 88, 88),
+    "watch": (45, 212, 191), "wearable": (45, 212, 191), "smartwatch": (45, 212, 191), "ring": (45, 212, 191),
 }
 
 
@@ -101,6 +105,37 @@ def bulb(d, cx, cy, s, c):
     d.ellipse((cx-s*0.7, cy-s*0.9, cx+s*0.7, cy+s*0.5), outline=c, width=11)
     d.rounded_rectangle((cx-s*0.3, cy+s*0.42, cx+s*0.3, cy+s*0.8), radius=6, outline=c, width=9)
 
+def mail(d, cx, cy, s, c):
+    w, h = s*1.7, s*1.2
+    x0, y0 = cx-w/2, cy-h/2
+    d.rounded_rectangle((x0, y0, x0+w, y0+h), radius=int(s*0.12), outline=c, width=10)
+    d.line((x0+8, y0+10, cx, cy+s*0.12), fill=c, width=9, joint="curve")
+    d.line((x0+w-8, y0+10, cx, cy+s*0.12), fill=c, width=9, joint="curve")
+
+def rocket(d, cx, cy, s, c):
+    bw = s*0.55
+    d.rounded_rectangle((cx-bw, cy-s*0.45, cx+bw, cy+s*0.7), radius=int(bw), outline=c, width=10)
+    d.line([(cx-bw, cy-s*0.3), (cx, cy-s*1.05), (cx+bw, cy-s*0.3)], fill=c, width=10, joint="curve")
+    d.ellipse((cx-s*0.2, cy-s*0.28, cx+s*0.2, cy+s*0.12), outline=c, width=8)
+    d.line([(cx-bw, cy+s*0.28), (cx-bw-s*0.35, cy+s*0.78), (cx-bw+2, cy+s*0.68)], fill=c, width=10, joint="curve")
+    d.line([(cx+bw, cy+s*0.28), (cx+bw+s*0.35, cy+s*0.78), (cx+bw-2, cy+s*0.68)], fill=c, width=10, joint="curve")
+    d.polygon([(cx-s*0.18, cy+s*0.72), (cx, cy+s*1.08), (cx+s*0.18, cy+s*0.72)], fill=CYAN)
+
+def video(d, cx, cy, s, c):
+    b = s*0.82
+    d.rounded_rectangle((cx-b, cy-b*0.72, cx+b, cy+b*0.72), radius=int(s*0.22), outline=c, width=11)
+    t = s*0.34
+    d.polygon([(cx-t*0.5, cy-t), (cx-t*0.5, cy+t), (cx+t, cy)], fill=c)
+
+def watch(d, cx, cy, s, c):
+    fw = s*0.62
+    d.rounded_rectangle((cx-fw, cy-s*1.0, cx+fw, cy-fw*0.7), radius=8, fill=c)
+    d.rounded_rectangle((cx-fw, cy+fw*0.7, cx+fw, cy+s*1.0), radius=8, fill=c)
+    d.rounded_rectangle((cx-s*0.72, cy-s*0.72, cx+s*0.72, cy+s*0.72), radius=int(s*0.28), outline=c, width=11, fill=BG)
+    d.ellipse((cx-6, cy-6, cx+6, cy+6), fill=c)
+    d.line((cx, cy, cx, cy-s*0.4), fill=WHITE, width=7)
+    d.line((cx, cy, cx+s*0.3, cy), fill=WHITE, width=7)
+
 SHAPES = {
     "chat": chat, "whatsapp": chat, "message": chat,
     "disc": disc, "playstation": disc, "gaming": disc, "game": disc, "console": disc,
@@ -110,6 +145,10 @@ SHAPES = {
     "phone": phone, "iphone": phone, "android": phone,
     "robot": robot, "ai": robot,
     "tip": bulb, "bulb": bulb,
+    "mail": mail, "email": mail, "gmail": mail,
+    "rocket": rocket, "space": rocket, "isro": rocket, "launch": rocket,
+    "video": video, "youtube": video, "creator": video, "play": video,
+    "watch": watch, "wearable": watch, "smartwatch": watch, "ring": watch,
 }
 
 

@@ -30,6 +30,10 @@ ACCENT = {
     "rocket": (251, 146, 60), "space": (251, 146, 60), "isro": (251, 146, 60), "launch": (251, 146, 60),
     "video": (239, 88, 88), "youtube": (239, 88, 88), "creator": (239, 88, 88), "play": (239, 88, 88),
     "watch": (45, 212, 191), "wearable": (45, 212, 191), "smartwatch": (45, 212, 191), "ring": (45, 212, 191),
+    "gavel": (232, 121, 249), "legal": (232, 121, 249), "lawsuit": (232, 121, 249), "court": (232, 121, 249), "sued": (232, 121, 249),
+    "lock": (52, 211, 153), "passkey": (52, 211, 153), "padlock": (52, 211, 153),
+    "music": (244, 114, 182), "audio": (244, 114, 182), "sound": (244, 114, 182), "shazam": (244, 114, 182),
+    "doc": (129, 140, 248), "document": (129, 140, 248), "sheet": (129, 140, 248), "workflow": (129, 140, 248), "receipt": (129, 140, 248),
 }
 
 
@@ -136,6 +140,32 @@ def watch(d, cx, cy, s, c):
     d.line((cx, cy, cx, cy-s*0.4), fill=WHITE, width=7)
     d.line((cx, cy, cx+s*0.3, cy), fill=WHITE, width=7)
 
+def gavel(d, cx, cy, s, c):
+    d.rounded_rectangle((cx-s*0.62, cy-s*0.92, cx+s*0.62, cy-s*0.5), radius=int(s*0.12), outline=c, width=11)
+    d.line((cx-s*0.3, cy-s*0.92, cx-s*0.3, cy-s*0.5), fill=c, width=9)
+    d.line((cx+s*0.3, cy-s*0.92, cx+s*0.3, cy-s*0.5), fill=c, width=9)
+    d.line((cx, cy-s*0.5, cx, cy+s*0.45), fill=c, width=12)
+    d.rounded_rectangle((cx-s*0.75, cy+s*0.5, cx+s*0.75, cy+s*0.78), radius=int(s*0.12), fill=c)
+
+def lock(d, cx, cy, s, c):
+    d.arc((cx-s*0.45, cy-s*0.95, cx+s*0.45, cy-s*0.12), start=180, end=360, fill=c, width=12)
+    d.rounded_rectangle((cx-s*0.62, cy-s*0.32, cx+s*0.62, cy+s*0.78), radius=int(s*0.18), outline=c, width=11)
+    d.ellipse((cx-s*0.13, cy+s*0.04, cx+s*0.13, cy+s*0.3), fill=c)
+    d.line((cx, cy+s*0.22, cx, cy+s*0.52), fill=c, width=9)
+
+def music(d, cx, cy, s, c):
+    d.ellipse((cx-s*0.72, cy+s*0.24, cx-s*0.3, cy+s*0.64), fill=c)
+    d.ellipse((cx+s*0.18, cy+s*0.02, cx+s*0.6, cy+s*0.42), fill=c)
+    d.line((cx-s*0.31, cy+s*0.44, cx-s*0.31, cy-s*0.62), fill=c, width=9)
+    d.line((cx+s*0.59, cy+s*0.22, cx+s*0.59, cy-s*0.82), fill=c, width=9)
+    d.line((cx-s*0.31, cy-s*0.62, cx+s*0.59, cy-s*0.82), fill=c, width=13)
+
+def doc(d, cx, cy, s, c):
+    w, h = s*1.1, s*1.5
+    d.rounded_rectangle((cx-w/2, cy-h/2, cx+w/2, cy+h/2), radius=int(s*0.12), outline=c, width=10)
+    for ly in (-0.28, -0.08, 0.12, 0.32):
+        d.line((cx-w/2+s*0.22, cy+h*ly, cx+w/2-s*0.22, cy+h*ly), fill=c, width=7)
+
 SHAPES = {
     "chat": chat, "whatsapp": chat, "message": chat,
     "disc": disc, "playstation": disc, "gaming": disc, "game": disc, "console": disc,
@@ -149,6 +179,10 @@ SHAPES = {
     "rocket": rocket, "space": rocket, "isro": rocket, "launch": rocket,
     "video": video, "youtube": video, "creator": video, "play": video,
     "watch": watch, "wearable": watch, "smartwatch": watch, "ring": watch,
+    "gavel": gavel, "legal": gavel, "lawsuit": gavel, "court": gavel, "sued": gavel,
+    "lock": lock, "passkey": lock, "padlock": lock,
+    "music": music, "audio": music, "sound": music, "shazam": music,
+    "doc": doc, "document": doc, "sheet": doc, "workflow": doc, "receipt": doc,
 }
 
 

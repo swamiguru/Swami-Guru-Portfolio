@@ -1,46 +1,46 @@
 {
   "date": "2026-07-22",
-  "title": "Samsung splits the Fold, robots hit Wall Street, plus 3 tricks worth stealing",
-  "intro": "Samsung's Unpacked reshaped its foldable lineup, humanoid robots had their biggest business week yet, and we've packed in a Google Photos search hack, a 5-minute privacy win, and an AI prompt you'll actually reuse.",
+  "title": "Disc-free PlayStations, WhatsApp usernames & the 2026 laptop chip war",
+  "intro": "Five stories worth your time today: Sony ends physical PlayStation discs, WhatsApp finally lets you hide your phone number, a hidden X search trick, the four-way 2026 laptop chip war, and why Incognito mode was never actually private.",
   "posts": [
     {
       "n": 1,
       "pillar": "News & Commentary",
-      "platforms": ["X", "Threads", "Instagram"],
-      "hook": "The Fold is now two phones",
-      "body": "Samsung just rewrote its foldable playbook at Unpacked in London. The big move: the 'Fold' is now two different phones — the Z Fold 8 Ultra, the true no-compromise successor to the Fold 7, and the Z Fold 8, a new passport-style foldable that's shorter and wider. Alongside them came the Z Flip 8 clamshell, the Galaxy Watch 9 series, One UI 9, and Samsung's first Galaxy Glasses. 🔥 Honest take: giving people an 'Ultra' and a 'regular' fold is smart for margins, but it also means you now have to think harder about which fold is actually for you — and the Glasses are the real wildcard.",
+      "platforms": ["X", "Threads"],
+      "hook": "Sony ends physical PlayStation discs from January 2028",
+      "body": "Sony has confirmed it will stop producing physical discs for new PlayStation games from January 2028, effectively ending the disc era for the platform. The company frames it as simply following players, who overwhelmingly buy digital already. The honest trade-off: a fully digital library means no lending, no reselling, no second-hand market, and your access ultimately depends on the store staying open. Great for convenience, less great for ownership and preservation. 🎮",
       "image": "/social/2026-07-22/card_1.png"
     },
     {
       "n": 2,
-      "pillar": "News / Global Tech",
+      "pillar": "News / Apps & Privacy",
       "platforms": ["X", "Threads"],
-      "hook": "Robots just went public",
-      "body": "This may have been the week humanoid robots stopped being a demo and started being a business. In seven days, three humanoid robotics companies moved toward public markets, a $650,000 transforming 'mecha' robot was revealed as pure spectacle, and a roughly $17,000 mass-produced humanoid racked up more than 13,000 orders on day one. Wheeled humanoids were even livestreamed running a real factory quality-inspection line for days. 🤖 The takeaway: benchmarks and viral clips are fun, but 'it went public' and 'it's on a production line' are the numbers that actually matter now.",
+      "hook": "WhatsApp usernames let you finally hide your phone number",
+      "body": "WhatsApp is rolling out usernames, a genuine privacy upgrade. You'll be able to set a handle like @swami, switch on 'Hide Phone Number,' and let new people reach you without ever seeing your actual number. The caveats matter: you still need a phone number to sign up, it only hides your digits from new contacts rather than people who already have you, and there's no public directory, so someone needs your exact username. Reservations began in late June, with wider global availability rolling out through September 2026. 🔒",
       "image": "/social/2026-07-22/card_2.png"
     },
     {
       "n": 3,
       "pillar": "Tips & Tricks",
       "platforms": ["X", "Threads"],
-      "hook": "Search the text inside your photos",
-      "body": "Here's a Google Photos trick that feels illegal once you know it: you can search the actual text inside your photos and screenshots. Type 'wifi password' and it surfaces that screenshot you took six months ago. Search a shop name off a receipt, a line from a poster, or a word from a slide — Google Photos reads text in images with OCR and finds it instantly. Basically your gallery is a search engine, and nobody told you.",
+      "hook": "Use X search operators to find the best posts on any topic",
+      "body": "Here's an X feature almost nobody uses: search operators. Type min_faves:1000 followed by a topic to see only posts with 1,000+ likes — an instant quality filter. Add from:username to pull everything one account said on a subject, or since: and until: dates to lock a time range. Stack them together and X's search bar turns into a proper research tool instead of a doomscroll. 💡",
       "image": "/social/2026-07-22/card_3.png"
     },
     {
       "n": 4,
-      "pillar": "Security & Privacy Quick-Win",
-      "platforms": ["X", "Threads"],
-      "hook": "Revoke old app access",
-      "body": "Quick privacy win you can do in five minutes: every time you tapped 'Sign in with Google' or 'Sign in with Apple,' that app got standing access to your account — and years later most of those apps are dead while the access is still live. Clean it up. On Google, visit myaccount.google.com/permissions; on Apple, go to Settings, tap your name, then Sign in with Apple, and remove anything you don't actively use. Fewer apps holding keys means fewer ways a future breach touches you.",
+      "pillar": "Comparison",
+      "platforms": ["X", "Threads", "Instagram"],
+      "hook": "The 2026 laptop chip war: four fighters, one buyer",
+      "body": "Four laptop chips are fighting for your money in 2026, and each wins a different job. Apple's M5 is the single-core champion with the best performance-per-watt — ideal if you live in macOS. Qualcomm's Snapdragon X2 Elite runs about 24% faster than Intel with an 80 TOPS NPU and superb battery, making it the strongest Windows all-rounder right now. Intel's Panther Lake remains the safe, most-compatible default, while AMD's Gorgon Point (Ryzen AI 400) offers strong multi-core value. The verdict: macOS to M5, Windows plus battery or AI to Snapdragon X2, maximum compatibility to Intel, best value to AMD. There's no single best chip — only the best for you. 💻",
       "image": "/social/2026-07-22/card_4.png"
     },
     {
       "n": 5,
-      "pillar": "AI Workflow / Prompt of the Day",
+      "pillar": "Myth-Buster",
       "platforms": ["X", "Threads"],
-      "hook": "The prompt that clears your inbox",
-      "body": "Steal this AI prompt — it's one of the most useful ones you'll run: 'Summarize this in 3 bullets, tell me the ONE decision I need to make, and draft a 2-line reply: [paste the email or message].' It works because three bullets give you the gist in seconds, forcing 'one decision' cuts through vague summaries, and the ready 2-line reply means you're done instead of staring at a blank box. Works in ChatGPT, Gemini, or Claude — whatever you use.",
+      "hook": "Incognito mode was never actually anonymous",
+      "body": "Time to bust one of tech's most believed myths: that Incognito mode keeps you anonymous. It doesn't. Incognito only stops your own browser from saving history, cookies and form data locally. Your internet provider, your employer or school network, the websites you visit, and often your DNS resolver can all still see you. If you actually want privacy, the right tools depend on who you're hiding from — a trusted VPN, private DNS, and locked-down browser settings. Incognito is genuinely useful for one thing: not leaving traces on a shared device. 🕵️",
       "image": "/social/2026-07-22/card_5.png"
     }
   ]

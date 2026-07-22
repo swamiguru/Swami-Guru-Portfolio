@@ -13,3 +13,7 @@
 2026-07-22 | 2 | Global tech / Robotics | Humanoid robot IPO week (Unitree / Agility / UBTech) | Humanoids go public + $650K mecha + $17K humanoid 13k day-one orders (neutral, product-focused)
 2026-07-22 | 4 | Security & Privacy | Revoke third-party 'Sign in with Google/Apple' app access | 5-minute permissions cleanup quick-win
 2026-07-22 | 5 | AI workflow | Prompt of the day | Summarize + one-decision + 2-line-reply email prompt
+2026-07-22 | 1 | Gaming | Sony PlayStation physical discs | Physical disc production ends Jan 2028, digital-only future
+2026-07-22 | 2 | Apps / Privacy | WhatsApp usernames | Usernames roll out — hide phone number from new contacts
+2026-07-22 | 4 | Laptops / Chips | 2026 laptop chip war (Snapdragon X2 vs M5 vs Panther Lake vs AMD) | Who-should-buy-what comparison
+2026-07-22 | 5 | Security / Privacy | Incognito myth-buster | Incognito = anonymous myth busted

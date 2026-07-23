@@ -20,6 +20,13 @@ const template = readFileSync(join(DIST, "index.html"), "utf8");
 
 const NOTES = [
   {
+    slug: "why-i-built-builtbyswami-from-scratch",
+    title:
+      "Why I built BuiltBySwami from scratch — the brief, the stack, and the layoff that started it",
+    description:
+      "After Condé Nast made my role redundant, I gave myself one brief: build a brand from zero, ship it solo, and use AI as the build partner — not the excuse.",
+  },
+  {
     slug: "24-hour-task-manager-sprint",
     title: "I built a task manager from zero in 24 hours with AI",
     description:

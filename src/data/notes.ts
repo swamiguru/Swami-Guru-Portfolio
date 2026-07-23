@@ -6,6 +6,7 @@
 // Raw markdown is imported at build time via Vite's ?raw suffix.
 import sprintPost from "../content/notes/24-hour-task-manager-sprint.md?raw";
 import freeWordToolPost from "../content/notes/freewordtool-one-day-sprint.md?raw";
+import builtBySwamiOriginPost from "../content/notes/why-i-built-builtbyswami-from-scratch.md?raw";
 
 export interface Note {
   slug: string;
@@ -21,6 +22,19 @@ export interface Note {
 }
 
 export const NOTES: Note[] = [
+  {
+    slug: "why-i-built-builtbyswami-from-scratch",
+    title:
+      "Why I built BuiltBySwami from scratch — the brief, the stack, and the layoff that started it",
+    description:
+      "After Condé Nast made my role redundant, I gave myself one brief: build a brand from zero, ship it solo, and use AI as the build partner — not the excuse.",
+    date: "2026-07-23",
+    readMinutes: 5,
+    tag: "Build-in-public",
+    ctaUrl: "https://builtbyswami.beehiiv.com/",
+    ctaLabel: "Subscribe to Builtbyswami Weekly",
+    content: builtBySwamiOriginPost,
+  },
   {
     slug: "24-hour-task-manager-sprint",
     title: "I built a task manager from zero in 24 hours with AI",

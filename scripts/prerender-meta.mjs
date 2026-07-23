@@ -22,9 +22,9 @@ const NOTES = [
   {
     slug: "why-i-built-builtbyswami-from-scratch",
     title:
-      "Why I built BuiltBySwami from scratch — the brief, the stack, and the layoff that started it",
+      "Why I Built My Own Brand From Scratch — And What It Taught Me About Building Products in the AI Era",
     description:
-      "After Condé Nast made my role redundant, I gave myself one brief: build a brand from zero, ship it solo, and use AI as the build partner — not the excuse.",
+      "After Condé Nast made my role redundant, I built a website, a newsletter, and a daily habit — and used AI as a real tool, not a buzzword, the whole way through.",
   },
   {
     slug: "24-hour-task-manager-sprint",

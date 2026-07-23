@@ -120,9 +120,18 @@ export default function TechDigest() {
                 <h2 className="display text-xl md:text-2xl font-extrabold tracking-tight text-m3-on-surface mb-3 leading-snug">
                   {p.hook}
                 </h2>
-                <p className="text-[15px] md:text-base leading-relaxed text-m3-on-surface-variant font-medium">
-                  {p.body}
-                </p>
+                {p.problem && p.breakthrough && p.catch && p.forYou ? (
+                  <div className="flex flex-col gap-4 text-[15px] md:text-base leading-relaxed text-m3-on-surface-variant font-medium">
+                    <p><strong className="text-m3-on-surface">The problem:</strong> {p.problem}</p>
+                    <p><strong className="text-m3-on-surface">The breakthrough:</strong> {p.breakthrough}</p>
+                    <p><strong className="text-m3-on-surface">The catch:</strong> {p.catch}</p>
+                    <p><strong className="text-m3-on-surface">For you:</strong> {p.forYou}</p>
+                  </div>
+                ) : (
+                  <p className="text-[15px] md:text-base leading-relaxed text-m3-on-surface-variant font-medium">
+                    {p.body}
+                  </p>
+                )}
               </div>
             ))}
           </div>

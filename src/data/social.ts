@@ -14,6 +14,13 @@ export interface SocialPost {
   body: string;
   url?: string;
   image?: string; // e.g. /social/2026-07-12/card_1.png
+  // Optional long-form breakdown for the website story view (/tech-roundup).
+  // `body` stays short-form for social distribution; when these are present,
+  // TechDigest renders the structured version instead of `body`.
+  problem?: string;
+  breakthrough?: string;
+  catch?: string;
+  forYou?: string;
 }
 
 export interface Digest {

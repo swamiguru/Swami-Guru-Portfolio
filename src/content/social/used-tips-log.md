@@ -9,3 +9,4 @@ seed | iOS | Back Tap (double/triple tap back of iPhone)
 2026-07-21 | iPadOS | Key Flicks — touch a letter key and flick down to type its number/symbol without the 123 key
 2026-07-22 | Google Photos | OCR search — type text that appears inside a photo/screenshot (e.g. "wifi password") to find that image instantly
 2026-07-22 | X | Advanced search operators (min_faves:, from:, since:/until:) to surface the best posts on any topic
+2026-07-23 | Android | Screen/App Pinning — lock phone to one app before handing it over (Settings > Security > App pinning)

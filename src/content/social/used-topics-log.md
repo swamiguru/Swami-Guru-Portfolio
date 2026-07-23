@@ -17,3 +17,7 @@
 2026-07-22 | 2 | Apps / Privacy | WhatsApp usernames | Usernames roll out — hide phone number from new contacts
 2026-07-22 | 4 | Laptops / Chips | 2026 laptop chip war (Snapdragon X2 vs M5 vs Panther Lake vs AMD) | Who-should-buy-what comparison
 2026-07-22 | 5 | Security / Privacy | Incognito myth-buster | Incognito = anonymous myth busted
+2026-07-23 | 1 | Phones | Google Pixel 11 | Made by Google reportedly Aug 12 — Pixel 11/Pro/Pro Fold, Watch 5, 2nm Tensor G6 (RUMOR)
+2026-07-23 | 2 | India-specific | Jio/Airtel tariff hike | Reported 15-20% recharge hike in 2026 (not confirmed)
+2026-07-23 | 4 | AI models / Global tech | Open-weight AI wave (Kimi K3 / DeepSeek V4 / Meta Muse Spark 1.1) | Near-frontier open models drop this week (neutral)
+2026-07-23 | 5 | AI models | Pay-for-AI vs free/open poll | Still paying for ChatGPT/Gemini or switched to open models?

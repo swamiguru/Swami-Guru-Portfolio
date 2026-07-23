@@ -206,7 +206,7 @@ export default function Home() {
                   {latestDigest.posts.map((p) => (
                     <Link
                       key={p.n}
-                      to={`/tech-roundup/${latestDigest.date}`}
+                      to={`/tech-roundup/${latestDigest.date}#post-${p.n}`}
                       role="listitem"
                       className="group snap-start shrink-0 w-[280px] md:w-[340px] bg-m3-surface-variant/40 rounded-[24px] border border-m3-outline/5 overflow-hidden flex flex-col hover:bg-m3-surface hover:border-m3-primary/30 hover:shadow-xl transition-all"
                     >

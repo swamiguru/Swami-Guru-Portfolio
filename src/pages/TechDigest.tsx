@@ -101,7 +101,8 @@ export default function TechDigest() {
             {digest.posts.map((p) => (
               <div
                 key={p.n}
-                className="bg-m3-surface rounded-[24px] border border-m3-outline/5 p-6 md:p-8"
+                id={`post-${p.n}`}
+                className="bg-m3-surface rounded-[24px] border border-m3-outline/5 p-6 md:p-8 scroll-mt-24 md:scroll-mt-28"
               >
                 {p.image && (
                   <img

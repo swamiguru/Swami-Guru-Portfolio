@@ -11,14 +11,29 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.builtbyswami.com/tech-roundup</loc>
-    <changefreq>daily</changefreq>
+    <loc>https://www.builtbyswami.com/notes</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.builtbyswami.com/tech-roundup/2026-07-13</loc>
+    <loc>https://www.builtbyswami.com/notes/why-i-built-builtbyswami-from-scratch</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.builtbyswami.com/notes/24-hour-task-manager-sprint</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.builtbyswami.com/notes/freewordtool-one-day-sprint</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.builtbyswami.com/tech-roundup</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.builtbyswami.com/tech-roundup/2026-07-12</loc>
@@ -26,12 +41,57 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.builtbyswami.com/notes</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.builtbyswami.com/tech-roundup/2026-07-13</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.builtbyswami.com/notes/24-hour-task-manager-sprint</loc>
+    <loc>https://www.builtbyswami.com/tech-roundup/2026-07-14</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.builtbyswami.com/tech-roundup/2026-07-15</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.builtbyswami.com/tech-roundup/2026-07-16</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.builtbyswami.com/tech-roundup/2026-07-17</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.builtbyswami.com/tech-roundup/2026-07-18</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.builtbyswami.com/tech-roundup/2026-07-19</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.builtbyswami.com/tech-roundup/2026-07-20</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.builtbyswami.com/tech-roundup/2026-07-21</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.builtbyswami.com/tech-roundup/2026-07-22</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.builtbyswami.com/tech-roundup/2026-07-23</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

@@ -32,6 +32,12 @@ const NOTES = [
     description:
       "A solo, single-cycle build of a working task-management engine — the method, what broke, and why LLM context is the new foundational code.",
   },
+  {
+    slug: "freewordtool-one-day-sprint",
+    title: "I built a word counter in one day — and it almost turned into five products",
+    description:
+      "A one-day, eight-commit build of a privacy-first word counter — the brief, the method, and the scope creep I had to catch mid-sprint.",
+  },
 ];
 
 // Daily social roundups are created by the automation — read them at build time.
@@ -65,7 +71,7 @@ const routes = [
   })),
   {
     path: "tech-roundup",
-    title: "Tech Roundup | Swami Guru",
+    title: "Daily Tech & AI Roundup | Swami Guru",
     description:
       "Daily tech & AI roundups from Swami Guru — the biggest stories, honest takes, and practical tips, filtered so you only get what's worth your time.",
   },
@@ -101,3 +107,26 @@ for (const r of routes) {
   console.log(`  prerendered /${r.path}`);
 }
 console.log(`prerender-meta: wrote ${count} route shell(s).`);
+
+// Regenerate sitemap.xml from this same route list so new tech-roundup dates
+// and notes can never fall out of sync with what's actually published.
+const HUB_PATHS = new Set(["about", "notes", "tech-roundup"]);
+const changefreqFor = (path) =>
+  path === "" ? "weekly" : path === "tech-roundup" ? "daily" : HUB_PATHS.has(path) ? "monthly" : "monthly";
+const priorityFor = (path) => (path === "" ? "1.0" : HUB_PATHS.has(path) ? "0.8" : "0.6");
+
+const sitemapEntries = [{ path: "" }, ...routes];
+const urlsXml = sitemapEntries
+  .map(
+    (r) => `  <url>
+    <loc>${BASE}/${r.path}</loc>
+    <changefreq>${changefreqFor(r.path)}</changefreq>
+    <priority>${priorityFor(r.path)}</priority>
+  </url>`
+  )
+  .join("\n");
+
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlsXml}\n</urlset>\n`;
+
+writeFileSync(join(DIST, "sitemap.xml"), sitemap, "utf8");
+console.log(`prerender-meta: regenerated sitemap.xml with ${sitemapEntries.length} url(s).`);

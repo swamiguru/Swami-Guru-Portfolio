@@ -52,7 +52,7 @@ export default function Tech() {
   }, [filteredDigests]);
 
   useEffect(() => {
-    document.title = "Tech Roundup | Swami Guru";
+    document.title = "Daily Tech & AI Roundup | Swami Guru";
     document
       .querySelector('meta[name="description"]')
       ?.setAttribute(

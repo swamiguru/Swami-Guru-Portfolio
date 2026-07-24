@@ -10,3 +10,4 @@ seed | iOS | Back Tap (double/triple tap back of iPhone)
 2026-07-22 | Google Photos | OCR search — type text that appears inside a photo/screenshot (e.g. "wifi password") to find that image instantly
 2026-07-22 | X | Advanced search operators (min_faves:, from:, since:/until:) to surface the best posts on any topic
 2026-07-23 | Android | Screen/App Pinning — lock phone to one app before handing it over (Settings > Security > App pinning)
+2026-07-24 | Google Maps | Measure distance — long-press to drop a pin, tap the pin card, "Measure distance", tap to add points for straight-line KM

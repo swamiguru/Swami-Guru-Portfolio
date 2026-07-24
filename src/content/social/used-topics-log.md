@@ -21,3 +21,7 @@
 2026-07-23 | 2 | India-specific | Jio/Airtel tariff hike | Reported 15-20% recharge hike in 2026 (not confirmed)
 2026-07-23 | 4 | AI models / Global tech | Open-weight AI wave (Kimi K3 / DeepSeek V4 / Meta Muse Spark 1.1) | Near-frontier open models drop this week (neutral)
 2026-07-23 | 5 | AI models | Pay-for-AI vs free/open poll | Still paying for ChatGPT/Gemini or switched to open models?
+2026-07-24 | 1 | Big Tech Business | Apple Upgrade lease-to-own | Klarna-backed lease-to-own program launches ~July 28 (US) — hardware-as-subscription take
+2026-07-24 | 2 | AI / Hardware | OpenAI Codex Micro | First OpenAI hardware — $230 mechanical keypad for the Codex coding agent
+2026-07-24 | 4 | AI workflow | Prompt of the day — skeptical advisor | Copy-paste decision prompt (3 for / 3 against / blind spots / 1 question)
+2026-07-24 | 5 | Myth-buster | Overnight charging battery myth | Optimised/Adaptive charging + heat is the real killer

@@ -1,0 +1,47 @@
+{
+  "date": "2026-07-24",
+  "title": "Apple rents you your iPhone, OpenAI ships a keypad, and a prompt to end overthinking",
+  "intro": "Today: Apple's lease-to-own plan turns hardware into a subscription, OpenAI's first-ever gadget is a $230 coding keypad, plus a hidden Google Maps ruler, one AI prompt to make better decisions, and the overnight-charging myth, busted.",
+  "posts": [
+    {
+      "n": 1,
+      "pillar": "News & Commentary",
+      "platforms": ["X", "Threads"],
+      "hook": "Apple wants your iPhone to be a subscription",
+      "body": "Apple is reportedly launching 'Apple Upgrade', a lease-to-own program backed by Klarna, on July 28 in the US — letting you spread the cost of an iPhone, iPad, Mac or Watch across years and upgrade whenever you like. 📱 For heavy upgraders it's genuinely convenient, but 'lease-to-own' quietly normalises renting your hardware forever. Worth reading the fine print before the EMI dopamine kicks in.",
+      "image": "/social/2026-07-24/card_1.png"
+    },
+    {
+      "n": 2,
+      "pillar": "News / AI Update",
+      "platforms": ["X", "Threads", "Instagram"],
+      "hook": "OpenAI's first gadget is a keypad",
+      "body": "OpenAI has shipped its first-ever hardware product, and it isn't the long-rumoured Jony Ive AI device — it's Codex Micro, a $230 mechanical control deck built with Work Louder for driving its Codex coding agent. 🤖 It packs 13 switches, a touch sensor, an analog stick and a rotary dial to crank the AI's 'reasoning level' up or down. It's a limited-run tool for hardcore developers rather than a mass-market product, but it's a real hint at where AI-native gadgets are heading.",
+      "image": "/social/2026-07-24/card_2.png"
+    },
+    {
+      "n": 3,
+      "pillar": "Tips & Tricks",
+      "platforms": ["X", "Threads"],
+      "hook": "Google Maps has a hidden ruler",
+      "body": "Most people never find it: long-press anywhere on Google Maps to drop a pin, tap the pin's card at the bottom, and choose 'Measure distance'. 📏 Move the map and tap to add points, and it shows the straight-line distance between any spots — handy for planning road trips, checking how far a plot really is, or mapping a run. No extra apps, no signup.",
+      "image": "/social/2026-07-24/card_3.png"
+    },
+    {
+      "n": 4,
+      "pillar": "AI Workflow / Prompt of the Day",
+      "platforms": ["X", "Threads"],
+      "hook": "One prompt to stop overthinking a decision",
+      "body": "Next time you're stuck on a decision, paste this into ChatGPT, Gemini or Claude: 'Act as my skeptical advisor. I'm deciding [your decision]. Give me the 3 strongest reasons for, the 3 strongest reasons against, what I'm probably not considering, and one question I should answer before deciding. Be blunt.' 🧠 Most people use AI to agree with them — this forces it to challenge you, so you get a real second opinion instead of a cheerleader.",
+      "image": "/social/2026-07-24/card_4.png"
+    },
+    {
+      "n": 5,
+      "pillar": "Myth-Buster",
+      "platforms": ["X", "Threads"],
+      "hook": "Overnight charging won't kill your battery",
+      "body": "The old warning that charging overnight ruins your battery is due for retirement. Modern iPhones and Androids stop drawing power at 100%, and features like Optimised Battery Charging and Adaptive Charging deliberately hold at 80% overnight, topping up to full just before you wake. 🔋 The real battery killers are heat and sitting at 100% for hours — not charging while you sleep. Plug in, turn on optimised charging, and stop overthinking it.",
+      "image": "/social/2026-07-24/card_5.png"
+    }
+  ]
+}

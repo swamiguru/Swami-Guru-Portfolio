@@ -78,7 +78,7 @@ export default function Tech() {
             Tech Roundup
           </h1>
           <p className="mt-5 text-base md:text-lg font-medium text-m3-on-surface-variant max-w-xl leading-relaxed">
-            The day's biggest tech & AI stories — filtered, with honest takes. Five things worth your time, every day.
+            Your daily AI news stop — today's tech roundup, and every one before it, filtered with honest takes. Five things worth your time, every day.
           </p>
 
           <div className="mt-8 flex md:flex-wrap flex-nowrap items-center gap-2 overflow-x-auto md:overflow-visible -mx-6 px-6 md:mx-0 md:px-0 pb-1 md:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
@@ -120,7 +120,7 @@ export default function Tech() {
               </h2>
             </div>
             <p className="text-sm md:text-base font-medium opacity-80 mb-6 max-w-xl">
-              I run Top 5 Daily all week — this is the distilled best of it, plus what I'm building. 11 years building product across Cond&eacute; Nast's full portfolio and Newsweek. Weekly-ish, free.
+              I run Top 5 Daily all week — this is the distilled best of it, plus what I build in public as a solo founder. 11 years building product across Cond&eacute; Nast's full portfolio and Newsweek. Weekly-ish, free.
             </p>
             <NewsletterSignup />
           </div>

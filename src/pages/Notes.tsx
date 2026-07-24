@@ -57,7 +57,7 @@ export default function Notes() {
             The wiring behind the builds
           </h1>
           <p className="mt-5 text-base md:text-lg font-medium text-m3-on-surface-variant max-w-xl leading-relaxed">
-            Long-form teardowns of building products in public with AI — prompts, stack, mistakes, and results.
+            Long-form AI product teardowns — the prompts and stack notes behind building with AI in public: what broke, what shipped, what I'd do differently.
           </p>
         </section>
 
